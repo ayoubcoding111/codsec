@@ -1,0 +1,32 @@
+{
+  "script.js": {
+    "mtime": 1789516404.0517848,
+    "seen": 1789516406.9717648,
+    "ast_hash": "22b8a872280542afc3d9f13a51cefe14",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1789516219.7779853,
+    "seen": 1789516222.8513415,
+    "ast_hash": "5d12aecdc29f7ddae4960a6f953fd9aa",
+    "semantic_hash": ""
+  },
+  "assets/logo.png": {
+    "mtime": 1789481803.1780376,
+    "seen": 1789485055.205876,
+    "ast_hash": "7a1be04c32968e1b8400508f05389db6",
+    "semantic_hash": ""
+  },
+  "assets/myfavicon.jpg": {
+    "mtime": 1789484661.4757986,
+    "seen": 1789485055.2058804,
+    "ast_hash": "b63304e4578f29a32c6b5059fba4fd3e",
+    "semantic_hash": ""
+  },
+  ".vscode/settings.json": {
+    "mtime": 1789505950.422366,
+    "seen": 1789513573.0057468,
+    "ast_hash": "ee006c06a0979fd2a37466f52860d32a",
+    "semantic_hash": ""
+  }
+}

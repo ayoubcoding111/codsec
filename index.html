@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/jpeg" href="assets/myfavicon.jpg" />
+    <title>Ayoub Benkreira</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navigation (fixed, stays above all panels) -->
+    <nav class="nav">
+      <!-- Logo -->
+      <a href="#home" class="nav-logo">
+        <img
+          src="assets/logo.png"
+          alt="Ayoub Benkreira"
+          draggable="false"
+          class="logo-img"
+        />
+      </a>
+
+      <!-- Desktop nav links -->
+      <div class="nav-links desktop-only">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About Us</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+      </div>
+
+      <!-- Desktop right side -->
+      <div class="nav-right desktop-only">
+        <a href="#contact" class="nav-contact-btn">Contact</a>
+      </div>
+
+      <!-- Mobile hamburger (anchor-based: click handled in script.js) -->
+      <a
+        href="#"
+        id="menu-toggle"
+        class="menu-toggle mobile-only"
+        role="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <svg
+          id="icon-open"
+          class="icon icon-lg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          width="24"
+          height="24"
+        >
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg
+          id="icon-close"
+          class="icon icon-lg hidden"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          width="24"
+          height="24"
+        >
+          <path d="M18 6 6 18M6 6l12 12" />
+        </svg>
+      </a>
+    </nav>
+
+    <!-- Mobile full-screen menu overlay -->
+    <div id="mobile-menu" class="mobile-menu">
+      <div class="mobile-menu-top">
+        <img
+          src="assets/logo.png"
+          alt="Ayoub Benkreira"
+          draggable="false"
+          class="logo-img"
+        />
+        <a
+          href="#"
+          class="menu-close"
+          role="button"
+          aria-label="Close menu"
+          data-close-menu
+        >
+          <svg
+            class="icon icon-lg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            width="24"
+            height="24"
+          >
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="mobile-menu-links">
+        <a href="#home" class="mobile-menu-link" data-close-menu>Home</a>
+        <a href="#about" class="mobile-menu-link" data-close-menu>About Us</a>
+        <a href="#projects" class="mobile-menu-link" data-close-menu>Projects</a>
+        <a href="#pricing" class="mobile-menu-link" data-close-menu>Pricing</a>
+
+        <div class="mobile-menu-secondary">
+          <a href="#contact" class="mobile-menu-small" data-close-menu
+            >Contact Us</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <main class="stack">
+      <!-- ============ HOME / HERO ============ -->
+      <section id="home" class="panel home">
+        <!-- Background video — seamless boomerang (forward then reverse) -->
+        <div class="bg-media">
+          <video
+            id="hero-video"
+            class="hero-video"
+            src="https://cdn.sceneai.art/Hero%20Section%20Video/a8132a81-b526-4f91-8095-003ce931ecdd.mp4"
+            autoplay
+            muted
+            playsinline
+            preload="auto"
+            disablepictureinpicture
+          ></video>
+          <!-- Canvas takes over after the first pass: replays captured frames
+               forward/backward so turnarounds are instant (see script.js). -->
+          <canvas id="hero-canvas" class="bg-canvas"></canvas>
+          <div class="bg-overlay"></div>
+        </div>
+
+        <!-- Hero content -->
+        <div class="hero" id="hero-content">
+          <h1
+            id="hero-title"
+            class="hero-title animate-words"
+            data-animate-words="Build Strong, Build Smart"
+            data-base-delay="0.5"
+            data-stagger="0.09"
+          ></h1>
+
+          <div class="hero-sub-wrap">
+            <p class="hero-sub">
+              <span
+                id="hero-sub-words"
+                class="animate-words"
+                data-animate-words="High-quality websites for every project, level up your business now!"
+                data-base-delay="1.4"
+                data-stagger="0.045"
+              ></span>
+            </p>
+          </div>
+
+          <div class="cta-fade">
+            <button type="button" class="animated-button">
+              <svg
+                class="arr-2"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                width="24"
+                height="24"
+              >
+                <path
+                  d="M5 11h11.17l-3.88-3.88L13.7 5.7 19 11l-5.3 5.3-1.41-1.42 3.88-3.88H5v-2z"
+                />
+              </svg>
+              <span class="text">Build Now</span>
+              <span class="circle" aria-hidden="true"></span>
+              <svg
+                class="arr-1"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                width="24"
+                height="24"
+              >
+                <path
+                  d="M5 11h11.17l-3.88-3.88L13.7 5.7 19 11l-5.3 5.3-1.41-1.42 3.88-3.88H5v-2z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <a href="#about" class="scroll-hint" aria-label="Scroll to about">
+          <span class="scroll-hint-text">Scroll</span>
+          <span class="scroll-hint-line" aria-hidden="true"></span>
+        </a>
+      </section>
+
+      <!-- ============ ABOUT US ============ -->
+      <section id="about" class="panel about">
+        <div class="about-glow about-glow-a" aria-hidden="true"></div>
+        <div class="about-glow about-glow-b" aria-hidden="true"></div>
+
+        <div class="about-inner">
+          <p class="eyebrow" data-animate="fade-up">About Us</p>
+          <!-- Intro text -->
+          <div class="about-intro">
+            <h2
+              class="about-title animate-words"
+              data-animate-words="Hi, I'm Omar Ayoub Benkreira"
+              data-base-delay="0.5"
+              data-stagger="0.09"
+            ></h2>
+            <p class="about-role" data-animate="fade-up">
+              Full-Stack Developer &amp; Cyber Security Student
+            </p>
+            <p class="about-text" data-animate="fade-up">
+              <span
+                class="animate-words"
+                data-animate-words="I focus on building clean, performant and secure web applications with seamless user interfaces and robust backends. Driven by curiosity, I regularly turn ideas into production-ready web apps, exploring modern interfaces and security practices."
+                data-base-delay="1.2"
+                data-stagger="0.045"
+              ></span>
+            </p>
+
+            <div class="socials" data-animate="fade-up">
+                <a
+                  href="https://github.com/ayoubcoding111"
+                  target="_blank"
+                  rel="noopener"
+                  class="social-btn"
+                  aria-label="GitHub"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="20" height="20">
+                    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.27 5.68.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .3.2.67.8.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/>
+                  </svg>
+                </a>
+                <a
+                  href="https://instagram.com/"
+                  target="_blank"
+                  rel="noopener"
+                  class="social-btn"
+                  aria-label="Instagram"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20">
+                    <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
+                    <circle cx="12" cy="12" r="4.2" />
+                    <circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none" />
+                  </svg>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/omar-ayoub-benkreira"
+                  target="_blank"
+                  rel="noopener"
+                  class="social-btn"
+                  aria-label="LinkedIn"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="20" height="20">
+                    <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Full-width skills slide, running left -> right under the text -->
+          <div class="about-visual" data-animate="fade-up">
+              <p class="marquee-label">Stack &amp; tools I use</p>
+              <div class="skills-marquee" aria-label="Skills marquee">
+                <div class="marquee-track" id="skills-track">
+                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="git" loading="lazy" onerror="this.style.display='none'" />git</span>
+                  <span class="skill"><img src="https://cdn.simpleicons.org/github/white" alt="github" loading="lazy" onerror="this.style.display='none'" />github</span>
+                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg" alt="npm" loading="lazy" onerror="this.style.display='none'" />npm</span>
+                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="node" loading="lazy" onerror="this.style.display='none'" />node</span>
+                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="html" loading="lazy" onerror="this.style.display='none'" />html</span>
+                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="css" loading="lazy" onerror="this.style.display='none'" />css</span>
+                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="js" loading="lazy" onerror="this.style.display='none'" />js</span>
+                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="c" loading="lazy" onerror="this.style.display='none'" />c</span>
+                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="mysql" loading="lazy" onerror="this.style.display='none'" />mysql</span>
+                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="sql" loading="lazy" onerror="this.style.display='none'" />sql</span>
+                  <span class="skill"><img class="invert" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" alt="express.js" loading="lazy" onerror="this.style.display='none'" />express.js</span>
+                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="react" loading="lazy" onerror="this.style.display='none'" />react</span>
+                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="linux" loading="lazy" onerror="this.style.display='none'" />linux</span>
+                  <span class="skill"><span class="skill-glyph" aria-hidden="true">🛡</span>sql injection</span>
+                  <span class="skill"><span class="skill-glyph" aria-hidden="true">◎</span>soc</span>
+                  <span class="skill"><span class="skill-glyph" aria-hidden="true">✎</span>ui ux</span>
+                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" alt="figma" loading="lazy" onerror="this.style.display='none'" />figma</span>
+                  <span class="skill"><img src="https://cdn.simpleicons.org/anthropic/white" alt="claude" loading="lazy" onerror="this.style.display='none'" />claude</span>
+                  <span class="skill"><span class="skill-glyph" aria-hidden="true">&gt;_</span>opencode</span>
+                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="vscode" loading="lazy" onerror="this.style.display='none'" />vscode</span>
+                </div>
+              </div>
+              <p class="marquee-hint">hover to pause</p>
+          </div>
+      </section>
+
+      <!-- ============ PROJECTS (placeholder for next step) ============ -->
+      <section id="projects" class="panel section-pad">
+        <div class="section-inner">
+          <p class="eyebrow" data-animate="fade-up">Projects</p>
+          <h2
+            class="section-title animate-words"
+            data-animate-words="Selected work coming next"
+            data-base-delay="0.5"
+            data-stagger="0.09"
+          ></h2>
+          <p class="section-sub" data-animate="fade-up">
+            Tell me how you want to present them — cards, list, or case
+            studies — and I'll build it in the same theme.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ PRICING (placeholder for next step) ============ -->
+      <section id="pricing" class="panel section-pad">
+        <div class="section-inner">
+          <p class="eyebrow" data-animate="fade-up">Pricing</p>
+          <h2
+            class="section-title animate-words"
+            data-animate-words="Simple pricing coming next"
+            data-base-delay="0.5"
+            data-stagger="0.09"
+          ></h2>
+          <p class="section-sub" data-animate="fade-up">
+            Tell me your plans and prices and I'll build the cards in the same
+            theme.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ FOOTER ============ -->
+      <footer id="contact" class="panel footer">
+        <div class="section-inner">
+          <p class="eyebrow" data-animate="fade-up">Contact</p>
+          <h2
+            class="section-title animate-words"
+            data-animate-words="Let's build something strong"
+            data-base-delay="0.5"
+            data-stagger="0.09"
+          ></h2>
+          <a href="#home" class="nav-contact-btn footer-cta" data-animate="fade-up">Back to top</a>
+          <p class="footer-copy">© 2026 Omar Ayoub Benkreira. All rights reserved.</p>
+        </div>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
