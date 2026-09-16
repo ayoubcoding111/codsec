@@ -626,6 +626,8 @@ body.is-scrolled .nav {
 
 @media (prefers-reduced-motion: reduce) {
   .nav-contact-btn::after,
+  .project-link-primary,
+  .project-link-primary::after,
   .social-btn,
   .social-btn::after,
   .animated-button,
@@ -2179,3 +2181,417 @@ body.is-scrolled .nav {
     transition: none;
   }
 }
+
+/* ==========================================================================
+   Project detail pages — alternating rows + live README
+   Row 1/3: info left / pic right. Row 2/4 (.row-flip): pic left / info right.
+   Pics slide in from their side via .reveal-left / .reveal-right (JS adds
+   .in-view, reusing the same easing + reduced-motion rules as the homepage).
+   ========================================================================== */
+.project-tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-tags span {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgb(255 255 255 / 0.8);
+  background: rgb(255 255 255 / 0.06);
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 999px;
+  padding: 6px 13px;
+}
+
+.project-link-primary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--c-white);
+  color: var(--c-black);
+  border-color: var(--c-white);
+  border-width: 2px;
+  transition: all 0.5s ease-in-out;
+}
+
+.project-link-primary::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 10px;
+  width: 10px;
+  background-color: #333;
+  border-radius: 999px;
+  visibility: hidden;
+  z-index: -1;
+  transition: all 0.5s ease-in-out;
+}
+
+.project-link-primary:hover {
+  color: #fff;
+  border-color: #fff;
+  border-width: 2px;
+  box-shadow: 1px 1px 60px rgb(37 37 37 / 0.65);
+}
+
+.project-link-primary:hover::after {
+  visibility: visible;
+  transform: scale(100) translateX(2px);
+}
+
+.project-link-primary:active {
+  filter: brightness(0.96);
+}
+
+.project-link-primary:focus-visible {
+  outline: 2px solid var(--c-cyan);
+  outline-offset: 3px;
+}
+
+.detail-back {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(255 255 255 / 0.7);
+  border-bottom: 1px solid rgb(255 255 255 / 0.25);
+  padding-bottom: 4px;
+  margin-bottom: 22px;
+  transition: color 0.3s ease, border-color 0.3s ease, gap 0.35s var(--ease-out-soft);
+}
+
+.detail-back:hover {
+  color: var(--c-cyan);
+  border-color: var(--c-cyan);
+  gap: 12px;
+}
+
+.detail-hero .section-title {
+  max-width: 16ch;
+}
+
+.detail-meta {
+  margin-top: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.detail-quick {
+  margin-top: 26px;
+  display: grid;
+  gap: 12px;
+  max-width: 860px;
+}
+
+@media (min-width: 768px) {
+  .detail-quick { grid-template-columns: repeat(3, 1fr); }
+}
+
+.detail-quick div {
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: rgb(255 255 255 / 0.04);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.detail-quick span {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.5);
+}
+
+.detail-quick strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.detail-rows .section-inner {
+  display: grid;
+  gap: 60px;
+}
+
+.detail-row {
+  display: grid;
+  gap: 26px;
+  align-items: center;
+  padding: 26px;
+  border-radius: 24px;
+  background: rgb(255 255 255 / 0.03);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+@media (min-width: 900px) {
+  .detail-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 36px;
+  }
+
+  .detail-row.row-flip .detail-info { order: 2; }
+  .detail-row.row-flip .detail-media { order: 1; }
+}
+
+.detail-info h3 {
+  margin-top: 14px;
+  font-size: clamp(24px, 3.2vw, 34px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+
+.detail-info p {
+  margin-top: 14px;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgb(255 255 255 / 0.72);
+}
+
+.detail-info p code {
+  font-size: 0.88em;
+  background: rgb(255 255 255 / 0.08);
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 6px;
+  padding: 1px 6px;
+}
+
+.detail-info .project-points { margin-top: 18px; }
+
+.detail-media {
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  background: rgb(0 0 0 / 0.35);
+}
+
+.detail-media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.detail-caption {
+  display: block;
+  padding: 12px 16px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: rgb(255 255 255 / 0.6);
+  border-top: 1px solid rgb(255 255 255 / 0.08);
+}
+
+/* Alternating entrance — mirrors [data-animate="fade-up"] timing */
+.reveal-left,
+.reveal-right {
+  opacity: 0;
+  will-change: opacity, transform;
+  transition:
+    opacity 0.9s var(--ease-out-soft),
+    transform 1s var(--ease-out-soft);
+}
+
+.reveal-left { transform: translateX(-48px); }
+.reveal-right { transform: translateX(48px); }
+
+.reveal-left.in-view,
+.reveal-right.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 899px) {
+  .reveal-left,
+  .reveal-right { transform: translateY(22px); }
+}
+
+/* Clickable home galleries hint */
+.project-visual.gallery[data-details-href] { position: relative; }
+
+.project-visual.gallery[data-details-href]::before {
+  content: "View details →";
+  position: absolute;
+  top: 16px;
+  left: 18px;
+  z-index: 3;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.92);
+  background: rgb(0 0 0 / 0.5);
+  border: 1px solid rgb(255 255 255 / 0.18);
+  border-radius: 999px;
+  padding: 7px 13px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.3s ease, transform 0.3s var(--ease-out-soft);
+  pointer-events: none;
+}
+
+.project-visual.gallery[data-details-href]:hover::before,
+.project-visual.gallery[data-details-href]:focus-visible::before {
+  opacity: 1;
+  transform: none;
+}
+
+/* Live README */
+.readme-panel { border-top: 1px solid rgb(255 255 255 / 0.07); }
+
+.readme-actions {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.readme-status {
+  font-size: 13px;
+  color: rgb(255 255 255 / 0.6);
+}
+
+.readme-body {
+  margin-top: 22px;
+  padding: 30px 26px;
+  border-radius: 20px;
+  background: rgb(0 0 0 / 0.35);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgb(255 255 255 / 0.8);
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 768px) {
+  .readme-body { padding: 38px 40px; }
+}
+
+.readme-body h1,
+.readme-body h2,
+.readme-body h3 {
+  color: var(--c-white);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 28px 0 12px;
+}
+
+.readme-body h1:first-child,
+.readme-body h2:first-child,
+.readme-body h3:first-child { margin-top: 0; }
+
+.readme-body h1 { font-size: 28px; }
+.readme-body h2 { font-size: 22px; padding-top: 12px; border-top: 1px solid rgb(255 255 255 / 0.08); }
+.readme-body h3 { font-size: 17px; color: var(--c-cyan); }
+
+.readme-body p { margin: 12px 0; }
+.readme-body ul, .readme-body ol { margin: 12px 0 12px 22px; display: grid; gap: 8px; }
+.readme-body li::marker { color: var(--c-cyan); }
+.readme-body a { color: var(--c-cyan); text-decoration: underline; text-underline-offset: 3px; }
+.readme-body code {
+  font-size: 0.85em;
+  background: rgb(255 255 255 / 0.08);
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 6px;
+  padding: 1px 6px;
+}
+.readme-body pre {
+  margin: 16px 0;
+  padding: 18px;
+  border-radius: 14px;
+  background: rgb(0 0 0 / 0.55);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  overflow-x: auto;
+}
+.readme-body pre code { background: none; border: 0; padding: 0; }
+.readme-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; display: block; overflow-x: auto; }
+.readme-body th, .readme-body td { text-align: left; padding: 10px 12px; border: 1px solid rgb(255 255 255 / 0.12); }
+.readme-body th { background: rgb(255 255 255 / 0.06); }
+.readme-body img { border-radius: 12px; margin: 14px 0; border: 1px solid rgb(255 255 255 / 0.12); }
+.readme-body hr { border: 0; border-top: 1px solid rgb(255 255 255 / 0.1); margin: 24px 0; }
+
+.footer-nav {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-left,
+  .reveal-right {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Detail pages: compact like inner pages — no forced 100vh panels,
+   always blurred video backdrop (JS also forces .is-blur-bg). */
+body.detail-page .panel {
+  min-height: auto;
+  justify-content: flex-start;
+}
+
+body.detail-page .section-pad {
+  padding: 72px 24px 48px;
+}
+
+body.detail-page .detail-hero {
+  padding-top: 130px;
+  padding-bottom: 40px;
+}
+
+body.detail-page .detail-rows .section-inner { gap: 28px; }
+
+body.detail-page .footer.detail-footer {
+  min-height: auto;
+  padding: 72px 24px 40px;
+}
+
+body.detail-page .footer.detail-footer .footer-copy { margin-top: 32px; }
+
+/* Collapsible README keeps detail pages short */
+.readme-wrap { position: relative; }
+
+.readme-wrap.collapsed #readme {
+  max-height: 620px;
+  overflow: hidden;
+}
+
+.readme-wrap.collapsed::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 140px;
+  border-radius: 0 0 20px 20px;
+  background: linear-gradient(to bottom, transparent, rgb(0 0 0 / 0.75));
+  pointer-events: none;
+}
+
+.readme-wrap:not(.collapsed)::after { display: none; }
+
+#readme-toggle { cursor: pointer; }

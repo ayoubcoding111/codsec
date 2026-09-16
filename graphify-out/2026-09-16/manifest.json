@@ -1,20 +1,14 @@
 {
   "script.js": {
-    "mtime": 1789578583.5292497,
-    "seen": 1789578586.4504192,
-    "ast_hash": "29bd70a114baf249de7cdb80de4ee66c",
+    "mtime": 1789586887.9286313,
+    "seen": 1789586890.7659757,
+    "ast_hash": "b173d1658b82128786ef90fa67ae549c",
     "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1789578575.3658895,
-    "seen": 1789578578.1312551,
-    "ast_hash": "26f2b5c029c8ec845ddf0d2f42249f9b",
-    "semantic_hash": ""
-  },
-  "assets/myfavicon.jpg": {
-    "mtime": 1789574203.7992895,
-    "seen": 1789574263.1332796,
-    "ast_hash": "b63304e4578f29a32c6b5059fba4fd3e",
+    "mtime": 1789586767.2264044,
+    "seen": 1789586770.1805792,
+    "ast_hash": "1c85caf84a40c7c506d9b549de676041",
     "semantic_hash": ""
   },
   ".vscode/settings.json": {
@@ -27,6 +21,66 @@
     "mtime": 1789575193.5309978,
     "seen": 1789575203.3363035,
     "ast_hash": "d7b4cbdf4c1aa697338dddb43297bcfe",
+    "semantic_hash": ""
+  },
+  "assets/analytics.png": {
+    "mtime": 1789583805.5717206,
+    "seen": 1789584656.769278,
+    "ast_hash": "b53f708940b90f823492fc9f21c1ba80",
+    "semantic_hash": ""
+  },
+  "assets/cart.png": {
+    "mtime": 1789583732.8042557,
+    "seen": 1789584656.76928,
+    "ast_hash": "a6127b17c5b068ef67280bb3a11700c1",
+    "semantic_hash": ""
+  },
+  "assets/hero.png": {
+    "mtime": 1789583634.763611,
+    "seen": 1789584656.7692819,
+    "ast_hash": "065a90cc222ca3c9a0cfbc87e8caa7a3",
+    "semantic_hash": ""
+  },
+  "assets/menu.png": {
+    "mtime": 1789583682.3657002,
+    "seen": 1789584656.769283,
+    "ast_hash": "8985fc422125464667ce9324d99aa535",
+    "semantic_hash": ""
+  },
+  "todo-pic/admin-dashboard.png": {
+    "mtime": 1788988189.7759748,
+    "seen": 1789584656.7692869,
+    "ast_hash": "b8a4405ffc7e5de75d946a8066b1947c",
+    "semantic_hash": ""
+  },
+  "todo-pic/login-dark.png": {
+    "mtime": 1788965572.0165856,
+    "seen": 1789584656.7692883,
+    "ast_hash": "dd50906fee1833d9bd7a7ee4b6ed2340",
+    "semantic_hash": ""
+  },
+  "todo-pic/login-light.png": {
+    "mtime": 1788965613.927221,
+    "seen": 1789584656.7692895,
+    "ast_hash": "434cbd2590c0047f9a5885f9d1398760",
+    "semantic_hash": ""
+  },
+  "todo-pic/user-dashboard.png": {
+    "mtime": 1788988137.0096483,
+    "seen": 1789584656.769291,
+    "ast_hash": "22224662db38c28795c645fc25aea14f",
+    "semantic_hash": ""
+  },
+  "project-restaurant.html": {
+    "mtime": 1789586797.6418676,
+    "seen": 1789586800.5190506,
+    "ast_hash": "1c12a89a322c5520110379b826d4a24e",
+    "semantic_hash": ""
+  },
+  "project-todo.html": {
+    "mtime": 1789586815.8409975,
+    "seen": 1789586818.7100477,
+    "ast_hash": "13ea7dd8f9e3eef2ef242d93fc203c85",
     "semantic_hash": ""
   }
 }

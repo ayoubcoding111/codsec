@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="assets/mylogo.png" />
+    <title>Restaurant Website — Project Details · codsec</title>
+    <meta name="description" content="Delicious Restaurant — full-stack food ordering platform with live tracking, kitchen dashboard, admin analytics, hardened auth and EN/FR/AR support. Details + live README." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="detail-page is-blur-bg is-scrolled">
+    <div class="bg-media">
+      <video
+        id="hero-video"
+        class="hero-video"
+        src="https://cdn.sceneai.art/Hero%20Section%20Video/a8132a81-b526-4f91-8095-003ce931ecdd.mp4"
+        autoplay
+        muted
+        playsinline
+        preload="auto"
+        disablepictureinpicture
+      ></video>
+      <canvas id="hero-canvas" class="bg-canvas"></canvas>
+      <div class="bg-overlay"></div>
+      <div class="bg-blur-bottom" aria-hidden="true"></div>
+    </div>
+
+    <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+    <nav class="nav">
+      <a href="index.html#home" class="nav-logo brand" aria-label="codsec — home">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="assets/mylogo.png" alt="" draggable="false" class="logo-img logo-base" />
+          <span class="logo-pieces">
+            <span class="logo-piece p1"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
+            <span class="logo-piece p2"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
+            <span class="logo-piece p3"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
+            <span class="logo-piece p4"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
+          </span>
+        </span>
+        <span class="brand-word" aria-hidden="true"><span class="bl">c</span><span class="bl">o</span><span class="bl">d</span><span class="bl accent">s</span><span class="bl accent">e</span><span class="bl accent">c</span></span>
+      </a>
+      <div class="nav-links desktop-only">
+        <a href="index.html#home" class="nav-link">Home</a>
+        <a href="index.html#services" class="nav-link">Services</a>
+        <a href="index.html#process" class="nav-link">Process</a>
+        <a href="index.html#about" class="nav-link">About Us</a>
+        <a href="index.html#projects" class="nav-link is-active">Projects</a>
+      </div>
+      <div class="nav-right desktop-only">
+        <a href="index.html#contact" class="nav-contact-btn">Contact</a>
+      </div>
+      <a href="#" id="menu-toggle" class="menu-toggle mobile-only" role="button" aria-label="Open menu" aria-expanded="false">
+        <svg id="icon-open" class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="24" height="24"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+        <svg id="icon-close" class="icon icon-lg hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="24" height="24"><path d="M18 6 6 18M6 6l12 12" /></svg>
+      </a>
+    </nav>
+
+    <div id="mobile-menu" class="mobile-menu">
+      <div class="mobile-menu-top">
+        <a href="index.html#home" class="brand brand-sm" data-close-menu aria-label="codsec — home">
+          <span class="brand-mark" aria-hidden="true"><img src="assets/mylogo.png" alt="" draggable="false" class="logo-img" /></span>
+          <span class="brand-word" aria-hidden="true">cod<span class="brand-word-accent">sec</span></span>
+        </a>
+        <a href="#" class="menu-close" role="button" aria-label="Close menu" data-close-menu>
+          <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="24" height="24"><path d="M18 6 6 18M6 6l12 12" /></svg>
+        </a>
+      </div>
+      <div class="mobile-menu-links">
+        <a href="index.html#home" class="mobile-menu-link" data-close-menu>Home</a>
+        <a href="index.html#services" class="mobile-menu-link" data-close-menu>Services</a>
+        <a href="index.html#process" class="mobile-menu-link" data-close-menu>Process</a>
+        <a href="index.html#about" class="mobile-menu-link" data-close-menu>About Us</a>
+        <a href="index.html#projects" class="mobile-menu-link" data-close-menu>Projects</a>
+        <div class="mobile-menu-secondary">
+          <a href="index.html#contact" class="mobile-menu-small" data-close-menu>Contact Us</a>
+        </div>
+      </div>
+    </div>
+
+    <main class="stack">
+      <!-- HERO -->
+      <section class="panel section-pad detail-hero">
+        <div class="section-inner">
+          <a class="detail-back" href="index.html#projects" data-animate="fade-up">← All projects</a>
+          <p class="eyebrow" data-animate="fade-up">Project Details · Full-Stack Ordering Platform</p>
+          <h1 class="section-title animate-words" data-animate-words="Delicious Restaurant ordering platform" data-base-delay="0.3" data-stagger="0.09"></h1>
+          <p class="section-sub" data-animate="fade-up">
+            Customers browse, customize and track orders live. Staff run a live kitchen feed. Admins manage menu, staff, zones and analytics — in English, French and Arabic (RTL). No frameworks, no build step.
+          </p>
+          <div class="detail-meta" data-animate="fade-up">
+            <span class="project-tags"><span>Node.js</span><span>Express</span><span>MySQL 8</span><span>Vanilla JS</span><span>Nodemailer</span></span>
+            <span class="project-links">
+              <a class="project-link project-link-primary" href="https://github.com/ayoubcoding111/restaurent-" target="_blank" rel="noopener">GitHub Repo
+                <svg class="project-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20"><path d="M7 17 17 7M8 7h9v9" /></svg>
+              </a>
+              <a class="project-link" href="#readme-section">Live README ↓</a>
+            </span>
+          </div>
+          <div class="detail-quick" data-animate="fade-up">
+            <div><span>Role</span><strong>Design + Full-Stack Build</strong></div>
+            <div><span>Surfaces</span><strong>/ (customers) + /admin (staff/admin)</strong></div>
+            <div><span>Languages</span><strong>EN / FR / AR + RTL</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ALTERNATING ROWS -->
+      <section class="panel section-pad detail-rows">
+        <div class="section-inner">
+          <!-- Row 1: info LEFT, pic RIGHT -->
+          <div class="detail-row">
+            <div class="detail-info reveal-left">
+              <span class="project-kicker">01 · Ordering &amp; Cart</span>
+              <h3>Customizable menu, fly-to-cart, Algerian checkout</h3>
+              <p>Category filters + real-time search. Click any dish to add extra ingredients (multi-pick) or drink sizes 30cl / 1L / 2L (single-pick) with live total — names in EN/FR/AR. Cart persists in localStorage, combos with different options stay on separate lines.</p>
+              <ul class="project-points">
+                <li>Algerian phone validation (05/06/07 or +213), frontend + backend</li>
+                <li>Confirmation page + order number deep-linking to tracking</li>
+                <li>Rate-limited public endpoints, dark / light theme</li>
+              </ul>
+            </div>
+            <div class="detail-media reveal-right">
+              <img src="assets/hero.png" alt="Restaurant landing hero" loading="lazy" />
+              <span class="detail-caption">Landing — hero, hours, contact</span>
+            </div>
+          </div>
+
+          <!-- Row 2: pic LEFT, info RIGHT -->
+          <div class="detail-row row-flip">
+            <div class="detail-info reveal-right">
+              <span class="project-kicker">02 · Live Tracking</span>
+              <h3>Track by order number + phone, privacy-first</h3>
+              <p><code>#track</code> timeline — pending → confirmed → preparing → ready → on the way → delivered — auto-refresh every 30s, pauses when tab hidden, pre-filled from your last order.</p>
+              <ul class="project-points">
+                <li>Both id + phone required, masked PII, no-store</li>
+                <li>Same generic “not found” — orders can’t be enumerated</li>
+                <li>Delivery zones with fee, free-over threshold, ETA</li>
+              </ul>
+            </div>
+            <div class="detail-media reveal-left">
+              <img src="assets/cart.png" alt="Restaurant cart and checkout" loading="lazy" />
+              <span class="detail-caption">Cart — quantities, zones, checkout</span>
+            </div>
+          </div>
+
+          <!-- Row 3: info LEFT, pic RIGHT -->
+          <div class="detail-row">
+            <div class="detail-info reveal-left">
+              <span class="project-kicker">03 · Kitchen &amp; Admin</span>
+              <h3>Live kitchen feed + full admin portal</h3>
+              <p>Staff see status badges + filters + one-click status flow, 15s refresh with chime + flashing NEW highlight, optional browser notifications, click-to-copy phone. Admins manage staff, menu (photo + priced EN/FR/AR options), zones, reviews and analytics.</p>
+              <ul class="project-points">
+                <li>Analytics: revenue cards, 7/14/30-day deltas, SVG charts, CSV export</li>
+                <li>Delivered orders purge after 24h into delivery_stats — PII gone, revenue kept</li>
+                <li>Zero admin code ships on the public page</li>
+              </ul>
+            </div>
+            <div class="detail-media reveal-right">
+              <img src="assets/analytics.png" alt="Admin analytics dashboard" loading="lazy" />
+              <span class="detail-caption">Admin — analytics, charts, export</span>
+            </div>
+          </div>
+
+          <!-- Row 4: pic LEFT, info RIGHT -->
+          <div class="detail-row row-flip">
+            <div class="detail-info reveal-right">
+              <span class="project-kicker">04 · Security &amp; Polish</span>
+              <h3>Hardened auth, trilingual RTL, zero-build frontend</h3>
+              <p>RBAC (admin/staff), httpOnly cookie + Bearer fallback, bcrypt, login with username or email. Brute-force defense: IP rate limits + 5 fails → 15min lockout + 20 fails → 60min IP ban persisted across restarts. Password reset via Nodemailer (1h token).</p>
+              <ul class="project-points">
+                <li>Generic responses everywhere — no account/oracle leaks</li>
+                <li>EN / FR / AR globe menu, full RTL, SVG icons, scroll-reveal</li>
+                <li>Auto-migrations on boot, seed-safe restarts, env-tunable limits</li>
+              </ul>
+            </div>
+            <div class="detail-media reveal-left">
+              <img src="assets/menu.png" alt="Restaurant menu browsing" loading="lazy" />
+              <span class="detail-caption">Menu — filters, search, customization</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIVE README -->
+      <section id="readme-section" class="panel section-pad readme-panel">
+        <div class="section-inner">
+          <p class="eyebrow" data-animate="fade-up">Live from GitHub</p>
+          <h2 class="section-title" data-animate="fade-up">Full README, always current</h2>
+          <p class="section-sub" data-animate="fade-up">Fetched live from <code>ayoubcoding111/restaurent-</code>. Cached 24h — offline fallback below.</p>
+          <div class="readme-actions" data-animate="fade-up">
+            <button type="button" class="project-link" id="readme-refresh">↻ Refresh README</button>
+            <button type="button" class="project-link" id="readme-toggle" hidden>Show more ↓</button>
+            <a class="project-link" href="https://github.com/ayoubcoding111/restaurent-" target="_blank" rel="noopener">Open on GitHub</a>
+            <span class="readme-status" id="readme-status" role="status">Loading…</span>
+          </div>
+          <div class="readme-wrap collapsed" id="readme-wrap">
+            <div id="readme" class="readme-body" data-readme-repo="ayoubcoding111/restaurent-" data-readme-branch="main" data-animate="fade-up">
+              <p class="readme-loading">Fetching README…</p>
+            </div>
+          </div>
+          <!-- Offline / fallback snapshot (shown only if live fetch fails) -->
+          <div id="readme-fallback" class="readme-body readme-fallback" hidden>
+            <h3>🍕 Delicious Restaurant — snapshot (offline fallback)</h3>
+            <p>Full-stack food ordering + delivery. Live tracking by order number + phone, kitchen dashboard with alerts, <code>/admin</code> portal with analytics, staff/menu/zones management, email login + password reset, EN/FR/AR RTL. Brute-force resistant auth, delivered orders auto-purge after 24h (counts + revenue kept).</p>
+            <ul>
+              <li><strong>Stack:</strong> Node 18, Express, MySQL 8, Vanilla JS SPA (hash router), Nodemailer, express-rate-limit, bcrypt + JWT httpOnly.</li>
+              <li><strong>Run:</strong> <code>cd server &amp;&amp; npm install</code> → <code>mysql -u root -p &lt; database.sql</code> → copy <code>.env.example</code> → <code>npm start</code> → <code>localhost:3000</code> (+ <code>/admin</code>).</li>
+              <li><strong>Highlights:</strong> separated public/admin surfaces, layered auth defense, privacy-by-design tracking, zero-build frontend, operable backend (auto-migrations).</li>
+            </ul>
+            <p><a href="https://github.com/ayoubcoding111/restaurent-" target="_blank" rel="noopener">Read the full README on GitHub →</a></p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="panel footer detail-footer">
+        <div class="section-inner">
+          <p class="eyebrow" data-animate="fade-up">Next</p>
+          <h2 class="section-title" data-animate="fade-up">Back to all work</h2>
+          <div class="footer-nav" data-animate="fade-up">
+            <a href="index.html#projects" class="nav-contact-btn">← All projects</a>
+            <a href="./project-todo.html" class="project-link">Next: Todo Task Manager →</a>
+          </div>
+          <p class="footer-copy">© 2026 codsec. All rights reserved.</p>
+        </div>
+      </footer>
+    </main>
+
+    <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

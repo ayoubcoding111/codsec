@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="assets/mylogo.png" />
+    <title>Todo Task Manager — Project Details · codsec</title>
+    <meta name="description" content="TodoList — enterprise-ready Kanban task manager with drag-and-drop, JWT auth, RBAC, admin oversight and dark mode. Details + live README." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="detail-page is-blur-bg is-scrolled">
+    <div class="bg-media">
+      <video
+        id="hero-video"
+        class="hero-video"
+        src="https://cdn.sceneai.art/Hero%20Section%20Video/a8132a81-b526-4f91-8095-003ce931ecdd.mp4"
+        autoplay
+        muted
+        playsinline
+        preload="auto"
+        disablepictureinpicture
+      ></video>
+      <canvas id="hero-canvas" class="bg-canvas"></canvas>
+      <div class="bg-overlay"></div>
+      <div class="bg-blur-bottom" aria-hidden="true"></div>
+    </div>
+
+    <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+    <nav class="nav">
+      <a href="index.html#home" class="nav-logo brand" aria-label="codsec — home">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="assets/mylogo.png" alt="" draggable="false" class="logo-img logo-base" />
+          <span class="logo-pieces">
+            <span class="logo-piece p1"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
+            <span class="logo-piece p2"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
+            <span class="logo-piece p3"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
+            <span class="logo-piece p4"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
+          </span>
+        </span>
+        <span class="brand-word" aria-hidden="true"><span class="bl">c</span><span class="bl">o</span><span class="bl">d</span><span class="bl accent">s</span><span class="bl accent">e</span><span class="bl accent">c</span></span>
+      </a>
+      <div class="nav-links desktop-only">
+        <a href="index.html#home" class="nav-link">Home</a>
+        <a href="index.html#services" class="nav-link">Services</a>
+        <a href="index.html#process" class="nav-link">Process</a>
+        <a href="index.html#about" class="nav-link">About Us</a>
+        <a href="index.html#projects" class="nav-link is-active">Projects</a>
+      </div>
+      <div class="nav-right desktop-only">
+        <a href="index.html#contact" class="nav-contact-btn">Contact</a>
+      </div>
+      <a href="#" id="menu-toggle" class="menu-toggle mobile-only" role="button" aria-label="Open menu" aria-expanded="false">
+        <svg id="icon-open" class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="24" height="24"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+        <svg id="icon-close" class="icon icon-lg hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="24" height="24"><path d="M18 6 6 18M6 6l12 12" /></svg>
+      </a>
+    </nav>
+
+    <div id="mobile-menu" class="mobile-menu">
+      <div class="mobile-menu-top">
+        <a href="index.html#home" class="brand brand-sm" data-close-menu aria-label="codsec — home">
+          <span class="brand-mark" aria-hidden="true"><img src="assets/mylogo.png" alt="" draggable="false" class="logo-img" /></span>
+          <span class="brand-word" aria-hidden="true">cod<span class="brand-word-accent">sec</span></span>
+        </a>
+        <a href="#" class="menu-close" role="button" aria-label="Close menu" data-close-menu>
+          <svg class="icon icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="24" height="24"><path d="M18 6 6 18M6 6l12 12" /></svg>
+        </a>
+      </div>
+      <div class="mobile-menu-links">
+        <a href="index.html#home" class="mobile-menu-link" data-close-menu>Home</a>
+        <a href="index.html#services" class="mobile-menu-link" data-close-menu>Services</a>
+        <a href="index.html#process" class="mobile-menu-link" data-close-menu>Process</a>
+        <a href="index.html#about" class="mobile-menu-link" data-close-menu>About Us</a>
+        <a href="index.html#projects" class="mobile-menu-link" data-close-menu>Projects</a>
+        <div class="mobile-menu-secondary">
+          <a href="index.html#contact" class="mobile-menu-small" data-close-menu>Contact Us</a>
+        </div>
+      </div>
+    </div>
+
+    <main class="stack">
+      <section class="panel section-pad detail-hero">
+        <div class="section-inner">
+          <a class="detail-back" href="index.html#projects" data-animate="fade-up">← All projects</a>
+          <p class="eyebrow" data-animate="fade-up">Project Details · Kanban Task Platform</p>
+          <h1 class="section-title animate-words" data-animate-words="TodoList Kanban task manager" data-base-delay="0.3" data-stagger="0.09"></h1>
+          <p class="section-sub" data-animate="fade-up">
+            Enterprise-style tasks across 4 status columns with drag-and-drop, JWT auth + bcrypt, user and admin roles, dark mode and smooth animations. RESTful MVC, no frontend build step.
+          </p>
+          <div class="detail-meta" data-animate="fade-up">
+            <span class="project-tags"><span>Node.js</span><span>Express</span><span>MySQL</span><span>Vanilla JS</span><span>JWT</span></span>
+            <span class="project-links">
+              <a class="project-link project-link-primary" href="https://github.com/ayoubcoding111/firstapp" target="_blank" rel="noopener">GitHub Repo
+                <svg class="project-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20"><path d="M7 17 17 7M8 7h9v9" /></svg>
+              </a>
+              <a class="project-link" href="#readme-section">Live README ↓</a>
+            </span>
+          </div>
+          <div class="detail-quick" data-animate="fade-up">
+            <div><span>Role</span><strong>Full-Stack Build</strong></div>
+            <div><span>Boards</span><strong>Pending → In Progress → Suspended → Finished</strong></div>
+            <div><span>Auth</span><strong>JWT + bcrypt + RBAC</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel section-pad detail-rows">
+        <div class="section-inner">
+          <!-- Row 1: info LEFT, pic RIGHT -->
+          <div class="detail-row">
+            <div class="detail-info reveal-left">
+              <span class="project-kicker">01 · Kanban Board</span>
+              <h3>Drag-and-drop across 4 columns</h3>
+              <p>Native HTML5 drag-and-drop with column highlighting, card animations and task counts. Move tasks freely between any columns — status syncs instantly to MySQL with optimistic rendering.</p>
+              <ul class="project-points">
+                <li>Color-coded statuses, visual feedback on every move</li>
+                <li>CRUD + descriptions + timestamps, friendly error states</li>
+                <li>RESTful MVC — no build step for the frontend</li>
+              </ul>
+            </div>
+            <div class="detail-media reveal-right">
+              <img src="todo-pic/user-dashboard.png" alt="Todo user Kanban dashboard" loading="lazy" />
+              <span class="detail-caption">User board — 4 columns, counts, drag-drop</span>
+            </div>
+          </div>
+
+          <!-- Row 2: pic LEFT, info RIGHT -->
+          <div class="detail-row row-flip">
+            <div class="detail-info reveal-right">
+              <span class="project-kicker">02 · Auth &amp; Experience</span>
+              <h3>Secure login, dark mode that remembers you</h3>
+              <p>JWT sessions, bcrypt (10 rounds), role-based middleware, parameterized SQL, CORS + env secrets. CSS-variable theming with localStorage persistence, Fraunces + Inter type, staggered fade/slide/scale animations.</p>
+              <ul class="project-points">
+                <li>Login / register tabs, protected routes, admin-only endpoints</li>
+                <li>Responsive desktop → tablet → mobile</li>
+                <li>Hover, drag and active states on every interaction</li>
+              </ul>
+            </div>
+            <div class="detail-media reveal-left">
+              <img src="todo-pic/login-dark.png" alt="Todo login dark mode" loading="lazy" />
+              <span class="detail-caption">Login — dark mode + tab navigation</span>
+            </div>
+          </div>
+
+          <!-- Row 3: info LEFT, pic RIGHT -->
+          <div class="detail-row">
+            <div class="detail-info reveal-left">
+              <span class="project-kicker">03 · Admin Oversight</span>
+              <h3>Every user’s board, one clean view</h3>
+              <p>Admin dashboard lists all users, drills into any user’s complete Kanban board, with real-time user + task metrics and status breakdowns.</p>
+              <ul class="project-points">
+                <li>GET /api/admin/users, per-user todos, delete user, all todos</li>
+                <li>PATCH /api/todos/:id/status for drag-drop sync</li>
+                <li>Modular controllers / routes / middleware, ESLint-ready</li>
+              </ul>
+            </div>
+            <div class="detail-media reveal-right">
+              <img src="todo-pic/admin-dashboard.png" alt="Todo admin dashboard" loading="lazy" />
+              <span class="detail-caption">Admin — users, stats, per-user boards</span>
+            </div>
+          </div>
+
+          <!-- Row 4: pic LEFT, info RIGHT (light-mode proof) -->
+          <div class="detail-row row-flip">
+            <div class="detail-info reveal-right">
+              <span class="project-kicker">04 · Craft Details</span>
+              <h3>Clean code, documented API, easy to extend</h3>
+              <p>Default admin <code>admin@todo.com / Admin123!</code> for demo. Schema + Kanban migration included, <code>.env.example</code> for DB + JWT secret, frontend served statically or via Live Server.</p>
+              <ul class="project-points">
+                <li>Light + dark login, same component system</li>
+                <li>Roadmap: due dates, tags, search, 2FA, Socket.io, exports</li>
+                <li>Built to show recruiters: MVC, REST, security basics</li>
+              </ul>
+            </div>
+            <div class="detail-media reveal-left">
+              <img src="todo-pic/login-light.png" alt="Todo login light mode" loading="lazy" />
+              <span class="detail-caption">Login — light mode, same system</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="readme-section" class="panel section-pad readme-panel">
+        <div class="section-inner">
+          <p class="eyebrow" data-animate="fade-up">Live from GitHub</p>
+          <h2 class="section-title" data-animate="fade-up">Full README, always current</h2>
+          <p class="section-sub" data-animate="fade-up">Fetched live from <code>ayoubcoding111/firstapp</code>. Cached 24h — offline fallback below.</p>
+          <div class="readme-actions" data-animate="fade-up">
+            <button type="button" class="project-link" id="readme-refresh">↻ Refresh README</button>
+            <button type="button" class="project-link" id="readme-toggle" hidden>Show more ↓</button>
+            <a class="project-link" href="https://github.com/ayoubcoding111/firstapp" target="_blank" rel="noopener">Open on GitHub</a>
+            <span class="readme-status" id="readme-status" role="status">Loading…</span>
+          </div>
+          <div class="readme-wrap collapsed" id="readme-wrap">
+            <div id="readme" class="readme-body" data-readme-repo="ayoubcoding111/firstapp" data-readme-branch="main" data-animate="fade-up">
+              <p class="readme-loading">Fetching README…</p>
+            </div>
+          </div>
+          <div id="readme-fallback" class="readme-body readme-fallback" hidden>
+            <h3>📝 TodoList — snapshot (offline fallback)</h3>
+            <p>Kanban tasks (Pending / In Progress / Suspended / Finished) with drag-and-drop, JWT + bcrypt auth, user + admin dashboards, dark mode, animations. Node + Express + MySQL backend, vanilla JS frontend.</p>
+            <ul>
+              <li><strong>Run:</strong> <code>mysql -u root -p &lt; backend/schema.sql</code> → <code>cd backend &amp;&amp; cp .env.example .env &amp;&amp; npm install &amp;&amp; npm start</code> → open <code>frontend/index.html</code>.</li>
+              <li><strong>API:</strong> <code>POST /api/auth/*</code>, <code>GET/POST /api/todos</code>, <code>PATCH /api/todos/:id/status</code>, <code>GET /api/admin/users</code>.</li>
+              <li><strong>Demo:</strong> <code>admin@todo.com / Admin123!</code></li>
+            </ul>
+            <p><a href="https://github.com/ayoubcoding111/firstapp" target="_blank" rel="noopener">Read the full README on GitHub →</a></p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="panel footer detail-footer">
+        <div class="section-inner">
+          <p class="eyebrow" data-animate="fade-up">Next</p>
+          <h2 class="section-title" data-animate="fade-up">Back to all work</h2>
+          <div class="footer-nav" data-animate="fade-up">
+            <a href="index.html#projects" class="nav-contact-btn">← All projects</a>
+            <a href="./project-restaurant.html" class="project-link">Next: Restaurant Website →</a>
+          </div>
+          <p class="footer-copy">© 2026 codsec. All rights reserved.</p>
+        </div>
+      </footer>
+    </main>
+
+    <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

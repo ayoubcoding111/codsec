@@ -93,7 +93,7 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => {
 if (reduceMotion) {
   // Show everything immediately, no scroll choreography.
   document
-    .querySelectorAll('.animate-words, [data-animate="fade-up"], .stack .panel, .marquee-band')
+    .querySelectorAll('.animate-words, [data-animate="fade-up"], .reveal-left, .reveal-right, .stack .panel, .marquee-band')
     .forEach((el) => el.classList.add("in-view"));
 } else {
   const revealObserver = new IntersectionObserver(
@@ -123,7 +123,7 @@ if (reduceMotion) {
   );
 
   document
-    .querySelectorAll('.animate-words, [data-animate="fade-up"]')
+    .querySelectorAll('.animate-words, [data-animate="fade-up"], .reveal-left, .reveal-right')
     .forEach((el) => revealObserver.observe(el));
 
   // Section-by-section reveal: each panel + the marquee band fades/slides
@@ -210,7 +210,12 @@ const heroContent = document.getElementById("hero-content");
 const scrollHint = document.querySelector(".scroll-hint");
 
 function updateHeroExit() {
-  if (!heroContent) return;
+  // Detail pages have no #hero-content — they should look like the
+  // blurred inner pages (About / Projects), so force the blurred bg.
+  if (!heroContent) {
+    document.body.classList.add("is-blur-bg");
+    return;
+  }
   // Once ~25% of the viewport is scrolled, hero lifts away.
   // Scrolling back up removes the class so the hero re-appears.
   const progress = window.scrollY / Math.max(1, window.innerHeight);
@@ -622,10 +627,17 @@ if (video && canvas) {
     }
 
     // Touch fallback: tap steps through pics one by one.
+    // Desktop (fine pointer): click opens the detail page when data-details-href exists.
     gallery.setAttribute("tabindex", "0");
     gallery.setAttribute("role", "button");
     gallery.setAttribute("aria-label", "Project screenshots — activate to view next");
     gallery.addEventListener("click", () => {
+      const detailsHref = gallery.getAttribute("data-details-href");
+      const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      if (detailsHref && finePointer) {
+        window.location.href = detailsHref;
+        return;
+      }
       preload();
       show(index + 1);
       // Brief cycling class so tap also gets the zoom + dot fill.
@@ -634,6 +646,11 @@ if (video && canvas) {
       gallery.__tapT = window.setTimeout(() => {
         if (!timer) gallery.classList.remove("is-cycling");
       }, HOVER_MS);
+    });
+    gallery.addEventListener("keydown", (e) => {
+      const detailsHref = gallery.getAttribute("data-details-href");
+      if (!detailsHref) return;
+      if (e.key === "Enter") window.location.href = detailsHref;
     });
 
     // Slow autoplay on touch devices only while the card is visible.
@@ -729,4 +746,126 @@ if (video && canvas) {
   };
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("wheel", onScroll, { passive: true });
+})();
+
+/* --------------------------------------------------------------------------
+ * Project detail README: live fetch from GitHub raw, 24h localStorage cache,
+ * marked + DOMPurify render, relative-image rewrite, offline fallback.
+ * Usage: <div id="readme" data-readme-repo="owner/repo" data-readme-branch="main">
+ * ------------------------------------------------------------------------ */
+(function initProjectReadme() {
+  const container = document.getElementById("readme");
+  if (!container) return;
+  const repo = container.getAttribute("data-readme-repo");
+  if (!repo) return;
+  const branch = container.getAttribute("data-readme-branch") || "main";
+  const status = document.getElementById("readme-status");
+  const fallback = document.getElementById("readme-fallback");
+  const refreshBtn = document.getElementById("readme-refresh");
+  const toggleBtn = document.getElementById("readme-toggle");
+  const wrap = document.getElementById("readme-wrap");
+  const rawUrl = `https://raw.githubusercontent.com/${repo}/${branch}/README.md`;
+  const repoBase = `https://raw.githubusercontent.com/${repo}/${branch}/`;
+  const cacheKey = `readme-cache:${repo}:${branch}`;
+  const CACHE_MS = 24 * 60 * 60 * 1000;
+
+  const setStatus = (msg) => {
+    if (status) status.textContent = msg;
+  };
+
+  const showFallback = () => {
+    if (fallback) fallback.hidden = false;
+  };
+
+  const fixRelativeImages = (root) => {
+    root.querySelectorAll("img").forEach((img) => {
+      const src = img.getAttribute("src") || "";
+      if (!src || /^(https?:|data:|blob:|#)/i.test(src)) return;
+      const clean = src.replace(/^\.\//, "");
+      try {
+        img.src = new URL(clean, repoBase).href;
+      } catch {
+        img.src = repoBase + clean;
+      }
+      img.loading = "lazy";
+      img.onerror = () => img.remove();
+    });
+    root.querySelectorAll('a[href]').forEach((a) => {
+      const href = a.getAttribute("href") || "";
+      if (!href || /^(https?:|mailto:|#)/i.test(href)) return;
+      if (/^[^/]+\.(png|jpe?g|gif|webp|svg|mp4)$/i.test(href) || href.startsWith("screenshots/") || href.startsWith("imgs/")) {
+        a.href = new URL(href.replace(/^\.\//, ""), repoBase).href;
+      } else if (!href.startsWith(".")) {
+        a.href = `https://github.com/${repo}/blob/${branch}/${href.replace(/^\//, "")}`;
+      }
+    });
+  };
+
+  const renderMarkdown = (md) => {
+    let html = md;
+    if (window.marked) {
+      html = typeof window.marked.parse === "function" ? window.marked.parse(md) : window.marked(md);
+    } else {
+      html = `<pre>${md.replace(/[<>&]/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;" }[c]))}</pre>`;
+    }
+    if (window.DOMPurify) html = window.DOMPurify.sanitize(html);
+    container.innerHTML = html;
+    fixRelativeImages(container);
+    if (fallback) fallback.hidden = true;
+    // Show expand toggle only when content overflows the collapsed height.
+    if (toggleBtn && wrap) {
+      const overflowing = container.scrollHeight > 660;
+      toggleBtn.hidden = !overflowing;
+      if (!overflowing) wrap.classList.remove("collapsed");
+    }
+  };
+
+  const load = async (force) => {
+    setStatus(force ? "Refreshing…" : "Loading…");
+    if (!force) {
+      try {
+        const cached = JSON.parse(localStorage.getItem(cacheKey) || "null");
+        if (cached && Date.now() - cached.time < CACHE_MS && cached.md) {
+          renderMarkdown(cached.md);
+          setStatus(`Live from GitHub · cached ${new Date(cached.time).toLocaleDateString()}`);
+          // Refresh in background without blocking.
+          fetch(rawUrl).then((r) => (r.ok ? r.text() : "")).then((md) => {
+            if (md) localStorage.setItem(cacheKey, JSON.stringify({ time: Date.now(), md }));
+          }).catch(() => {});
+          return;
+        }
+      } catch {
+        // ignore cache errors
+      }
+    }
+    try {
+      const res = await fetch(rawUrl);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const md = await res.text();
+      try {
+        localStorage.setItem(cacheKey, JSON.stringify({ time: Date.now(), md }));
+      } catch {
+        // storage full/blocked — still render
+      }
+      renderMarkdown(md);
+      setStatus("Live from GitHub · just updated");
+    } catch (err) {
+      setStatus("Offline or rate-limited — showing snapshot");
+      showFallback();
+      const loading = container.querySelector(".readme-loading");
+      if (loading) loading.textContent = "Live README unavailable. Snapshot below.";
+    }
+  };
+
+  if (refreshBtn) refreshBtn.addEventListener("click", () => {
+    try { localStorage.removeItem(cacheKey); } catch { /* ignore */ }
+    load(true);
+  });
+
+  if (toggleBtn && wrap) toggleBtn.addEventListener("click", () => {
+    const collapsed = wrap.classList.toggle("collapsed");
+    toggleBtn.textContent = collapsed ? "Show more ↓" : "Show less ↑";
+  });
+
+  load(false);
 })();
