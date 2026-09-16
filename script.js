@@ -3,8 +3,8 @@
  *  - GLOBAL word-by-word staggered entrance (any [data-animate-words],
  *    triggered by IntersectionObserver when scrolled into view)
  *  - generic [data-animate="fade-up"] reveals
- *  - full-screen snap navigation (small scroll => full section change)
- *  - hero exit animation (hero fades/lifts away as About takes over)
+ *  - hero exit animation (hero fades/lifts away on scroll)
+ *  - nav blur once scrolled past the top
  *  - mobile menu open/close
  *  - skills marquee duplication for a seamless left->right loop
  *  - seamless boomerang video background (see bottom section)
@@ -44,19 +44,78 @@ document.querySelectorAll(".animate-words[data-animate-words]").forEach((el) => 
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+/* --------------------------------------------------------------------------
+ * Fancy buttery smooth scroll (Lenis). Skipped for reduced-motion and
+ * when the CDN fails — the site stays fully native then.
+ * ------------------------------------------------------------------------ */
+function smoothToEl(el, center) {
+  if (!el) return;
+  if (window.__lenis) {
+    const opts = { duration: 1.5 };
+    if (center) {
+      opts.offset = -(
+        window.innerHeight / 2 -
+        el.getBoundingClientRect().height / 2
+      );
+    }
+    window.__lenis.scrollTo(el, opts);
+  } else {
+    el.scrollIntoView({
+      behavior: reduceMotion ? "auto" : "smooth",
+      block: center ? "center" : "start",
+    });
+  }
+}
+
+if (!reduceMotion && typeof Lenis !== "undefined") {
+  const lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+  window.__lenis = lenis;
+  const lenisRaf = (time) => {
+    lenis.raf(time);
+    requestAnimationFrame(lenisRaf);
+  };
+  requestAnimationFrame(lenisRaf);
+}
+
+// Same-page anchors glide through Lenis when it's active.
+document.querySelectorAll('a[href^="#"]').forEach((a) => {
+  if (a.hasAttribute("data-close-menu")) return; // handled by menu code
+  a.addEventListener("click", (e) => {
+    const hash = a.getAttribute("href");
+    if (!hash || hash.length < 2 || !window.__lenis) return;
+    const target = document.querySelector(hash);
+    if (!target) return;
+    e.preventDefault();
+    smoothToEl(target, false);
+  });
+});
+
 if (reduceMotion) {
   // Show everything immediately, no scroll choreography.
   document
-    .querySelectorAll('.animate-words, [data-animate="fade-up"]')
+    .querySelectorAll('.animate-words, [data-animate="fade-up"], .stack .panel, .marquee-band')
     .forEach((el) => el.classList.add("in-view"));
 } else {
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in-view");
-          // Every text animation plays only once, hero included.
-          revealObserver.unobserve(entry.target);
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        // Fires once per element, hero included.
+        revealObserver.unobserve(el);
+        // Service cards and project cards glide in staggered,
+        // one after another.
+        const group = ["project-card", "project-row", "service"].find((c) =>
+          el.classList.contains(c)
+        );
+        if (group && el.parentElement) {
+          const cards = Array.from(el.parentElement.children).filter((c) =>
+            c.classList.contains(group)
+          );
+          const i = Math.max(0, cards.indexOf(el));
+          setTimeout(() => el.classList.add("in-view"), i * 220);
+        } else {
+          el.classList.add("in-view");
         }
       });
     },
@@ -66,6 +125,24 @@ if (reduceMotion) {
   document
     .querySelectorAll('.animate-words, [data-animate="fade-up"]')
     .forEach((el) => revealObserver.observe(el));
+
+  // Section-by-section reveal: each panel + the marquee band fades/slides
+  // in one by one as it enters the viewport (fires once per section).
+  const panelRevealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          panelRevealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -5% 0px" }
+  );
+
+  document
+    .querySelectorAll(".stack .panel:not(.in-view), .marquee-band")
+    .forEach((el) => panelRevealObserver.observe(el));
 }
 
 /* --------------------------------------------------------------------------
@@ -87,6 +164,10 @@ function setMenuOpen(open) {
     menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
   }
   document.body.style.overflow = open ? "hidden" : "";
+  if (window.__lenis) {
+    if (open) window.__lenis.stop();
+    else window.__lenis.start();
+  }
 }
 
 if (menuToggle && mobileMenu) {
@@ -104,9 +185,9 @@ if (menuToggle && mobileMenu) {
       if (href && href.startsWith("#") && href.length > 1) {
         e.preventDefault();
         const target = document.querySelector(href);
-        // Wait a tick for the overlay to hide so scroll-snap can engage.
+        // Wait a tick for the overlay to hide, then glide.
         setTimeout(() => {
-          if (target) target.scrollIntoView({ behavior: "smooth" });
+          smoothToEl(target, false);
         }, 60);
       } else if (el.tagName === "A") {
         e.preventDefault();
@@ -121,21 +202,12 @@ if (menuToggle && mobileMenu) {
 }
 
 /* --------------------------------------------------------------------------
- * Full-screen snap: small scroll => complete section change + hero exit
+ * Hero exit + nav blur (purely visual — scrolling itself stays native)
  * ------------------------------------------------------------------------ */
 
 const panels = Array.from(document.querySelectorAll(".panel"));
 const heroContent = document.getElementById("hero-content");
 const scrollHint = document.querySelector(".scroll-hint");
-
-function currentPanelIndex() {
-  const y = window.scrollY + window.innerHeight * 0.4;
-  let idx = 0;
-  panels.forEach((p, i) => {
-    if (p.offsetTop <= y) idx = i;
-  });
-  return idx;
-}
 
 function updateHeroExit() {
   if (!heroContent) return;
@@ -153,158 +225,99 @@ function updateHeroExit() {
 window.addEventListener("scroll", updateHeroExit, { passive: true });
 updateHeroExit();
 
-// Snap mode manager: fixes the "small scroll down from the second section
-// yanks me back" pull-back. The instant the user pushes DOWN while on/near
-// the second section top we kill CSS snap so the browser can't snap back;
-// updateSnapMode re-arms it only once safely back in the Home lock zone.
-const secondSection = panels[1] || null;
-
-function getSecondTop() {
-  if (secondSection) return secondSection.offsetTop;
-  return window.innerHeight;
+// Nav blur: keep the bar as-is over the hero, turn it blurry once the
+// user scrolls down. Removing the class on scroll-up restores the hero look.
+function updateNavBlur() {
+  document.body.classList.toggle("is-scrolled", window.scrollY > 40);
 }
 
-function setSnapType(t) {
-  if (reduceMotion) return;
-  if (document.documentElement.style.scrollSnapType !== t) {
-    document.documentElement.style.scrollSnapType = t;
-  }
-}
+window.addEventListener("scroll", updateNavBlur, { passive: true });
+updateNavBlur();
 
-let suspendSnapUntil = 0;
-
-// Re-arm snap only when at/above the second section top; anything past it
-// stays free so Services+ scrolls smoothly with zero pull-back.
-function updateSnapMode() {
-  if (reduceMotion) return;
-  if (performance.now() < suspendSnapUntil) {
-    setSnapType("none");
-    return;
-  }
-  const y = window.scrollY;
-  setSnapType(y > getSecondTop() + 24 ? "none" : "y proximity");
-}
-
-window.addEventListener("scroll", updateSnapMode, { passive: true });
-window.addEventListener("resize", updateSnapMode);
-updateSnapMode();
-
-// Wheel assist guarantees "even a small scroll jumps a full page" ONLY for
-// Home <-> Services. Everything after Services (Projects / Process /
-// About / Footer) keeps native smooth scrolling for that free, expensive
-// feel.
-// CSS uses `scroll-snap-type: y proximity` + snap-align only on Home,
-// so the rest can rest anywhere without snapping back.
-let snapLock = false;
-window.addEventListener(
-  "wheel",
-  (e) => {
-    // Escape hatch (runs before every early-return): pushing DOWN while
-    // on/near the second section top kills snap instantly + 1s cooldown so
-    // the whole gesture stays free and can never yank back mid-scroll.
-    if (!reduceMotion && e.deltaY > 4 && !e.ctrlKey) {
-      const y = window.scrollY;
-      const top = getSecondTop();
-      if (y >= top - 40 && y <= top + 40) {
-        setSnapType("none");
-        suspendSnapUntil = performance.now() + 1000;
-      }
-    }
-
-    if (reduceMotion || snapLock || panels.length < 2) return;
-    if (Math.abs(e.deltaY) < 18) return;
-    // Don't hijack touchpads doing horizontal gestures or pinch-zoom.
-    if (Math.abs(e.deltaX) > Math.abs(e.deltaY) || e.ctrlKey) return;
-
-    const idx = currentPanelIndex();
-
-    const next =
-      e.deltaY > 0
-        ? Math.min(panels.length - 1, idx + 1)
-        : Math.max(0, idx - 1);
-    if (next === idx) return;
-
-    // Only hijack when LANDING on Home (0) or Services (1).
-    // Scrolling TOWARD Projects+ (next >= 2) stays native/smooth.
-    const SNAP_LAST_INDEX = 1;
-    if (next > SNAP_LAST_INDEX) return;
-
-    const panel = panels[idx];
-    if (!panel) return;
-    // If the current panel is taller than the viewport, only snap when
-    // the user is at its edge in the scroll direction.
-    const rect = panel.getBoundingClientRect();
-    const tall = panel.offsetHeight > window.innerHeight + 40;
-    if (tall) {
-      const atBottom = rect.bottom <= window.innerHeight + 8;
-      const atTop = rect.top >= -8;
-      if (e.deltaY > 0 && !atBottom) return;
-      if (e.deltaY < 0 && !atTop) return;
-    }
-
-    e.preventDefault();
-    snapLock = true;
-    panels[next].scrollIntoView({ behavior: "smooth" });
-    setTimeout(() => {
-      snapLock = false;
-    }, 1100);
-  },
-  { passive: false }
-);
-
-// Touch equivalent of the escape hatch: dragging up (scrolling down)
-// from the second section top kills snap so mobile can't yank back either.
-let lastTouchY = null;
-window.addEventListener(
-  "touchstart",
-  (e) => {
-    if (e.touches.length) lastTouchY = e.touches[0].clientY;
-  },
-  { passive: true }
-);
-window.addEventListener(
-  "touchmove",
-  (e) => {
-    if (reduceMotion || !e.touches.length || lastTouchY === null) return;
-    const touchY = e.touches[0].clientY;
-    const dy = lastTouchY - touchY; // > 0 = scrolling down toward Projects
-    lastTouchY = touchY;
-    if (dy > 4) {
-      const y = window.scrollY;
-      const top = getSecondTop();
-      if (y >= top - 40 && y <= top + 40) {
-        setSnapType("none");
-        suspendSnapUntil = performance.now() + 1000;
-      }
-    }
-  },
-  { passive: true }
-);
-window.addEventListener(
-  "touchend",
-  () => {
-    lastTouchY = null;
-  },
-  { passive: true }
-);
-
-// Active nav-link highlight.
+// Active nav-link highlight: position-based spy, so even very tall
+// sections (like the Process timeline) highlight correctly.
 const navLinks = Array.from(document.querySelectorAll(".nav-link"));
-if ("IntersectionObserver" in window && navLinks.length) {
-  const sectionObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const id = `#${entry.target.id}`;
-        navLinks.forEach((a) =>
-          a.classList.toggle("is-active", a.getAttribute("href") === id)
-        );
-      });
-    },
-    { threshold: 0.55 }
+let spyTicking = false;
+function updateActiveNav() {
+  spyTicking = false;
+  if (!navLinks.length || !panels.length) return;
+  const line = window.innerHeight * 0.4;
+  let current = panels[0];
+  panels.forEach((p) => {
+    if (p.getBoundingClientRect().top <= line) current = p;
+  });
+  const id = `#${current.id}`;
+  navLinks.forEach((a) =>
+    a.classList.toggle("is-active", a.getAttribute("href") === id)
   );
-  panels.forEach((p) => sectionObserver.observe(p));
 }
+function requestActiveNav() {
+  if (spyTicking) return;
+  spyTicking = true;
+  requestAnimationFrame(updateActiveNav);
+}
+window.addEventListener("scroll", requestActiveNav, { passive: true });
+window.addEventListener("resize", requestActiveNav);
+updateActiveNav();
+
+/* --------------------------------------------------------------------------
+ * Process timeline: glowing rail fills with scroll, steps slide in and
+ * light up one by one (dot + title + tagline highlight the active step)
+ * ------------------------------------------------------------------------ */
+const processTimeline = document.getElementById("process-timeline");
+const processRailFill = document.getElementById("process-rail-progress");
+const processSteps = Array.from(document.querySelectorAll(".process-step"));
+
+if (reduceMotion) {
+  if (processRailFill) processRailFill.style.transform = "scaleY(1)";
+  processSteps.forEach((s) => s.classList.add("in-view", "is-active"));
+} else {
+  // Rail progress: 0 when the timeline top hits viewport center,
+  // 1 when its bottom reaches the viewport bottom.
+  let railTicking = false;
+  const updateRail = () => {
+    railTicking = false;
+    if (!processTimeline || !processRailFill) return;
+    const rect = processTimeline.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const p = (vh * 0.5 - rect.top) / Math.max(1, rect.height - vh * 0.5);
+    processRailFill.style.transform = `scaleY(${Math.min(1, Math.max(0, p))})`;
+  };
+  const requestRail = () => {
+    if (railTicking) return;
+    railTicking = true;
+    requestAnimationFrame(updateRail);
+  };
+  window.addEventListener("scroll", requestRail, { passive: true });
+  window.addEventListener("resize", requestRail);
+  updateRail();
+
+  // Steps: slide in once, highlight while centered in view.
+  if ("IntersectionObserver" in window && processSteps.length) {
+    const stepObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view", "is-active");
+          } else {
+            entry.target.classList.remove("is-active");
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    processSteps.forEach((s) => stepObserver.observe(s));
+  } else {
+    processSteps.forEach((s) => s.classList.add("in-view", "is-active"));
+  }
+}
+
+// Timeline dots jump straight to their step.
+document.querySelectorAll(".process-dot").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    smoothToEl(document.getElementById(btn.getAttribute("data-scroll-to")), true);
+  });
+});
 
 /* --------------------------------------------------------------------------
  * Skills marquee: duplicate content once for a seamless -50% -> 0 loop
@@ -313,6 +326,34 @@ const skillsTrack = document.getElementById("skills-track");
 if (skillsTrack && !skillsTrack.dataset.cloned) {
   skillsTrack.dataset.cloned = "true";
   skillsTrack.innerHTML += skillsTrack.innerHTML;
+}
+
+/* --------------------------------------------------------------------------
+ * About stat counters: count up once when scrolled into view
+ * ------------------------------------------------------------------------ */
+const counters = document.querySelectorAll("[data-count]");
+if (counters.length && !reduceMotion && "IntersectionObserver" in window) {
+  const counterObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        counterObserver.unobserve(el);
+        const end = parseFloat(el.getAttribute("data-count")) || 0;
+        const duration = 1500;
+        const started = performance.now();
+        const tick = (now) => {
+          const p = Math.min(1, (now - started) / duration);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = String(Math.round(end * eased));
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    },
+    { threshold: 0.6 }
+  );
+  counters.forEach((el) => counterObserver.observe(el));
 }
 
 /* --------------------------------------------------------------------------
