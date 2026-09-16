@@ -990,3 +990,149 @@ if (video && canvas) {
     });
   });
 })();
+
+/* --------------------------------------------------------------------------
+ * Contact page quote form (contact.html only):
+ * - project-type multi dropdown (checkbox panel, ≥1 required)
+ * - required: full name, email, ≥1 project type, privacy consent
+ * - optional: add-ons, details textarea with counter
+ * - submit is demo-only: validates, then shows an inactive notice.
+ * ------------------------------------------------------------------------ */
+(function initQuoteForm() {
+  const form = document.getElementById("quote-form");
+  if (!form) return;
+
+  const nameInput = document.getElementById("full-name");
+  const emailInput = document.getElementById("email");
+  const detailsInput = document.getElementById("details");
+  const detailsNum = document.getElementById("details-count-num");
+  const consentInput = document.getElementById("privacy-agree");
+  const note = document.getElementById("form-note");
+
+  const nameError = document.getElementById("full-name-error");
+  const emailError = document.getElementById("email-error");
+  const typeError = document.getElementById("project-type-error");
+  const privacyError = document.getElementById("privacy-error");
+
+  // Multi dropdown wiring.
+  const dropdown = form.querySelector("[data-dropdown]");
+  const dropBtn = document.getElementById("project-type-btn");
+  const dropPanel = document.getElementById("project-type-panel");
+  const dropText = dropBtn
+    ? dropBtn.querySelector(".dropdown-btn-text")
+    : null;
+  const typeBoxes = Array.from(
+    form.querySelectorAll('input[name="projectType"]')
+  );
+
+  const setNote = (msg, kind) => {
+    if (!note) return;
+    note.textContent = msg;
+    note.classList.remove("is-error", "is-ok");
+    if (kind) note.classList.add(kind);
+  };
+
+  const refreshDropLabel = () => {
+    if (!dropBtn || !dropText) return;
+    const checked = typeBoxes.filter((b) => b.checked);
+    if (!checked.length) dropText.textContent = "Select project types";
+    else if (checked.length === 1) dropText.textContent = checked[0].value;
+    else dropText.textContent = `${checked.length} selected`;
+    if (typeError && checked.length) {
+      typeError.hidden = true;
+      dropBtn.removeAttribute("aria-invalid");
+    }
+  };
+
+  const setDropOpen = (open) => {
+    if (!dropBtn || !dropPanel) return;
+    dropBtn.setAttribute("aria-expanded", String(open));
+    dropPanel.hidden = !open;
+  };
+
+  if (dropBtn && dropPanel) {
+    dropBtn.addEventListener("click", () => {
+      setDropOpen(dropPanel.hidden);
+    });
+    document.addEventListener("click", (e) => {
+      if (!dropdown) return;
+      if (!dropdown.contains(e.target)) setDropOpen(false);
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        setDropOpen(false);
+        if (dropdown && dropdown.contains(document.activeElement)) {
+          dropBtn.focus();
+        }
+      }
+    });
+    typeBoxes.forEach((box) => box.addEventListener("change", refreshDropLabel));
+    refreshDropLabel();
+  }
+
+  // Live character counter for the optional message.
+  if (detailsInput && detailsNum) {
+    const updateCount = () => {
+      detailsNum.textContent = String(detailsInput.value.length);
+    };
+    detailsInput.addEventListener("input", updateCount);
+    updateCount();
+  }
+
+  const showError = (input, errorEl, show) => {
+    if (errorEl) errorEl.hidden = !show;
+    if (input) {
+      if (show) input.setAttribute("aria-invalid", "true");
+      else input.removeAttribute("aria-invalid");
+    }
+  };
+
+  // Clear errors as the user fixes fields.
+  if (nameInput) {
+    nameInput.addEventListener("input", () =>
+      showError(nameInput, nameError, false)
+    );
+  }
+  if (emailInput) {
+    emailInput.addEventListener("input", () =>
+      showError(emailInput, emailError, false)
+    );
+  }
+  if (consentInput) {
+    consentInput.addEventListener("change", () =>
+      showError(consentInput, privacyError, false)
+    );
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault(); // demo only — never sends anywhere for now.
+
+    const nameOk =
+      !!nameInput && nameInput.value.trim().length >= 2;
+    const emailOk =
+      !!emailInput && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim());
+    const typeOk = typeBoxes.some((b) => b.checked);
+    const consentOk = !!consentInput && consentInput.checked;
+
+    showError(nameInput, nameError, !nameOk);
+    showError(emailInput, emailError, !emailOk);
+    showError(dropBtn, typeError, !typeOk);
+    showError(consentInput, privacyError, !consentOk);
+
+    if (!nameOk || !emailOk || !typeOk || !consentOk) {
+      setNote("Please fill the required fields marked with *.", "is-error");
+      const firstBad =
+        (!nameOk && nameInput) ||
+        (!emailOk && emailInput) ||
+        (!typeOk && dropBtn) ||
+        (consentInput ?? null);
+      if (firstBad && typeof firstBad.focus === "function") firstBad.focus();
+      return;
+    }
+
+    setNote(
+      "Thanks — this form is a demo for now and was not sent. We will connect it soon.",
+      "is-ok"
+    );
+  });
+})();

@@ -3211,3 +3211,306 @@ a.animated-button {
 #contact .footer-copy {
   text-align: center;
 }
+
+/* ==========================================================================
+   Contact page — quote form (glass card, matches detail rows + tags)
+   ========================================================================== */
+/* Extra top breathing room + side-by-side intro/form on the contact page. */
+.contact-hero {
+  margin-top: 24px;
+}
+
+.contact-layout {
+  display: grid;
+  gap: 36px;
+  align-items: start;
+  max-width: 1200px;
+}
+
+@media (min-width: 960px) {
+  .contact-layout {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 48px;
+  }
+
+  .contact-intro {
+    position: sticky;
+    top: 120px;
+  }
+}
+
+.contact-points-left {
+  justify-content: flex-start;
+  text-align: left;
+  margin-top: 22px;
+}
+
+.contact-points-left li {
+  position: relative;
+  padding-left: 26px;
+}
+
+.contact-points-left li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 700;
+  color: var(--c-cyan);
+}
+
+.form-card {
+  width: 100%;
+  max-width: 860px;
+  margin: 8px auto 0;
+  padding: 30px 26px;
+  border-radius: 24px;
+  background: rgb(255 255 255 / 0.03);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .form-card { padding: 38px 40px; }
+}
+
+.form-grid {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .form-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.field {
+  display: grid;
+  gap: 10px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+.field-label,
+fieldset.field > legend.field-label {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.65);
+}
+
+/* <legend> doesn't take grid gap inside <fieldset> — give it real space. */
+fieldset.field > legend.field-label {
+  margin-bottom: 14px;
+  padding: 0;
+}
+
+.field-input {
+  width: 100%;
+  font: inherit;
+  font-size: 15px;
+  color: var(--c-white);
+  background: rgb(0 0 0 / 0.35);
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: 14px;
+  padding: 13px 16px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.field-input::placeholder {
+  color: rgb(255 255 255 / 0.35);
+}
+
+.field-input:focus {
+  border-color: rgb(136 216 216 / 0.6);
+  box-shadow: 0 0 0 3px rgb(136 216 216 / 0.15);
+}
+
+.field-input[aria-invalid="true"] {
+  border-color: rgb(255 120 120 / 0.7);
+}
+
+.field-textarea {
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.6;
+}
+
+.char-count {
+  justify-self: end;
+  font-size: 12px;
+  color: rgb(255 255 255 / 0.45);
+  letter-spacing: 0.04em;
+}
+
+.field-error {
+  font-size: 13px;
+  color: #ff9d9d;
+}
+
+/* Checkbox pills — same language as .project-tags */
+.choice-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.check {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgb(255 255 255 / 0.8);
+  background: rgb(255 255 255 / 0.06);
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 999px;
+  padding: 9px 15px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.check:hover {
+  border-color: rgb(136 216 216 / 0.6);
+}
+
+.check:has(input:checked) {
+  border-color: rgb(136 216 216 / 0.7);
+  background: rgb(136 216 216 / 0.12);
+  color: #fff;
+}
+
+.check:has(input:focus-visible) {
+  outline: 2px solid var(--c-cyan);
+  outline-offset: 2px;
+}
+
+.check input {
+  accent-color: var(--c-cyan);
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+/* Multi-select dropdown for project types */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdown-btn-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdown-chevron {
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease-out-soft);
+}
+
+.dropdown-btn[aria-expanded="true"] .dropdown-chevron {
+  transform: rotate(180deg);
+}
+
+.dropdown-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 5;
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgb(12 12 16 / 0.96);
+  border: 1px solid rgb(255 255 255 / 0.14);
+  box-shadow: 0 24px 60px rgb(0 0 0 / 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dropdown-panel[hidden] {
+  display: none;
+}
+
+/* Consent row */
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgb(255 255 255 / 0.75);
+  cursor: pointer;
+}
+
+.consent input {
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--c-cyan);
+  cursor: pointer;
+}
+
+.consent a {
+  color: var(--c-cyan);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Submit row — reuses .project-link-primary grey burst, works on <button> */
+.form-actions {
+  display: grid;
+  gap: 14px;
+  justify-items: start;
+}
+
+button.project-link {
+  font: inherit;
+}
+
+.form-submit {
+  cursor: pointer;
+}
+
+.form-note {
+  min-height: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgb(255 255 255 / 0.7);
+}
+
+.form-note.is-error {
+  color: #ff9d9d;
+}
+
+.form-note.is-ok {
+  color: var(--c-cyan);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .field-input,
+  .check,
+  .dropdown-chevron {
+    transition: none;
+  }
+}
