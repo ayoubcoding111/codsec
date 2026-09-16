@@ -548,6 +548,113 @@ if (video && canvas) {
 }
 
 /* --------------------------------------------------------------------------
+ * Project galleries: hero pic by default, hover cycles the rest one by one
+ * with a smooth crossfade. Touch: tap advances, slow autoplay while in view.
+ * ------------------------------------------------------------------------ */
+(function initProjectGalleries() {
+  const galleries = Array.from(document.querySelectorAll("[data-gallery]"));
+  if (!galleries.length) return;
+
+  const HOVER_MS = 1100;
+  const TOUCH_MS = 2000;
+  const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const coarsePointer = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+
+  galleries.forEach((gallery) => {
+    const imgs = Array.from(gallery.querySelectorAll(".gallery-img"));
+    const dots = Array.from(gallery.querySelectorAll(".gallery-dot"));
+    const count = gallery.querySelector(".gallery-count");
+    if (imgs.length < 2) return;
+
+    let index = 0;
+    let timer = 0;
+    let preloaded = false;
+
+    const show = (next) => {
+      index = (next + imgs.length) % imgs.length;
+      imgs.forEach((img, i) => img.classList.toggle("is-active", i === index));
+      dots.forEach((dot, i) => dot.classList.toggle("is-active", i === index));
+      if (count) count.textContent = `${index + 1} / ${imgs.length}`;
+      // Restart dot fill animation so it matches the current slide.
+      gallery.classList.remove("is-cycling");
+      void gallery.offsetWidth;
+      if (timer) gallery.classList.add("is-cycling");
+    };
+
+    const preload = () => {
+      if (preloaded) return;
+      preloaded = true;
+      imgs.forEach((img) => {
+        const src = img.getAttribute("src");
+        if (src) {
+          const probe = new Image();
+          probe.src = src;
+        }
+      });
+    };
+
+    const stop = (reset) => {
+      window.clearInterval(timer);
+      timer = 0;
+      gallery.classList.remove("is-cycling");
+      if (reset) show(0);
+    };
+
+    const start = (ms) => {
+      if (reduceMotion || timer) return;
+      preload();
+      gallery.classList.add("is-cycling");
+      // Re-trigger dot fill for the current slide.
+      const activeDot = dots[index];
+      if (activeDot) {
+        activeDot.classList.remove("is-active");
+        void gallery.offsetWidth;
+        activeDot.classList.add("is-active");
+      }
+      timer = window.setInterval(() => show(index + 1), ms);
+    };
+
+    if (canHover) {
+      gallery.addEventListener("mouseenter", () => start(HOVER_MS));
+      gallery.addEventListener("mouseleave", () => stop(true));
+      gallery.addEventListener("focusin", () => start(HOVER_MS));
+      gallery.addEventListener("focusout", () => stop(true));
+    }
+
+    // Touch fallback: tap steps through pics one by one.
+    gallery.setAttribute("tabindex", "0");
+    gallery.setAttribute("role", "button");
+    gallery.setAttribute("aria-label", "Project screenshots — activate to view next");
+    gallery.addEventListener("click", () => {
+      preload();
+      show(index + 1);
+      // Brief cycling class so tap also gets the zoom + dot fill.
+      gallery.classList.add("is-cycling");
+      window.clearTimeout(gallery.__tapT);
+      gallery.__tapT = window.setTimeout(() => {
+        if (!timer) gallery.classList.remove("is-cycling");
+      }, HOVER_MS);
+    });
+
+    // Slow autoplay on touch devices only while the card is visible.
+    if (coarsePointer && !reduceMotion && "IntersectionObserver" in window) {
+      const autoObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) start(TOUCH_MS);
+            else stop(false);
+          });
+        },
+        { threshold: 0.45 }
+      );
+      autoObserver.observe(gallery);
+    }
+
+    show(0);
+  });
+})();
+
+/* --------------------------------------------------------------------------
  * Custom smooth cursor: fast dot + lerped trailing ring, scroll-aware
  * ------------------------------------------------------------------------ */
 (function initCustomCursor() {
@@ -603,7 +710,7 @@ if (video && canvas) {
   });
 
   // Grow on interactive hover.
-  const hoverSel = "a, button, .service, .process-step, .skill";
+  const hoverSel = "a, button, .service, .process-step, .skill, .project-visual.gallery";
   document.addEventListener("mouseover", (e) => {
     if (e.target.closest(hoverSel)) document.body.classList.add("cursor-hover");
   });
