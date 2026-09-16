@@ -880,58 +880,13 @@ if (video && canvas) {
 
   const team = [
     {
-      name: "Ayoub El Idrissi",
-      role: "Lead Secure Web Developer",
-      focus: "Threat Modeling & AppSec",
-      bio: "Designs secure architectures and leads code audits across the stack.",
-      skills: ["OWASP", "Auth", "CSP", "Pen Testing"],
-      location: "Casablanca",
-      years: "8y",
-    },
-    {
-      name: "Sara Bennani",
-      role: "Application Security Engineer",
-      focus: "Vulnerability Research",
-      bio: "Hunts for vulnerabilities and hardens APIs before they ship.",
-      skills: ["SAST/DAST", "Node.js", "JWT", "Fuzzing"],
-      location: "Rabat",
-      years: "5y",
-    },
-    {
-      name: "Youssef Alami",
-      role: "Frontend Security Developer",
-      focus: "Client-side Hardening",
-      bio: "Builds accessible UIs that resist XSS, CSRF, and injection.",
-      skills: ["React", "CSP", "Sanitization", "TypeScript"],
-      location: "Marrakesh",
-      years: "6y",
-    },
-    {
-      name: "Imane Tazi",
-      role: "DevSecOps Engineer",
-      focus: "CI/CD & Secrets",
-      bio: "Automates security scans and secret management in pipelines.",
-      skills: ["Docker", "Vault", "GitHub Actions", "IaC"],
-      location: "Tangier",
-      years: "7y",
-    },
-    {
-      name: "Omar Fassi",
-      role: "Backend Security Developer",
-      focus: "Secure APIs & Data",
-      bio: "Implements zero-trust services and encrypted data flows.",
-      skills: ["Postgres", "OAuth2", "Rate Limiting", "Go"],
-      location: "Fez",
-      years: "9y",
-    },
-    {
-      name: "Nadia Chraibi",
-      role: "Security QA Engineer",
-      focus: "Testing & Compliance",
-      bio: "Validates controls and drives GDPR / SOC 2 readiness.",
-      skills: ["Playwright", "Audits", "GDPR", "Threat Cases"],
-      location: "Agadir",
-      years: "4y",
+      name: "Ayoub Benkreira",
+      role: "Founder & Leader of codsec",
+      focus: "Design · Build · Secure",
+      bio: "Runs codsec end to end — designs interfaces, builds full-stack apps, and hardens security from the first line of code.",
+      skills: ["UI/UX", "Full-Stack", "APIs", "Security"],
+      location: "Algiers",
+      years: "2y",
     },
   ];
 
@@ -966,7 +921,6 @@ if (video && canvas) {
           <div class="team-avatar">${initials(m.name)}<span class="team-shield">${shieldSVG}</span></div>
           <div class="team-name">${m.name}</div>
           <div class="team-role">${m.role}</div>
-          <div class="team-hint">Hover or tap for more</div>
         </div>
         <div class="team-face team-back">
           <div class="team-back-role">${m.focus}</div>
