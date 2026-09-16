@@ -2148,6 +2148,12 @@ body.is-scrolled .nav {
     transition: none;
   }
 
+  .contact-point-icon,
+  .contact-points.in-view .contact-point-icon {
+    opacity: 1;
+    animation: none;
+  }
+
   .stack .panel,
   .marquee-band {
     opacity: 1;
@@ -2881,4 +2887,327 @@ body.detail-page .footer.detail-footer .footer-copy { margin-top: 32px; }
   .team-card-inner {
     transition: none;
   }
+}
+
+/* ==========================================================================
+   FAQ — NEXUS-style: solid black band, giant watermark, left intro +
+   right divider rows with a plain + that rotates into an × when open
+   ========================================================================== */
+#faq.faq-nexus {
+  background: transparent;
+  border-top: 1px solid rgb(255 255 255 / 0.07);
+}
+
+.faq-layout {
+  display: grid;
+  gap: 48px;
+}
+
+@media (min-width: 960px) {
+  .faq-layout {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  .faq-left {
+    position: sticky;
+    top: 120px;
+  }
+}
+
+.faq-left {
+  position: relative;
+}
+
+.faq-watermark {
+  position: absolute;
+  top: -0.9em;
+  left: -0.08em;
+  font-size: clamp(120px, 16vw, 220px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: rgb(255 255 255 / 0.05);
+  user-select: none;
+  pointer-events: none;
+}
+
+.faq-kicker {
+  position: relative;
+  font-family: ui-monospace, "Cascadia Mono", "JetBrains Mono", Menlo, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--c-pale-blue);
+}
+
+.faq-title {
+  position: relative;
+  margin-top: 16px;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.faq-desc {
+  position: relative;
+  margin-top: 20px;
+  max-width: 42ch;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgb(255 255 255 / 0.7);
+}
+
+.faq-cta {
+  position: relative;
+  margin-top: 28px;
+  width: fit-content;
+}
+
+.faq-list {
+  display: grid;
+  border-top: 1px solid rgb(255 255 255 / 0.12);
+}
+
+.faq-item {
+  border-bottom: 1px solid rgb(255 255 255 / 0.12);
+  overflow: hidden;
+}
+
+.faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px 4px;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: var(--c-white);
+  transition: color 0.3s ease;
+}
+
+.faq-q:hover {
+  color: var(--c-cyan);
+}
+
+.faq-q > span:first-child {
+  flex: 1;
+}
+
+/* Plain + mark (no disc) that rotates into an × when open */
+.faq-icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  transition: transform 0.45s var(--ease-out-soft);
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: currentColor;
+  border-radius: 2px;
+  transform: translate(-50%, -50%);
+}
+
+.faq-icon::before {
+  width: 16px;
+  height: 1.6px;
+}
+
+.faq-icon::after {
+  width: 1.6px;
+  height: 16px;
+}
+
+.faq-item.is-open .faq-icon {
+  transform: rotate(135deg);
+}
+
+.faq-item.is-open .faq-q {
+  color: var(--c-cyan);
+}
+
+/* Answer expands smoothly via grid-rows (no JS height measuring) */
+.faq-a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s var(--ease-out-soft);
+}
+
+.faq-item.is-open .faq-a {
+  grid-template-rows: 1fr;
+}
+
+.faq-a-inner {
+  overflow: hidden;
+}
+
+.faq-a-inner p {
+  padding: 0 4px 28px;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgb(255 255 255 / 0.72);
+  max-width: 62ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-a,
+  .faq-icon,
+  .faq-q {
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   Contact finale — centered client hook + "Book a free call" reusing the
+   hero .animated-button (same arrows/circle/hover, works on <a> too)
+   ========================================================================== */
+.contact-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.contact-title {
+  margin-top: 18px;
+  max-width: 20ch;
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.contact-sub {
+  margin-top: 18px;
+  max-width: 52ch;
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgb(255 255 255 / 0.75);
+}
+
+.contact-points {
+  list-style: none;
+  margin-top: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 28px;
+}
+
+.contact-points li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(255 255 255 / 0.8);
+}
+
+.contact-point-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--c-cyan);
+  opacity: 0;
+}
+
+.contact-point-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Icons ride the same word-by-word entrance as the text: hidden until
+   the list scrolls in, then fade/slide with a per-item delay synced
+   in script.js to the sibling [data-base-delay]. */
+.contact-points.in-view .contact-point-icon {
+  animation: fadeSlideUp 0.7s var(--ease-out-soft) forwards;
+}
+
+.contact-ctas {
+  margin-top: 38px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+/* Same Build Now button, as a link — keeps every hover detail */
+a.animated-button {
+  text-decoration: none;
+}
+
+/* Compact Build Now variant for the top-right nav slot */
+.nav-contact-anim {
+  padding: 8px 30px;
+  font-size: 14px;
+  border-width: 3px;
+}
+
+.nav-contact-anim svg {
+  width: 18px;
+}
+
+.nav-contact-anim .arr-1 {
+  right: 12px;
+}
+
+.nav-contact-anim:hover .arr-2 {
+  left: 12px;
+}
+
+.nav-contact-anim .text {
+  transform: translateX(-9px);
+}
+
+.nav-contact-anim:hover .text {
+  transform: translateX(9px);
+}
+
+.nav-contact-anim:hover .circle {
+  width: 180px;
+  height: 180px;
+}
+
+.contact-book .text {
+  white-space: nowrap;
+}
+
+.back-top {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.5);
+  border-bottom: 1px solid rgb(255 255 255 / 0.2);
+  padding-bottom: 4px;
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.back-top:hover {
+  color: var(--c-cyan);
+  border-color: var(--c-cyan);
+}
+
+#contact .footer-copy {
+  text-align: center;
 }

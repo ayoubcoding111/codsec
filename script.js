@@ -42,6 +42,16 @@ document.querySelectorAll(".animate-words[data-animate-words]").forEach((el) => 
   el.appendChild(buildAnimatedWords(text.trim(), base, stagger));
 });
 
+// Contact points: sync each icon's entrance delay to its sibling text's
+// base delay so icon + first word animate together.
+document.querySelectorAll(".contact-points li").forEach((li) => {
+  const icon = li.querySelector(".contact-point-icon");
+  const wordsEl = li.querySelector(".animate-words[data-base-delay]");
+  if (!icon || !wordsEl) return;
+  const base = parseFloat(wordsEl.getAttribute("data-base-delay") || "0.1");
+  icon.style.animationDelay = `${base}s`;
+});
+
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* --------------------------------------------------------------------------
@@ -951,5 +961,32 @@ if (video && canvas) {
     });
 
     grid.appendChild(card);
+  });
+})();
+
+/* --------------------------------------------------------------------------
+ * FAQ accordion: + button expands the answer, one open at a time.
+ * Buttons natively handle keyboard (Enter/Space); aria-expanded tracks state.
+ * ------------------------------------------------------------------------ */
+(function initFaq() {
+  const items = Array.from(document.querySelectorAll(".faq-item"));
+  if (!items.length) return;
+
+  items.forEach((item) => {
+    const btn = item.querySelector(".faq-q");
+    if (!btn) return;
+    btn.addEventListener("click", () => {
+      const isOpen = item.classList.contains("is-open");
+      // Single-open: close the rest before toggling this one.
+      items.forEach((other) => {
+        other.classList.remove("is-open");
+        const otherBtn = other.querySelector(".faq-q");
+        if (otherBtn) otherBtn.setAttribute("aria-expanded", "false");
+      });
+      if (!isOpen) {
+        item.classList.add("is-open");
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
   });
 })();

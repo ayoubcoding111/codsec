@@ -42,7 +42,7 @@
     <!-- Navigation (fixed, stays above all panels) -->
     <nav class="nav">
       <!-- Logo + agency name. Hover reassembles the mark piece by piece. -->
-      <a href="#home" class="nav-logo brand" aria-label="codsec — home">
+      <a href="#contact" class="nav-logo brand" aria-label="codsec — contact">
         <span class="brand-mark" aria-hidden="true">
           <img
             src="assets/mylogo.png"
@@ -80,11 +80,41 @@
         <a href="#process" class="nav-link">Process</a>
         <a href="#about" class="nav-link">About Us</a>
         <a href="#projects" class="nav-link">Projects</a>
+        <a href="#faq" class="nav-link">FAQ</a>
       </div>
 
       <!-- Desktop right side -->
       <div class="nav-right desktop-only">
-        <a href="#contact" class="nav-contact-btn">Contact</a>
+        <a
+          href="#contact"
+          class="animated-button nav-contact-anim"
+          aria-label="Contact"
+        >
+          <svg
+            class="arr-2"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            width="18"
+            height="18"
+          >
+            <path
+              d="M5 11h11.17l-3.88-3.88L13.7 5.7 19 11l-5.3 5.3-1.41-1.42 3.88-3.88H5v-2z"
+            />
+          </svg>
+          <span class="text">Contact</span>
+          <span class="circle" aria-hidden="true"></span>
+          <svg
+            class="arr-1"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            width="18"
+            height="18"
+          >
+            <path
+              d="M5 11h11.17l-3.88-3.88L13.7 5.7 19 11l-5.3 5.3-1.41-1.42 3.88-3.88H5v-2z"
+            />
+          </svg>
+        </a>
       </div>
 
       <!-- Mobile hamburger (anchor-based: click handled in script.js) -->
@@ -133,10 +163,10 @@
     <div id="mobile-menu" class="mobile-menu">
       <div class="mobile-menu-top">
         <a
-          href="#home"
+          href="#contact"
           class="brand brand-sm"
           data-close-menu
-          aria-label="codsec — home"
+          aria-label="codsec — contact"
         >
           <span class="brand-mark" aria-hidden="true">
             <img
@@ -184,6 +214,7 @@
         <a href="#projects" class="mobile-menu-link" data-close-menu
           >Projects</a
         >
+        <a href="#faq" class="mobile-menu-link" data-close-menu>FAQ</a>
 
         <div class="mobile-menu-secondary">
           <a href="#contact" class="mobile-menu-small" data-close-menu
@@ -1126,22 +1157,305 @@
         </div>
       </section>
 
+      <!-- ============ FAQ / COMMON QUESTIONS ============ -->
+      <section id="faq" class="panel section-pad faq-nexus">
+        <div class="section-inner faq-layout">
+          <div class="faq-left" data-animate="fade-up">
+            <span class="faq-watermark" aria-hidden="true">FAQ</span>
+            <p class="faq-kicker">THE DETAILS</p>
+            <h2 class="faq-title">Answers to your questions.</h2>
+            <p class="faq-desc">
+              Everything you need to know about how we work, what we charge,
+              and what happens after launch.
+            </p>
+            <a
+              href="#contact"
+              class="animated-button faq-cta"
+              aria-label="Ask a question"
+            >
+              <svg
+                class="arr-2"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                width="24"
+                height="24"
+              >
+                <path
+                  d="M5 11h11.17l-3.88-3.88L13.7 5.7 19 11l-5.3 5.3-1.41-1.42 3.88-3.88H5v-2z"
+                />
+              </svg>
+              <span class="text">Ask a question</span>
+              <span class="circle" aria-hidden="true"></span>
+              <svg
+                class="arr-1"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                width="24"
+                height="24"
+              >
+                <path
+                  d="M5 11h11.17l-3.88-3.88L13.7 5.7 19 11l-5.3 5.3-1.41-1.42 3.88-3.88H5v-2z"
+                />
+              </svg>
+            </a>
+          </div>
+          <div class="faq-list">
+            <div class="faq-item" data-animate="fade-up">
+              <button
+                type="button"
+                class="faq-q"
+                aria-expanded="false"
+                aria-controls="faq-a-1"
+              >
+                <span>What services does codsec offer?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-a" id="faq-a-1" role="region">
+                <div class="faq-a-inner">
+                  <p>
+                    Three things, end to end: UI/UX design, full-stack web
+                    development, and secure backend &amp; API engineering. You
+                    get design, build and security under one roof instead of
+                    juggling three vendors.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item" data-animate="fade-up">
+              <button
+                type="button"
+                class="faq-q"
+                aria-expanded="false"
+                aria-controls="faq-a-2"
+              >
+                <span>How long does a typical project take?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-a" id="faq-a-2" role="region">
+                <div class="faq-a-inner">
+                  <p>
+                    Most sites ship in 4 to 7 weeks: one week for discovery and
+                    blueprint, then design sprints and build running in
+                    parallel. You see progress on staging the whole way, so
+                    there are no big-bang surprises at the end.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item" data-animate="fade-up">
+              <button
+                type="button"
+                class="faq-q"
+                aria-expanded="false"
+                aria-controls="faq-a-3"
+              >
+                <span>How much does a website cost?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-a" id="faq-a-3" role="region">
+                <div class="faq-a-inner">
+                  <p>
+                    It depends on scope — pages, features, integrations. After
+                    a free 15-minute discovery call you get a clear fixed quote
+                    with everything itemized. No hidden fees, no hourly
+                    black box.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item" data-animate="fade-up">
+              <button
+                type="button"
+                class="faq-q"
+                aria-expanded="false"
+                aria-controls="faq-a-4"
+              >
+                <span>Is security really included?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-a" id="faq-a-4" role="region">
+                <div class="faq-a-inner">
+                  <p>
+                    Yes — it's baked in from day one, not bolted on. Safe
+                    authentication, OWASP defenses, access controls and rate
+                    limiting come standard with every build, and every release
+                    is reviewed before it ships.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item" data-animate="fade-up">
+              <button
+                type="button"
+                class="faq-q"
+                aria-expanded="false"
+                aria-controls="faq-a-5"
+              >
+                <span>Do you support us after launch?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-a" id="faq-a-5" role="region">
+                <div class="faq-a-inner">
+                  <p>
+                    We stay after launch. Fixes, updates, performance checks
+                    and small iterations are part of the partnership — your
+                    growth is our portfolio, so we treat your site like our
+                    own.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item" data-animate="fade-up">
+              <button
+                type="button"
+                class="faq-q"
+                aria-expanded="false"
+                aria-controls="faq-a-6"
+              >
+                <span>How do we start working together?</span>
+                <span class="faq-icon" aria-hidden="true"></span>
+              </button>
+              <div class="faq-a" id="faq-a-6" role="region">
+                <div class="faq-a-inner">
+                  <p>
+                    Book a discovery call through the contact section. Fifteen
+                    minutes on your goals, timeline and budget — then a deep
+                    dive workshop and a strategy blueprint before we write a
+                    single line of code.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- ============ FOOTER / CONTACT ============ -->
       <footer id="contact" class="panel footer">
-        <div class="section-inner">
-          <p class="eyebrow" data-animate="fade-up">Contact</p>
+        <div class="section-inner contact-inner">
+          <p class="eyebrow" data-animate="fade-up">Contact · Free discovery call</p>
           <h2
-            class="section-title animate-words"
-            data-animate-words="Let's build something strong with codsec"
+            class="contact-title animate-words"
+            data-animate-words="Have a project in mind? Let's make it profitable."
             data-base-delay="0.3"
             data-stagger="0.09"
           ></h2>
-          <a
-            href="#home"
-            class="nav-contact-btn footer-cta"
-            data-animate="fade-up"
-            >Back to top</a
-          >
+          <p class="contact-sub" data-animate="fade-up">
+            <span
+              class="animate-words"
+              data-animate-words="Book a free 15-minute call — no pressure, no jargon. You leave with a clear plan and a fixed quote for your project."
+              data-base-delay="0.9"
+              data-stagger="0.045"
+            ></span>
+          </p>
+          <ul class="contact-points" data-animate="fade-up">
+            <li>
+              <span class="contact-point-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  width="16"
+                  height="16"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="animate-words"
+                data-animate-words="Free 15-min call"
+                data-base-delay="1.5"
+                data-stagger="0.05"
+              ></span>
+            </li>
+            <li>
+              <span class="contact-point-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  width="16"
+                  height="16"
+                >
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <path d="M14 2v6h6" />
+                  <path d="m9 15 2 2 4-4" />
+                </svg>
+              </span>
+              <span
+                class="animate-words"
+                data-animate-words="Fixed quote, zero hidden fees"
+                data-base-delay="1.65"
+                data-stagger="0.05"
+              ></span>
+            </li>
+            <li>
+              <span class="contact-point-icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  width="16"
+                  height="16"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 6v6l4 2" />
+                </svg>
+              </span>
+              <span
+                class="animate-words"
+                data-animate-words="Reply within 24 hours"
+                data-base-delay="1.8"
+                data-stagger="0.05"
+              ></span>
+            </li>
+          </ul>
+          <div class="contact-ctas" data-animate="fade-up">
+            <a
+              href="https://instagram.com/"
+              target="_blank"
+              rel="noopener"
+              class="animated-button contact-book"
+              aria-label="Book a free call"
+            >
+              <svg
+                class="arr-2"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                width="24"
+                height="24"
+              >
+                <path
+                  d="M5 11h11.17l-3.88-3.88L13.7 5.7 19 11l-5.3 5.3-1.41-1.42 3.88-3.88H5v-2z"
+                />
+              </svg>
+              <span class="text">Book a free call</span>
+              <span class="circle" aria-hidden="true"></span>
+              <svg
+                class="arr-1"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                width="24"
+                height="24"
+              >
+                <path
+                  d="M5 11h11.17l-3.88-3.88L13.7 5.7 19 11l-5.3 5.3-1.41-1.42 3.88-3.88H5v-2z"
+                />
+              </svg>
+            </a>
+            <a href="#home" class="back-top">Back to top ↑</a>
+          </div>
           <p class="footer-copy">© 2026 codsec. All rights reserved.</p>
         </div>
       </footer>

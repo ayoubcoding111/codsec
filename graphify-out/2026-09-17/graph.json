@@ -120,7 +120,7 @@
       "file_type": "code",
       "norm_label": "setmenuopen()",
       "source_file": "script.js",
-      "source_location": "L167"
+      "source_location": "L157"
     },
     {
       "id": "script_smoothtoel",
@@ -132,7 +132,7 @@
       "file_type": "code",
       "norm_label": "smoothtoel()",
       "source_file": "script.js",
-      "source_location": "L61"
+      "source_location": "L51"
     },
     {
       "id": "script_updateheroexit",
@@ -144,7 +144,7 @@
       "file_type": "code",
       "norm_label": "updateheroexit()",
       "source_file": "script.js",
-      "source_location": "L222"
+      "source_location": "L212"
     },
     {
       "id": "script_updatenavblur",
@@ -156,7 +156,7 @@
       "file_type": "code",
       "norm_label": "updatenavblur()",
       "source_file": "script.js",
-      "source_location": "L245"
+      "source_location": "L235"
     },
     {
       "id": "script_requestactivenav",
@@ -168,7 +168,7 @@
       "file_type": "code",
       "norm_label": "requestactivenav()",
       "source_file": "script.js",
-      "source_location": "L269"
+      "source_location": "L259"
     },
     {
       "id": "script_updateactivenav",
@@ -180,7 +180,7 @@
       "file_type": "code",
       "norm_label": "updateactivenav()",
       "source_file": "script.js",
-      "source_location": "L256"
+      "source_location": "L246"
     },
     {
       "id": "script",
@@ -202,7 +202,7 @@
       "file_type": "code",
       "norm_label": "canvas",
       "source_file": "script.js",
-      "source_location": "L379"
+      "source_location": "L369"
     },
     {
       "id": "script_counters",
@@ -213,7 +213,7 @@
       "file_type": "code",
       "norm_label": "counters",
       "source_file": "script.js",
-      "source_location": "L349"
+      "source_location": "L339"
     },
     {
       "id": "script_herocontent",
@@ -224,7 +224,7 @@
       "file_type": "code",
       "norm_label": "herocontent",
       "source_file": "script.js",
-      "source_location": "L219"
+      "source_location": "L209"
     },
     {
       "id": "script_iconclose",
@@ -235,7 +235,7 @@
       "file_type": "code",
       "norm_label": "iconclose",
       "source_file": "script.js",
-      "source_location": "L165"
+      "source_location": "L155"
     },
     {
       "id": "script_iconopen",
@@ -246,7 +246,7 @@
       "file_type": "code",
       "norm_label": "iconopen",
       "source_file": "script.js",
-      "source_location": "L164"
+      "source_location": "L154"
     },
     {
       "id": "script_menutoggle",
@@ -257,7 +257,7 @@
       "file_type": "code",
       "norm_label": "menutoggle",
       "source_file": "script.js",
-      "source_location": "L162"
+      "source_location": "L152"
     },
     {
       "id": "script_mobilemenu",
@@ -268,7 +268,7 @@
       "file_type": "code",
       "norm_label": "mobilemenu",
       "source_file": "script.js",
-      "source_location": "L163"
+      "source_location": "L153"
     },
     {
       "id": "script_navlinks",
@@ -279,7 +279,7 @@
       "file_type": "code",
       "norm_label": "navlinks",
       "source_file": "script.js",
-      "source_location": "L254"
+      "source_location": "L244"
     },
     {
       "id": "script_panels",
@@ -290,7 +290,7 @@
       "file_type": "code",
       "norm_label": "panels",
       "source_file": "script.js",
-      "source_location": "L218"
+      "source_location": "L208"
     },
     {
       "id": "script_processrailfill",
@@ -301,7 +301,7 @@
       "file_type": "code",
       "norm_label": "processrailfill",
       "source_file": "script.js",
-      "source_location": "L283"
+      "source_location": "L273"
     },
     {
       "id": "script_processsteps",
@@ -312,7 +312,7 @@
       "file_type": "code",
       "norm_label": "processsteps",
       "source_file": "script.js",
-      "source_location": "L284"
+      "source_location": "L274"
     },
     {
       "id": "script_processtimeline",
@@ -323,7 +323,7 @@
       "file_type": "code",
       "norm_label": "processtimeline",
       "source_file": "script.js",
-      "source_location": "L282"
+      "source_location": "L272"
     },
     {
       "id": "script_scrollhint",
@@ -334,7 +334,7 @@
       "file_type": "code",
       "norm_label": "scrollhint",
       "source_file": "script.js",
-      "source_location": "L220"
+      "source_location": "L210"
     },
     {
       "id": "script_skillstrack",
@@ -345,7 +345,7 @@
       "file_type": "code",
       "norm_label": "skillstrack",
       "source_file": "script.js",
-      "source_location": "L340"
+      "source_location": "L330"
     },
     {
       "id": "script_video",
@@ -356,7 +356,7 @@
       "file_type": "code",
       "norm_label": "video",
       "source_file": "script.js",
-      "source_location": "L378"
+      "source_location": "L368"
     },
     {
       "id": "index_hero_section",
@@ -1313,7 +1313,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L162",
+      "source_location": "L152",
       "weight": 1.0
     },
     {
@@ -1324,7 +1324,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L163",
+      "source_location": "L153",
       "weight": 1.0
     },
     {
@@ -1335,7 +1335,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L164",
+      "source_location": "L154",
       "weight": 1.0
     },
     {
@@ -1346,7 +1346,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L165",
+      "source_location": "L155",
       "weight": 1.0
     },
     {
@@ -1357,7 +1357,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L167",
+      "source_location": "L157",
       "weight": 1.0
     },
     {
@@ -1368,7 +1368,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L218",
+      "source_location": "L208",
       "weight": 1.0
     },
     {
@@ -1379,7 +1379,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L219",
+      "source_location": "L209",
+      "weight": 1.0
+    },
+    {
+      "source": "script",
+      "target": "script_scrollhint",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "script.js",
+      "source_location": "L210",
       "weight": 1.0
     },
     {
@@ -1395,24 +1406,13 @@
     },
     {
       "source": "script",
-      "target": "script_scrollhint",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "script.js",
-      "source_location": "L220",
-      "weight": 1.0
-    },
-    {
-      "source": "script",
       "target": "script_navlinks",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L254",
+      "source_location": "L244",
       "weight": 1.0
     },
     {
@@ -1423,7 +1423,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L256",
+      "source_location": "L246",
       "weight": 1.0
     },
     {
@@ -1434,7 +1434,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L282",
+      "source_location": "L272",
       "weight": 1.0
     },
     {
@@ -1445,7 +1445,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L283",
+      "source_location": "L273",
       "weight": 1.0
     },
     {
@@ -1456,7 +1456,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L284",
+      "source_location": "L274",
       "weight": 1.0
     },
     {
@@ -1467,7 +1467,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L340",
+      "source_location": "L330",
       "weight": 1.0
     },
     {
@@ -1478,7 +1478,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L349",
+      "source_location": "L339",
       "weight": 1.0
     },
     {
@@ -1489,7 +1489,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L378",
+      "source_location": "L368",
       "weight": 1.0
     },
     {
@@ -1500,7 +1500,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L379",
+      "source_location": "L369",
       "weight": 1.0
     },
     {
@@ -1511,7 +1511,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L61",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -1523,7 +1523,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "script.js",
-      "source_location": "L240",
+      "source_location": "L230",
       "weight": 1.0
     },
     {
@@ -1535,7 +1535,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "script.js",
-      "source_location": "L249",
+      "source_location": "L239",
       "weight": 1.0
     },
     {
@@ -1547,7 +1547,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "script.js",
-      "source_location": "L274",
+      "source_location": "L264",
       "weight": 1.0
     },
     {
@@ -1559,7 +1559,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "script.js",
-      "source_location": "L272",
+      "source_location": "L262",
       "weight": 1.0
     },
     {
@@ -2383,5 +2383,5 @@
       "source_file": "project-restaurant.html"
     }
   ],
-  "built_at_commit": "895f6fe20d8e24389011c5607234c6547159d10a"
+  "built_at_commit": "e306474039a07cc065c5ac248b6a5d7b84ee15c0"
 }
