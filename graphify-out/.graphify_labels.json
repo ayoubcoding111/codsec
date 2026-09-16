@@ -1,1 +1,22 @@
-{"0": "Site JavaScript", "1": "Homepage Structure", "2": "Todo Login Screens", "3": "Restaurant Analytics", "4": "Restaurant Cart", "5": "Restaurant Menu", "6": "Todo User Board", "7": "Restaurant Hero", "8": "Brand Logo", "9": "Todo Admin Board", "10": "Security Theme", "11": "Live README Pattern", "12": "Admin Dashboards", "13": "About Section", "14": "Contact Footer", "15": "Process Timeline", "16": "Tech Marquee", "17": "Video Background", "18": "Order Tracking", "19": "Ordering Cart", "20": "Craft API Details", "21": "Kanban Board"}
+{
+  "0": "Site JavaScript",
+  "1": "Projects List Section",
+  "2": "requestActiveNav",
+  "3": "Admin Analytics Dashboard Screenshot",
+  "4": "Cart Checkout Screenshot",
+  "5": "Menu Item Card Grid",
+  "7": "Hero Screenshot Image",
+  "8": "Codsec Brand Logo",
+  "10": "Secure Backend and API Engineering Service",
+  "11": "GitHub Repo ayoubcoding111 restaurent",
+  "12": "Live Kitchen Feed and Admin Portal",
+  "13": "About Us Section",
+  "14": "Contact Footer",
+  "15": "Process Timeline From Idea To Launch",
+  "16": "Technologies Marquee Band",
+  "17": "Shared Video Background Component",
+  "18": "Live Order Tracking Feature",
+  "19": "Ordering and Cart Feature",
+  "20": "Craft Details and Documented API",
+  "21": "Drag and Drop Kanban Board"
+}

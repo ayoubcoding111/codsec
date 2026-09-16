@@ -727,7 +727,7 @@ if (video && canvas) {
   });
 
   // Grow on interactive hover.
-  const hoverSel = "a, button, .service, .process-step, .skill, .project-visual.gallery";
+  const hoverSel = "a, button, .service, .process-step, .skill, .project-visual.gallery, .team-card";
   document.addEventListener("mouseover", (e) => {
     if (e.target.closest(hoverSel)) document.body.classList.add("cursor-hover");
   });
@@ -868,4 +868,134 @@ if (video && canvas) {
   });
 
   load(false);
+})();
+
+/* --------------------------------------------------------------------------
+ * About — Meet the Team flip cards (migrated from cards.html)
+ * Renders into #team-grid; hover flips on desktop, tap/Enter/Space on touch.
+ * ------------------------------------------------------------------------ */
+(function initTeamGrid() {
+  const grid = document.getElementById("team-grid");
+  if (!grid) return;
+
+  const team = [
+    {
+      name: "Ayoub El Idrissi",
+      role: "Lead Secure Web Developer",
+      focus: "Threat Modeling & AppSec",
+      bio: "Designs secure architectures and leads code audits across the stack.",
+      skills: ["OWASP", "Auth", "CSP", "Pen Testing"],
+      location: "Casablanca",
+      years: "8y",
+    },
+    {
+      name: "Sara Bennani",
+      role: "Application Security Engineer",
+      focus: "Vulnerability Research",
+      bio: "Hunts for vulnerabilities and hardens APIs before they ship.",
+      skills: ["SAST/DAST", "Node.js", "JWT", "Fuzzing"],
+      location: "Rabat",
+      years: "5y",
+    },
+    {
+      name: "Youssef Alami",
+      role: "Frontend Security Developer",
+      focus: "Client-side Hardening",
+      bio: "Builds accessible UIs that resist XSS, CSRF, and injection.",
+      skills: ["React", "CSP", "Sanitization", "TypeScript"],
+      location: "Marrakesh",
+      years: "6y",
+    },
+    {
+      name: "Imane Tazi",
+      role: "DevSecOps Engineer",
+      focus: "CI/CD & Secrets",
+      bio: "Automates security scans and secret management in pipelines.",
+      skills: ["Docker", "Vault", "GitHub Actions", "IaC"],
+      location: "Tangier",
+      years: "7y",
+    },
+    {
+      name: "Omar Fassi",
+      role: "Backend Security Developer",
+      focus: "Secure APIs & Data",
+      bio: "Implements zero-trust services and encrypted data flows.",
+      skills: ["Postgres", "OAuth2", "Rate Limiting", "Go"],
+      location: "Fez",
+      years: "9y",
+    },
+    {
+      name: "Nadia Chraibi",
+      role: "Security QA Engineer",
+      focus: "Testing & Compliance",
+      bio: "Validates controls and drives GDPR / SOC 2 readiness.",
+      skills: ["Playwright", "Audits", "GDPR", "Threat Cases"],
+      location: "Agadir",
+      years: "4y",
+    },
+  ];
+
+  const initials = (n) =>
+    n
+      .split(" ")
+      .map((w) => w[0])
+      .join("")
+      .slice(0, 2)
+      .toUpperCase();
+
+  const shieldSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>`;
+  const pinSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>`;
+  const clockSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>`;
+  const githubSVG = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="20" height="20"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.27 5.68.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .3.2.67.8.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>`;
+  const instagramSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" /><circle cx="12" cy="12" r="4.2" /><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none" /></svg>`;
+  const linkedinSVG = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="20" height="20"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>`;
+
+  team.forEach((m) => {
+    const card = document.createElement("div");
+    card.className = "team-card";
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("role", "button");
+    card.setAttribute(
+      "aria-label",
+      `${m.name}, ${m.role}. Activate to see details.`
+    );
+
+    card.innerHTML = `
+      <div class="team-card-inner">
+        <div class="team-face team-front">
+          <div class="team-avatar">${initials(m.name)}<span class="team-shield">${shieldSVG}</span></div>
+          <div class="team-name">${m.name}</div>
+          <div class="team-role">${m.role}</div>
+          <div class="team-hint">Hover or tap for more</div>
+        </div>
+        <div class="team-face team-back">
+          <div class="team-back-role">${m.focus}</div>
+          <div class="team-back-name">${m.name}</div>
+          <p class="team-bio">${m.bio}</p>
+          <div class="team-tags">${m.skills.map((s) => `<span class="team-tag">${s}</span>`).join("")}</div>
+          <div class="team-meta">
+            <span>${pinSVG}${m.location}</span>
+            <span>${clockSVG}${m.years} exp</span>
+          </div>
+          <div class="team-socials">
+            <a href="https://github.com/" target="_blank" rel="noopener" aria-label="${m.name} GitHub">${githubSVG}</a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="${m.name} LinkedIn">${linkedinSVG}</a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="${m.name} Instagram">${instagramSVG}</a>
+          </div>
+        </div>
+      </div>`;
+
+    card.addEventListener("click", (e) => {
+      if (e.target.closest("a")) return;
+      card.classList.toggle("flipped");
+    });
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        card.classList.toggle("flipped");
+      }
+    });
+
+    grid.appendChild(card);
+  });
 })();
