@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/jpeg" href="assets/myfavicon.jpg" />
-    <title>Ayoub Benkreira</title>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <title>codsec — Build Strong, Build Smart</title>
+    <meta name="description" content="codsec is a digital agency crafting clean interfaces, fast web apps and secure backends." />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -26,26 +27,43 @@
            forward/backward so turnarounds are instant (see script.js). -->
       <canvas id="hero-canvas" class="bg-canvas"></canvas>
       <div class="bg-overlay"></div>
+      <!-- Bottom-only blur band: softens the video's lower edge so the
+           scroll from hero into the marquee feels seamless. -->
+      <div class="bg-blur-bottom" aria-hidden="true"></div>
     </div>
+
+    <!-- Custom smooth cursor: small dot + trailing ring (desktop only) -->
+    <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
 
     <!-- Navigation (fixed, stays above all panels) -->
     <nav class="nav">
-      <!-- Logo -->
-      <a href="#home" class="nav-logo">
-        <img
-          src="assets/logo.png"
-          alt="Ayoub Benkreira"
-          draggable="false"
-          class="logo-img"
-        />
+      <!-- Logo + agency name. Hover reassembles the mark piece by piece. -->
+      <a href="#home" class="nav-logo brand" aria-label="codsec — home">
+        <span class="brand-mark" aria-hidden="true">
+          <img
+            src="assets/logo.png"
+            alt=""
+            draggable="false"
+            class="logo-img logo-base"
+          />
+          <span class="logo-pieces">
+            <span class="logo-piece p1"><img src="assets/logo.png" alt="" draggable="false" /></span>
+            <span class="logo-piece p2"><img src="assets/logo.png" alt="" draggable="false" /></span>
+            <span class="logo-piece p3"><img src="assets/logo.png" alt="" draggable="false" /></span>
+            <span class="logo-piece p4"><img src="assets/logo.png" alt="" draggable="false" /></span>
+          </span>
+        </span>
+        <span class="brand-word" aria-hidden="true"><span class="bl">c</span><span class="bl">o</span><span class="bl">d</span><span class="bl accent">s</span><span class="bl accent">e</span><span class="bl accent">c</span></span>
       </a>
 
       <!-- Desktop nav links -->
       <div class="nav-links desktop-only">
         <a href="#home" class="nav-link">Home</a>
-        <a href="#about" class="nav-link">About Us</a>
+        <a href="#services" class="nav-link">Services</a>
         <a href="#projects" class="nav-link">Projects</a>
-        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#process" class="nav-link">Process</a>
+        <a href="#about" class="nav-link">About Us</a>
       </div>
 
       <!-- Desktop right side -->
@@ -98,12 +116,17 @@
     <!-- Mobile full-screen menu overlay -->
     <div id="mobile-menu" class="mobile-menu">
       <div class="mobile-menu-top">
-        <img
-          src="assets/logo.png"
-          alt="Ayoub Benkreira"
-          draggable="false"
-          class="logo-img"
-        />
+        <a href="#home" class="brand brand-sm" data-close-menu aria-label="codsec — home">
+          <span class="brand-mark" aria-hidden="true">
+            <img
+              src="assets/logo.png"
+              alt=""
+              draggable="false"
+              class="logo-img"
+            />
+          </span>
+          <span class="brand-word" aria-hidden="true">cod<span class="brand-word-accent">sec</span></span>
+        </a>
         <a
           href="#"
           class="menu-close"
@@ -130,9 +153,10 @@
 
       <div class="mobile-menu-links">
         <a href="#home" class="mobile-menu-link" data-close-menu>Home</a>
-        <a href="#about" class="mobile-menu-link" data-close-menu>About Us</a>
+        <a href="#services" class="mobile-menu-link" data-close-menu>Services</a>
         <a href="#projects" class="mobile-menu-link" data-close-menu>Projects</a>
-        <a href="#pricing" class="mobile-menu-link" data-close-menu>Pricing</a>
+        <a href="#process" class="mobile-menu-link" data-close-menu>Process</a>
+        <a href="#about" class="mobile-menu-link" data-close-menu>About Us</a>
 
         <div class="mobile-menu-secondary">
           <a href="#contact" class="mobile-menu-small" data-close-menu
@@ -143,7 +167,7 @@
     </div>
 
     <main class="stack">
-      <!-- ============ HOME / HERO ============ -->
+      <!-- ============ HOME / HERO (kept as-is) ============ -->
       <section id="home" class="panel home">
         <!-- Hero content -->
         <div class="hero" id="hero-content">
@@ -197,13 +221,154 @@
           </div>
         </div>
 
-        <a href="#about" class="scroll-hint" aria-label="Scroll to about">
+        <a href="#services" class="scroll-hint" aria-label="Scroll to services">
           <span class="scroll-hint-text">Scroll</span>
           <span class="scroll-hint-line" aria-hidden="true"></span>
         </a>
       </section>
 
-      <!-- ============ ABOUT US ============ -->
+      <!-- ============ MOVING SLIDE directly under hero ============ -->
+      <div class="marquee-band" aria-label="Technologies we use">
+        <div class="skills-marquee">
+          <div class="marquee-track" id="skills-track">
+            <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="git" loading="lazy" onerror="this.style.display='none'" />git</span>
+            <span class="skill"><img src="https://cdn.simpleicons.org/github/white" alt="github" loading="lazy" onerror="this.style.display='none'" />github</span>
+            <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg" alt="npm" loading="lazy" onerror="this.style.display='none'" />npm</span>
+            <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="node" loading="lazy" onerror="this.style.display='none'" />node</span>
+            <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="html" loading="lazy" onerror="this.style.display='none'" />html</span>
+            <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="css" loading="lazy" onerror="this.style.display='none'" />css</span>
+            <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="js" loading="lazy" onerror="this.style.display='none'" />js</span>
+            <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="c" loading="lazy" onerror="this.style.display='none'" />c</span>
+            <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="mysql" loading="lazy" onerror="this.style.display='none'" />mysql</span>
+            <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="sql" loading="lazy" onerror="this.style.display='none'" />sql</span>
+            <span class="skill"><img class="invert" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" alt="express.js" loading="lazy" onerror="this.style.display='none'" />express.js</span>
+            <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="react" loading="lazy" onerror="this.style.display='none'" />react</span>
+            <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="linux" loading="lazy" onerror="this.style.display='none'" />linux</span>
+            <span class="skill"><span class="skill-glyph" aria-hidden="true">🛡</span>sql injection</span>
+            <span class="skill"><span class="skill-glyph" aria-hidden="true">◎</span>soc</span>
+            <span class="skill"><span class="skill-glyph" aria-hidden="true">✎</span>ui ux</span>
+            <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" alt="figma" loading="lazy" onerror="this.style.display='none'" />figma</span>
+            <span class="skill"><img src="https://cdn.simpleicons.org/anthropic/white" alt="claude" loading="lazy" onerror="this.style.display='none'" />claude</span>
+            <span class="skill"><span class="skill-glyph" aria-hidden="true">&gt;_</span>opencode</span>
+            <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="vscode" loading="lazy" onerror="this.style.display='none'" />vscode</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ SERVICES (3 columns splitting the width) ============ -->
+      <section id="services" class="panel section-pad services">
+        <div class="section-inner services-inner">
+          <p class="eyebrow" data-animate="fade-up">Services</p>
+          <h2
+            class="section-title animate-words"
+            data-animate-words="What codsec does best"
+            data-base-delay="0.3"
+            data-stagger="0.09"
+          ></h2>
+          <p class="section-sub" data-animate="fade-up">
+            Three disciplines, one team — design, build and secure, end to end.
+          </p>
+
+          <div class="services-grid">
+            <article class="service" data-animate="fade-up">
+              <span class="service-num" aria-hidden="true">01</span>
+              <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="44" height="44">
+                  <path d="m12 19 7-7 3 3-7 7-3-3z" />
+                  <path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+                  <path d="m2 2 7.586 7.586" />
+                  <circle cx="11" cy="11" r="2" />
+                </svg>
+              </div>
+              <h3 class="service-title">UI/UX Design</h3>
+              <p class="service-text">We craft clean, intuitive interfaces focused on clear visual hierarchy and seamless navigation. From wireframes and design systems to interactive prototypes, we turn complex ideas into user-centric digital experiences optimized for conversion.</p>
+            </article>
+
+            <article class="service" data-animate="fade-up">
+              <span class="service-num" aria-hidden="true">02</span>
+              <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="44" height="44">
+                  <polyline points="16 18 22 12 16 6" />
+                  <polyline points="8 6 2 12 8 18" />
+                  <line x1="14" y1="4" x2="10" y2="20" />
+                </svg>
+              </div>
+              <h3 class="service-title">Full-Stack Web Development</h3>
+              <p class="service-text">We build fast, scalable web applications engineered for performance and reliability. From responsive frontend interfaces to efficient database architectures, we deliver end-to-end solutions tailored to your operational needs.</p>
+            </article>
+
+            <article class="service" data-animate="fade-up">
+              <span class="service-num" aria-hidden="true">03</span>
+              <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="44" height="44">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <rect x="9" y="10.5" width="6" height="5" rx="1" />
+                  <path d="M10.5 10.5V9a1.5 1.5 0 0 1 3 0v1.5" />
+                </svg>
+              </div>
+              <h3 class="service-title">Secure Backend &amp; API Engineering</h3>
+              <p class="service-text">We architect robust server-side systems and protected communication channels. We implement safe authentication, OWASP defenses, strict access controls, and rate limiting to safeguard your data and backend infrastructure.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PROJECTS ============ -->
+      <section id="projects" class="panel section-pad">
+        <div class="section-inner">
+          <p class="eyebrow" data-animate="fade-up">Projects</p>
+          <h2
+            class="section-title animate-words"
+            data-animate-words="Selected work by codsec"
+            data-base-delay="0.3"
+            data-stagger="0.09"
+          ></h2>
+          <p class="section-sub" data-animate="fade-up">
+            Case studies are on the way — tell us how you want to present them:
+            cards, list, or full case studies, and we'll build it in the same theme.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ PROCESS ============ -->
+      <section id="process" class="panel section-pad">
+        <div class="section-inner">
+          <p class="eyebrow" data-animate="fade-up">Process</p>
+          <h2
+            class="section-title animate-words"
+            data-animate-words="From idea to launch"
+            data-base-delay="0.3"
+            data-stagger="0.09"
+          ></h2>
+          <p class="section-sub" data-animate="fade-up">
+            A tight, transparent workflow — you always know what happens next.
+          </p>
+          <div class="process-grid">
+            <article class="process-step" data-animate="fade-up">
+              <span class="process-num" aria-hidden="true">01</span>
+              <h3>Discover</h3>
+              <p>Goals, users and scope — we map what success looks like before a pixel is drawn.</p>
+            </article>
+            <article class="process-step" data-animate="fade-up">
+              <span class="process-num" aria-hidden="true">02</span>
+              <h3>Design</h3>
+              <p>Wireframes, design system and interactive prototypes, iterated with you.</p>
+            </article>
+            <article class="process-step" data-animate="fade-up">
+              <span class="process-num" aria-hidden="true">03</span>
+              <h3>Develop</h3>
+              <p>Fast, scalable builds with clean code, responsive frontends and solid data layers.</p>
+            </article>
+            <article class="process-step" data-animate="fade-up">
+              <span class="process-num" aria-hidden="true">04</span>
+              <h3>Secure &amp; Launch</h3>
+              <p>Hardened auth, OWASP defenses and testing — then deploy, monitor and scale.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ ABOUT US (end of page, agency voice) ============ -->
       <section id="about" class="panel about">
         <div class="about-inner">
           <p class="eyebrow" data-animate="fade-up">About Us</p>
@@ -211,21 +376,21 @@
           <div class="about-intro">
             <h2
               class="about-title animate-words"
-              data-animate-words="Hi, I'm Omar Ayoub Benkreira"
-              data-base-delay="0.5"
+              data-animate-words="We are codsec"
+              data-base-delay="0.3"
               data-stagger="0.09"
             ></h2>
             <p
               class="about-role animate-words"
-              data-animate-words="Full-Stack Developer &amp; Cyber Security Student"
-              data-base-delay="1"
+              data-animate-words="Digital agency — Design, Web Development &amp; Security"
+              data-base-delay="0.7"
               data-stagger="0.06"
             ></p>
             <p class="about-text" data-animate="fade-up">
               <span
                 class="animate-words"
-                data-animate-words="I focus on building clean, performant and secure web applications with seamless user interfaces and robust backends. Driven by curiosity, I regularly turn ideas into production-ready web apps, exploring modern interfaces and security practices."
-                data-base-delay="1.2"
+                data-animate-words="codsec designs and engineers clean, performant and secure digital products. We blend sharp UI/UX with robust full-stack development and security-first backend practices to ship websites and apps your business can rely on."
+                data-base-delay="0.9"
                 data-stagger="0.045"
               ></span>
             </p>
@@ -256,7 +421,7 @@
                   </svg>
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/omar-ayoub-benkreira"
+                  href="https://www.linkedin.com/"
                   target="_blank"
                   rel="noopener"
                   class="social-btn"
@@ -269,82 +434,20 @@
               </div>
             </div>
           </div>
-
-          <!-- Full-width skills slide, running left -> right under the text -->
-          <div class="about-visual" data-animate="fade-up">
-              <div class="skills-marquee" aria-label="Skills marquee">
-                <div class="marquee-track" id="skills-track">
-                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="git" loading="lazy" onerror="this.style.display='none'" />git</span>
-                  <span class="skill"><img src="https://cdn.simpleicons.org/github/white" alt="github" loading="lazy" onerror="this.style.display='none'" />github</span>
-                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg" alt="npm" loading="lazy" onerror="this.style.display='none'" />npm</span>
-                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="node" loading="lazy" onerror="this.style.display='none'" />node</span>
-                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="html" loading="lazy" onerror="this.style.display='none'" />html</span>
-                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="css" loading="lazy" onerror="this.style.display='none'" />css</span>
-                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="js" loading="lazy" onerror="this.style.display='none'" />js</span>
-                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="c" loading="lazy" onerror="this.style.display='none'" />c</span>
-                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="mysql" loading="lazy" onerror="this.style.display='none'" />mysql</span>
-                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="sql" loading="lazy" onerror="this.style.display='none'" />sql</span>
-                  <span class="skill"><img class="invert" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" alt="express.js" loading="lazy" onerror="this.style.display='none'" />express.js</span>
-                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="react" loading="lazy" onerror="this.style.display='none'" />react</span>
-                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="linux" loading="lazy" onerror="this.style.display='none'" />linux</span>
-                  <span class="skill"><span class="skill-glyph" aria-hidden="true">🛡</span>sql injection</span>
-                  <span class="skill"><span class="skill-glyph" aria-hidden="true">◎</span>soc</span>
-                  <span class="skill"><span class="skill-glyph" aria-hidden="true">✎</span>ui ux</span>
-                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" alt="figma" loading="lazy" onerror="this.style.display='none'" />figma</span>
-                  <span class="skill"><img src="https://cdn.simpleicons.org/anthropic/white" alt="claude" loading="lazy" onerror="this.style.display='none'" />claude</span>
-                  <span class="skill"><span class="skill-glyph" aria-hidden="true">&gt;_</span>opencode</span>
-                  <span class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="vscode" loading="lazy" onerror="this.style.display='none'" />vscode</span>
-                </div>
-              </div>
-          </div>
       </section>
 
-      <!-- ============ PROJECTS (placeholder for next step) ============ -->
-      <section id="projects" class="panel section-pad">
-        <div class="section-inner">
-          <p class="eyebrow" data-animate="fade-up">Projects</p>
-          <h2
-            class="section-title animate-words"
-            data-animate-words="Selected work coming next"
-            data-base-delay="0.5"
-            data-stagger="0.09"
-          ></h2>
-          <p class="section-sub" data-animate="fade-up">
-            Tell me how you want to present them — cards, list, or case
-            studies — and I'll build it in the same theme.
-          </p>
-        </div>
-      </section>
-
-      <!-- ============ PRICING (placeholder for next step) ============ -->
-      <section id="pricing" class="panel section-pad">
-        <div class="section-inner">
-          <p class="eyebrow" data-animate="fade-up">Pricing</p>
-          <h2
-            class="section-title animate-words"
-            data-animate-words="Simple pricing coming next"
-            data-base-delay="0.5"
-            data-stagger="0.09"
-          ></h2>
-          <p class="section-sub" data-animate="fade-up">
-            Tell me your plans and prices and I'll build the cards in the same
-            theme.
-          </p>
-        </div>
-      </section>
-
-      <!-- ============ FOOTER ============ -->
+      <!-- ============ FOOTER / CONTACT ============ -->
       <footer id="contact" class="panel footer">
         <div class="section-inner">
           <p class="eyebrow" data-animate="fade-up">Contact</p>
           <h2
             class="section-title animate-words"
-            data-animate-words="Let's build something strong"
-            data-base-delay="0.5"
+            data-animate-words="Let's build something strong with codsec"
+            data-base-delay="0.3"
             data-stagger="0.09"
           ></h2>
           <a href="#home" class="nav-contact-btn footer-cta" data-animate="fade-up">Back to top</a>
-          <p class="footer-copy">© 2026 Omar Ayoub Benkreira. All rights reserved.</p>
+          <p class="footer-copy">© 2026 codsec. All rights reserved.</p>
         </div>
       </footer>
     </main>

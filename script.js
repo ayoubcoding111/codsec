@@ -153,15 +153,15 @@ function updateHeroExit() {
 window.addEventListener("scroll", updateHeroExit, { passive: true });
 updateHeroExit();
 
-// Snap mode manager: fixes the "small scroll down from About yanks me back"
-// pull-back. The instant the user pushes DOWN while on/near About top we
-// kill CSS snap so the browser can't snap back; updateSnapMode re-arms it
-// only once safely back in the Home/About lock zone.
-const aboutSection = document.getElementById("about");
+// Snap mode manager: fixes the "small scroll down from the second section
+// yanks me back" pull-back. The instant the user pushes DOWN while on/near
+// the second section top we kill CSS snap so the browser can't snap back;
+// updateSnapMode re-arms it only once safely back in the Home lock zone.
+const secondSection = panels[1] || null;
 
-function getAboutTop() {
-  if (aboutSection) return aboutSection.offsetTop;
-  return panels[1] ? panels[1].offsetTop : window.innerHeight;
+function getSecondTop() {
+  if (secondSection) return secondSection.offsetTop;
+  return window.innerHeight;
 }
 
 function setSnapType(t) {
@@ -173,8 +173,8 @@ function setSnapType(t) {
 
 let suspendSnapUntil = 0;
 
-// Re-arm snap only when at/above About top; anything past it stays free
-// so Projects+ scrolls smoothly with zero pull-back.
+// Re-arm snap only when at/above the second section top; anything past it
+// stays free so Services+ scrolls smoothly with zero pull-back.
 function updateSnapMode() {
   if (reduceMotion) return;
   if (performance.now() < suspendSnapUntil) {
@@ -182,7 +182,7 @@ function updateSnapMode() {
     return;
   }
   const y = window.scrollY;
-  setSnapType(y > getAboutTop() + 24 ? "none" : "y proximity");
+  setSnapType(y > getSecondTop() + 24 ? "none" : "y proximity");
 }
 
 window.addEventListener("scroll", updateSnapMode, { passive: true });
@@ -190,20 +190,21 @@ window.addEventListener("resize", updateSnapMode);
 updateSnapMode();
 
 // Wheel assist guarantees "even a small scroll jumps a full page" ONLY for
-// Home <-> About. Everything after About (Projects / Pricing / Footer)
-// keeps native smooth scrolling for that free, expensive feel.
-// CSS uses `scroll-snap-type: y proximity` + snap-align only on Home/About,
-// so Projects+ can rest anywhere without snapping back.
+// Home <-> Services. Everything after Services (Projects / Process /
+// About / Footer) keeps native smooth scrolling for that free, expensive
+// feel.
+// CSS uses `scroll-snap-type: y proximity` + snap-align only on Home,
+// so the rest can rest anywhere without snapping back.
 let snapLock = false;
 window.addEventListener(
   "wheel",
   (e) => {
     // Escape hatch (runs before every early-return): pushing DOWN while
-    // on/near About top kills snap instantly + 1s cooldown so the whole
-    // gesture stays free and can never yank back mid-scroll.
+    // on/near the second section top kills snap instantly + 1s cooldown so
+    // the whole gesture stays free and can never yank back mid-scroll.
     if (!reduceMotion && e.deltaY > 4 && !e.ctrlKey) {
       const y = window.scrollY;
-      const top = getAboutTop();
+      const top = getSecondTop();
       if (y >= top - 40 && y <= top + 40) {
         setSnapType("none");
         suspendSnapUntil = performance.now() + 1000;
@@ -223,7 +224,7 @@ window.addEventListener(
         : Math.max(0, idx - 1);
     if (next === idx) return;
 
-    // Only hijack when LANDING on Home (0) or About (1).
+    // Only hijack when LANDING on Home (0) or Services (1).
     // Scrolling TOWARD Projects+ (next >= 2) stays native/smooth.
     const SNAP_LAST_INDEX = 1;
     if (next > SNAP_LAST_INDEX) return;
@@ -252,7 +253,7 @@ window.addEventListener(
 );
 
 // Touch equivalent of the escape hatch: dragging up (scrolling down)
-// from About top kills snap so mobile can't yank back either.
+// from the second section top kills snap so mobile can't yank back either.
 let lastTouchY = null;
 window.addEventListener(
   "touchstart",
@@ -270,7 +271,7 @@ window.addEventListener(
     lastTouchY = touchY;
     if (dy > 4) {
       const y = window.scrollY;
-      const top = getAboutTop();
+      const top = getSecondTop();
       if (y >= top - 40 && y <= top + 40) {
         setSnapType("none");
         suspendSnapUntil = performance.now() + 1000;
@@ -504,3 +505,80 @@ if (video && canvas) {
     }
   });
 }
+
+/* --------------------------------------------------------------------------
+ * Custom smooth cursor: fast dot + lerped trailing ring, scroll-aware
+ * ------------------------------------------------------------------------ */
+(function initCustomCursor() {
+  if (reduceMotion) return;
+  const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const dot = document.getElementById("cursor-dot");
+  const ring = document.getElementById("cursor-ring");
+  if (!fine || !dot || !ring) return;
+
+  document.documentElement.classList.add("has-custom-cursor");
+
+  let mx = window.innerWidth / 2;
+  let my = window.innerHeight / 2;
+  let rx = mx;
+  let ry = my;
+  let dx = mx;
+  let dy = my;
+  let visible = false;
+  let raf = 0;
+
+  const render = () => {
+    // Dot follows almost instantly, ring trails with lerp for smoothness.
+    dx += (mx - dx) * 0.35;
+    dy += (my - dy) * 0.35;
+    rx += (mx - rx) * 0.16;
+    ry += (my - ry) * 0.16;
+    dot.style.transform = `translate(${dx - 4}px, ${dy - 4}px)`;
+    const half = ring.offsetWidth / 2 || 19;
+    ring.style.transform = `translate(${rx - half}px, ${ry - half}px)`;
+    raf = requestAnimationFrame(render);
+  };
+
+  window.addEventListener(
+    "mousemove",
+    (e) => {
+      mx = e.clientX;
+      my = e.clientY;
+      if (!visible) {
+        visible = true;
+        dot.style.opacity = "1";
+        ring.style.opacity = "1";
+        raf = requestAnimationFrame(render);
+      }
+    },
+    { passive: true }
+  );
+
+  document.addEventListener("mouseleave", () => {
+    visible = false;
+    cancelAnimationFrame(raf);
+    dot.style.opacity = "0";
+    ring.style.opacity = "0";
+  });
+
+  // Grow on interactive hover.
+  const hoverSel = "a, button, .service, .process-step, .skill";
+  document.addEventListener("mouseover", (e) => {
+    if (e.target.closest(hoverSel)) document.body.classList.add("cursor-hover");
+  });
+  document.addEventListener("mouseout", (e) => {
+    if (e.target.closest(hoverSel)) document.body.classList.remove("cursor-hover");
+  });
+
+  // Modern scroll state: ring expands while scrolling, relaxes when idle.
+  let scrollTimer = 0;
+  const onScroll = () => {
+    document.body.classList.add("is-scrolling");
+    window.clearTimeout(scrollTimer);
+    scrollTimer = window.setTimeout(() => {
+      document.body.classList.remove("is-scrolling");
+    }, 160);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("wheel", onScroll, { passive: true });
+})();
