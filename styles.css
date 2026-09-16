@@ -94,6 +94,7 @@ button {
    ========================================================================== */
 .stack {
   position: relative;
+  z-index: 1;
 }
 
 .panel {
@@ -106,10 +107,10 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* Visible so taller content (stacked About on small screens) is never
-     clipped — only Home keeps overflow hidden for the video bg. */
+  /* Panels are transparent so the fixed video backdrop shows through;
+     Home shows it sharp, other pages show it blurred (body.is-blur-bg). */
   overflow: visible;
-  background: var(--c-bg);
+  background: transparent;
   color: var(--c-white);
 }
 
@@ -119,15 +120,30 @@ button {
   min-height: 100vh;
   min-height: 100svh;
   width: 100%;
-  overflow: hidden;
-  background: var(--c-black);
+  overflow: visible;
+  background: transparent;
   color: var(--c-white);
 }
 
+/* Site-wide fixed video background. Fixed to the viewport so it never
+   moves while panels scroll over it. Sharp on Home, blurred everywhere
+   else (see body.is-blur-bg below, toggled in script.js). */
 .bg-media {
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition:
+    filter 0.8s ease,
+    transform 0.8s ease;
+}
+
+/* Scrolled past Home: the live video becomes the blurred moving backdrop
+   for all other pages. Scale hides the translucent blur edges. */
+body.is-blur-bg .bg-media {
+  filter: blur(18px) brightness(0.55);
+  transform: scale(1.08);
 }
 
 .hero-video {
@@ -159,6 +175,12 @@ button {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.4);
+  transition: background-color 0.8s ease;
+}
+
+/* Darken a touch more once blurred so text stays readable on all pages. */
+body.is-blur-bg .bg-overlay {
+  background: rgba(0, 0, 0, 0.55);
 }
 
 /* ==========================================================================
@@ -533,6 +555,8 @@ button {
 
 @media (prefers-reduced-motion: reduce) {
   .nav-contact-btn::after,
+  .social-btn,
+  .social-btn::after,
   .animated-button,
   .animated-button svg,
   .animated-button .circle,
@@ -636,7 +660,7 @@ button {
 
 .scroll-hint-line {
   display: block;
-  width: 1px;
+  width: 2px;
   height: 44px;
   background: linear-gradient(var(--c-cyan), var(--c-plum));
   animation: hintDrop 1.8s ease-in-out infinite;
@@ -677,8 +701,9 @@ button {
 
 .eyebrow::before {
   content: "";
-  width: 28px;
-  height: 1px;
+  width: 32px;
+  height: 3px;
+  border-radius: 999px;
   background: linear-gradient(90deg, var(--c-cyan), var(--c-plum));
 }
 
@@ -714,38 +739,12 @@ button {
    ========================================================================== */
 .about {
   padding: 120px 24px 80px;
-  background:
-    radial-gradient(600px 400px at 12% 18%, rgb(136 216 216 / 0.1), transparent 60%),
-    radial-gradient(700px 460px at 88% 82%, rgb(120 56 120 / 0.22), transparent 62%),
-    var(--c-bg);
-}
-
-.about-glow {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(90px);
-  pointer-events: none;
-}
-
-.about-glow-a {
-  width: 420px;
-  height: 420px;
-  left: -140px;
-  top: 8%;
-  background: rgb(136 216 216 / 0.12);
-}
-
-.about-glow-b {
-  width: 520px;
-  height: 520px;
-  right: -160px;
-  bottom: -80px;
-  background: rgb(120 56 120 / 0.28);
+  background: transparent;
 }
 
 .about-inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
@@ -798,7 +797,11 @@ button {
   gap: 14px;
 }
 
+/* Socials — white filled discs with the exact circle-burst hover
+   animation as the contact button (see .nav-contact-btn). */
 .social-btn {
+  position: relative;
+  isolation: isolate;
   width: 46px;
   height: 46px;
   border-radius: 50%;
@@ -807,21 +810,39 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   border: 1px solid rgb(255 255 255 / 0.9);
-  transition:
-    transform 0.35s var(--ease-out-soft),
-    background 0.35s,
-    color 0.35s,
-    box-shadow 0.35s,
-    border-color 0.35s;
+  cursor: pointer;
+  /* Return (mouse-leave) timing: a bit faster than the hover-in bloom. */
+  transition: all 0.6s ease-in-out;
+}
+
+.social-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 10px;
+  width: 10px;
+  background-color: #333;
+  border-radius: 50%;
+  visibility: hidden;
+  z-index: -1;
+  transition: all 0.6s ease-in-out;
 }
 
 .social-btn:hover {
-  background: linear-gradient(135deg, var(--c-cyan), var(--c-plum));
+  color: #fff;
   border-color: transparent;
-  color: var(--c-white);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgb(136 216 216 / 0.25);
+  box-shadow: 1px 1px 60px rgb(37 37 37 / 0.65);
+  /* Hover-in timing: slow bloom, same grey burst as the contact button. */
+  transition: all 0.9s ease-in-out;
+}
+
+.social-btn:hover::after {
+  visibility: visible;
+  transform: scale(100) translateX(2px);
+  transition: all 0.9s ease-in-out;
 }
 
 .social-btn:active {
@@ -839,16 +860,15 @@ button {
 }
 
 .about-visual {
+  position: relative;
+  z-index: 2;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-top: 56px;
   overflow: hidden;
-  border-top: 1px solid rgb(255 255 255 / 0.1);
-  border-bottom: 1px solid rgb(255 255 255 / 0.1);
-  background: rgb(255 255 255 / 0.04);
-  padding: 26px 0;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 24px 70px rgb(0 0 0 / 0.45);
+  background: transparent;
+  border: 0;
+  padding: 14px 0;
 }
 
 @keyframes floatY {
@@ -861,19 +881,9 @@ button {
   }
 }
 
-.marquee-label {
-  font-size: 12px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgb(255 255 255 / 0.6);
-  margin-bottom: 14px;
-  padding: 0 24px;
-}
-
-@media (min-width: 960px) {
-  .marquee-label {
-    padding: 0 48px;
-  }
+.marquee-label,
+.marquee-hint {
+  display: none !important;
 }
 
 .skills-marquee {
@@ -900,10 +910,6 @@ button {
   to {
     transform: translateX(0);
   }
-}
-
-.skills-marquee:hover .marquee-track {
-  animation-play-state: paused;
 }
 
 .skill {
@@ -955,33 +961,15 @@ button {
   background: linear-gradient(135deg, var(--c-cyan), var(--c-pale-blue));
 }
 
-.marquee-hint {
-  margin-top: 12px;
-  padding: 0 24px;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgb(255 255 255 / 0.35);
-}
-
-@media (min-width: 960px) {
-  .marquee-hint {
-    padding: 0 48px;
-  }
-}
-
-/* Projects / pricing get a faint divider glow so panels feel distinct */
+/* Projects / pricing / footer stay transparent so the fixed site
+   background shows through on every page. */
 #projects {
-  background:
-    radial-gradient(560px 380px at 85% 20%, rgb(120 56 120 / 0.16), transparent 60%),
-    var(--c-bg);
+  background: transparent;
   border-top: 1px solid rgb(255 255 255 / 0.07);
 }
 
 #pricing {
-  background:
-    radial-gradient(560px 380px at 15% 25%, rgb(136 216 216 / 0.09), transparent 60%),
-    var(--c-bg);
+  background: transparent;
   border-top: 1px solid rgb(255 255 255 / 0.07);
 }
 
@@ -990,9 +978,7 @@ button {
   min-height: 92vh;
   padding: 120px 24px 48px;
   border-top: 1px solid rgb(255 255 255 / 0.07);
-  background:
-    radial-gradient(700px 320px at 50% 0%, rgb(120 56 120 / 0.22), transparent 65%),
-    var(--c-bg);
+  background: transparent;
 }
 
 .footer-cta {
@@ -1024,6 +1010,11 @@ button {
   }
 
   .hero {
+    transition: none;
+  }
+
+  .bg-media,
+  .bg-overlay {
     transition: none;
   }
 }

@@ -144,6 +144,9 @@ function updateHeroExit() {
   const progress = window.scrollY / Math.max(1, window.innerHeight);
   const exiting = progress > 0.22;
   heroContent.classList.toggle("is-exiting", exiting);
+  // Same moment: the fixed video blurs into the moving backdrop for
+  // all other pages (see body.is-blur-bg .bg-media in styles.css).
+  document.body.classList.toggle("is-blur-bg", exiting);
   if (scrollHint) scrollHint.style.opacity = exiting ? "0" : "1";
 }
 

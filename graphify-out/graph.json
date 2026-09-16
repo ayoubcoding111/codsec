@@ -71,7 +71,7 @@
       "file_type": "code",
       "norm_label": "canvas",
       "source_file": "script.js",
-      "source_location": "L227"
+      "source_location": "L230"
     },
     {
       "id": "script_herocontent",
@@ -137,7 +137,7 @@
       "file_type": "code",
       "norm_label": "navlinks",
       "source_file": "script.js",
-      "source_location": "L196"
+      "source_location": "L199"
     },
     {
       "id": "script_panels",
@@ -170,7 +170,7 @@
       "file_type": "code",
       "norm_label": "skillstrack",
       "source_file": "script.js",
-      "source_location": "L216"
+      "source_location": "L219"
     },
     {
       "id": "script_video",
@@ -181,7 +181,7 @@
       "file_type": "code",
       "norm_label": "video",
       "source_file": "script.js",
-      "source_location": "L226"
+      "source_location": "L229"
     }
   ],
   "links": [
@@ -237,7 +237,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L196",
+      "source_location": "L199",
       "weight": 1.0
     },
     {
@@ -248,7 +248,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L216",
+      "source_location": "L219",
       "weight": 1.0
     },
     {
@@ -270,7 +270,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L226",
+      "source_location": "L229",
       "weight": 1.0
     },
     {
@@ -281,7 +281,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L227",
+      "source_location": "L230",
       "weight": 1.0
     },
     {
@@ -348,9 +348,10 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "script.js",
-      "source_location": "L150",
+      "source_location": "L153",
       "weight": 1.0
     }
   ],
-  "hyperedges": []
+  "hyperedges": [],
+  "built_at_commit": "7aa4582bf981d056a8be062590c180b01b546b43"
 }
