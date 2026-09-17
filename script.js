@@ -891,9 +891,9 @@ if (video && canvas) {
   const team = [
     {
       name: "Ayoub Benkreira",
-      role: "Founder & Leader of codsec",
+      role: "Founder & Leader of CodSec",
       focus: "Design · Build · Secure",
-      bio: "Runs codsec end to end — designs interfaces, builds full-stack apps, and hardens security from the first line of code.",
+      bio: "Runs CodSec end to end — designs interfaces, builds full-stack apps, and hardens security from the first line of code.",
       skills: ["UI/UX", "Full-Stack", "APIs", "Security"],
       location: "Algiers",
       years: "2y",
@@ -1155,7 +1155,7 @@ if (video && canvas) {
     // Discord embed field values are capped at 1024 chars.
     const safeDetails = details ? details.slice(0, 1000) : "—";
     const payload = {
-      username: "codsec — Quote Form",
+      username: "CodSec — Quote Form",
       embeds: [
         {
           title: "📩 New quote request",
@@ -1200,5 +1200,23 @@ if (video && canvas) {
         if (originalBtnHTML) submitBtn.innerHTML = originalBtnHTML;
       }
     }
+  });
+})();
+
+/* --------------------------------------------------------------------------
+ * Site footer: dynamic year + back-to-top (all pages)
+ * ------------------------------------------------------------------------ */
+(function initSiteFooter() {
+  const year = String(new Date().getFullYear());
+  document.querySelectorAll("[data-year]").forEach((el) => {
+    el.textContent = year;
+  });
+
+  document.querySelectorAll("[data-back-top]").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (window.__lenis) window.__lenis.scrollTo(0, { duration: 1.4 });
+      else window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    });
   });
 })();

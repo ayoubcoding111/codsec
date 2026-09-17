@@ -516,7 +516,8 @@ body.is-scrolled .nav {
   text-align: center;
   width: 100%;
   min-height: calc(100vh - 88px);
-  padding: 0 24px;
+  margin: 0 auto;
+  padding: 96px 24px 40px;
 }
 
 @media (min-width: 768px) {
@@ -533,6 +534,8 @@ body.is-scrolled .nav {
 
 .hero-sub-wrap {
   margin-top: 24px;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 360px;
 }
 
@@ -548,6 +551,21 @@ body.is-scrolled .nav {
   opacity: 0;
   animation: fadeIn 0.9s ease-out forwards;
   animation-delay: 2.5s;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.cta-fade .btn-white {
+  font-size: 14px;
+  padding: 12px 28px;
+}
+
+.cta-fade .animated-button {
+  font-size: 14px;
+  padding: 8px 28px;
 }
 
 .animated-button {
@@ -1648,7 +1666,7 @@ body.is-scrolled .nav {
 }
 
 /* ==========================================================================
-   Brand (logo left + codsec wordmark, piece-by-piece hover)
+   Brand (logo left + CodSec wordmark, piece-by-piece hover)
    ========================================================================== */
 .brand {
   display: inline-flex;
@@ -1724,7 +1742,7 @@ body.is-scrolled .nav {
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1;
-  text-transform: lowercase;
+  text-transform: none;
 }
 
 .brand-word .bl {
@@ -1753,9 +1771,9 @@ body.is-scrolled .nav {
   .brand-mark { width: 46px; height: 36px; }
 }
 
-/* Tighter nav when 5 links share the row */
-@media (min-width: 768px) and (max-width: 1100px) {
-  .nav-links { gap: 20px; }
+/* Tighter nav when 7 links share the row */
+@media (min-width: 768px) and (max-width: 1200px) {
+  .nav-links { gap: 18px; }
   .nav-link { font-size: 13px; }
 }
 
@@ -2582,7 +2600,7 @@ body.detail-page .footer.detail-footer .footer-copy { margin-top: 32px; }
 #readme-toggle { cursor: pointer; }
 
 /* ==========================================================================
-   About — Meet the Team (migrated from cards.html, themed to codsec)
+   About — Meet the Team (migrated from cards.html, themed to CodSec)
    Flip cards: front = avatar/name/role, back = bio/skills/meta/socials.
    Prefixed with .team- to avoid colliding with site .socials/.card etc.
    ========================================================================== */
@@ -3531,4 +3549,150 @@ button.project-link {
   .dropdown-chevron {
     transition: none;
   }
+}
+
+/* ==========================================================================
+   Site footer — professional bottom bar on every page (very bottom)
+   Compact, glassy, 4-column on desktop / stacked on mobile.
+   Lives OUTSIDE .stack so it never inherits .panel full-height rules.
+   ========================================================================== */
+.site-footer {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgb(255 255 255 / 0.08);
+  background: rgb(8 8 10 / 0.62);
+  backdrop-filter: blur(18px) saturate(1.25);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+}
+
+.site-footer-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 24px 22px;
+}
+
+.site-footer-grid {
+  display: grid;
+  gap: 36px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 900px) {
+  .site-footer-grid {
+    grid-template-columns: 1.5fr 1fr 1fr 1.1fr;
+    gap: 40px;
+  }
+}
+
+.site-footer-brand p {
+  margin-top: 14px;
+  max-width: 34ch;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgb(255 255 255 / 0.62);
+}
+
+.site-footer-brand .socials {
+  margin-top: 18px;
+  gap: 12px;
+}
+
+.site-footer-brand .social-btn {
+  width: 40px;
+  height: 40px;
+}
+
+.site-footer-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-pale-blue);
+}
+
+.site-footer-links {
+  list-style: none;
+  margin-top: 16px;
+  display: grid;
+  gap: 11px;
+}
+
+.site-footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgb(255 255 255 / 0.68);
+  transition:
+    color 0.3s ease,
+    gap 0.35s var(--ease-out-soft);
+}
+
+.site-footer-links a:hover {
+  color: var(--c-cyan);
+  gap: 12px;
+}
+
+.site-footer-contact-text {
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgb(255 255 255 / 0.62);
+}
+
+.site-footer-ctas {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.site-footer-bottom {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgb(255 255 255 / 0.08);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  font-size: 13px;
+  color: rgb(255 255 255 / 0.48);
+}
+
+.site-footer-legal {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 18px;
+}
+
+.site-footer-legal a {
+  color: rgb(255 255 255 / 0.62);
+  transition: color 0.3s ease;
+}
+
+.site-footer-legal a:hover {
+  color: var(--c-cyan);
+}
+
+.site-footer-top-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.55);
+  transition: color 0.3s ease;
+}
+
+.site-footer-top-link:hover {
+  color: var(--c-cyan);
 }
