@@ -1,14 +1,14 @@
 {
   "script.js": {
-    "mtime": 1789601197.5048115,
-    "seen": 1789601200.3757362,
-    "ast_hash": "1b6fb7befe1bb9631974f7dbc6266dd5",
+    "mtime": 1789656473.078632,
+    "seen": 1789656475.9986877,
+    "ast_hash": "90f9c4691b8152d1b6d2235a2b2bb0df",
     "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1789653410.0527167,
-    "seen": 1789653412.9639666,
-    "ast_hash": "e83fde7ebdfc2b447da3649196ded57f",
+    "mtime": 1789658636.3650343,
+    "seen": 1789658639.556284,
+    "ast_hash": "7f0e1de10f9c271bcf28b9a0cdd44441",
     "semantic_hash": ""
   },
   ".vscode/settings.json": {
@@ -48,15 +48,15 @@
     "semantic_hash": "8985fc422125464667ce9324d99aa535"
   },
   "project-restaurant.html": {
-    "mtime": 1789601594.914276,
-    "seen": 1789601597.8203526,
-    "ast_hash": "ee58004ba8295fb04b5b9f78ecc2b4b9",
+    "mtime": 1789658636.549107,
+    "seen": 1789658639.5562873,
+    "ast_hash": "e70de6c2864b442493b1eff946c47e86",
     "semantic_hash": ""
   },
   "project-todo.html": {
-    "mtime": 1789601594.912274,
-    "seen": 1789601597.8203537,
-    "ast_hash": "b5cca06127665812cf8d191408aa0c39",
+    "mtime": 1789658636.5481095,
+    "seen": 1789658639.5562887,
+    "ast_hash": "c92368a2ef8c652e09cfd7fa4f5d72ab",
     "semantic_hash": ""
   },
   ".claude/settings.local.json": {
@@ -90,15 +90,15 @@
     "semantic_hash": ""
   },
   "contact.html": {
-    "mtime": 1789601594.9060445,
-    "seen": 1789601597.820346,
-    "ast_hash": "c12ab51374a7044ebf2e83bddef4ac77",
+    "mtime": 1789658636.3944476,
+    "seen": 1789658639.5562813,
+    "ast_hash": "ac55b76d766f817d09320e7a9271967c",
     "semantic_hash": ""
   },
   "privacy.html": {
-    "mtime": 1789601594.9092686,
-    "seen": 1789601597.8203506,
-    "ast_hash": "5602df665fce2817bf0625364f621b4b",
+    "mtime": 1789658636.3929894,
+    "seen": 1789658639.5562856,
+    "ast_hash": "28dd31f3f14ecfa90e0823bf7ab774df",
     "semantic_hash": ""
   }
 }

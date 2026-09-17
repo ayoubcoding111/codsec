@@ -1,21 +1,21 @@
 # Graph Report - codsec  (2026-09-17)
 
 ## Corpus Check
-- 3 files · ~314,391 words
+- 3 files · ~316,710 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 86 nodes · 89 edges · 20 communities (9 shown, 11 thin omitted)
+- 87 nodes · 90 edges · 20 communities (9 shown, 11 thin omitted)
 - Extraction: 63% EXTRACTED · 37% INFERRED · 0% AMBIGUOUS · INFERRED: 33 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `895f6fe2`
+- Built from commit: `424d2212`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- Site JavaScript
+- script.js
 - Projects List Section
 - requestActiveNav
 - Admin Analytics Dashboard Screenshot
@@ -74,9 +74,9 @@
 
 ## Communities (20 total, 11 thin omitted)
 
-### Community 0 - "Site JavaScript"
-Cohesion: 0.10
-Nodes (15): canvas, counters, heroContent, iconClose, iconOpen, menuToggle, mobileMenu, navLinks (+7 more)
+### Community 0 - "script.js"
+Cohesion: 0.09
+Nodes (16): canvas, counters, heroContent, iconClose, iconOpen, menuToggle, mobileMenu, navLinks (+8 more)
 
 ### Community 1 - "Projects List Section"
 Cohesion: 0.29
@@ -112,7 +112,7 @@ Nodes (4): GitHub Repo ayoubcoding111 restaurent, Live GitHub README Section Res
 
 ## Knowledge Gaps
 - **36 isolated node(s):** `menuToggle`, `mobileMenu`, `iconOpen`, `iconClose`, `panels` (+31 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 42 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 43 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
@@ -128,5 +128,5 @@ _Questions this graph is uniquely positioned to answer:_
   _`Todo Kanban Task Manager Detail Page` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `menuToggle`, `mobileMenu`, `iconOpen` to the rest of the system?**
   _36 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Site JavaScript` be split into smaller, more focused modules?**
-  _Cohesion score 0.09523809523809523 - nodes in this community are weakly interconnected._
+- **Should `script.js` be split into smaller, more focused modules?**
+  _Cohesion score 0.09090909090909091 - nodes in this community are weakly interconnected._

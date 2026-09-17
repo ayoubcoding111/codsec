@@ -361,28 +361,35 @@ body.is-scrolled .nav {
   gap: 24px;
 }
 
-/* Contact button — circle-burst hover (adapted from .button/.type1
-   for the dark hero: white idle / black text, #333 burst, white text). */
-.nav-contact-btn {
+/* White button — the ONE class for every white button on the site
+   (circle-burst hover: white idle / black text, #333 burst, white text).
+   Default = large CTA (Send a message, Submit request).
+   Add .btn-white--sm for the compact variant (nav bar, footers, cards). */
+.btn-white {
   position: relative;
   isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   overflow: hidden;
   border-radius: 30px;
-  padding: 10px 22px;
-  font-size: 14px;
-  font-weight: 500;
+  padding: 14px 36px;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: none;
   line-height: 1;
   color: var(--c-black);
   background-color: var(--c-white);
   border: 2px solid var(--c-white);
   cursor: pointer;
+  text-decoration: none;
   transition: all 0.5s ease-in-out;
 }
 
-.nav-contact-btn::after {
+.btn-white::after {
   content: "";
   position: absolute;
   left: 0;
@@ -396,24 +403,36 @@ body.is-scrolled .nav {
   transition: all 0.5s ease-in-out;
 }
 
-.nav-contact-btn:hover {
+.btn-white:hover {
   color: #fff;
   border-color: transparent;
   box-shadow: 1px 1px 60px rgb(37 37 37 / 0.65);
 }
 
-.nav-contact-btn:hover::after {
+.btn-white:hover::after {
   visibility: visible;
   transform: scale(100) translateX(2px);
 }
 
-.nav-contact-btn:active {
+.btn-white:active {
   filter: brightness(0.96);
 }
 
-.nav-contact-btn:focus-visible {
+.btn-white:focus-visible {
   outline: 2px solid var(--c-cyan);
   outline-offset: 3px;
+}
+
+.btn-white svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.btn-white--sm {
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 /* ==========================================================================
@@ -625,9 +644,8 @@ body.is-scrolled .nav {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .nav-contact-btn::after,
-  .project-link-primary,
-  .project-link-primary::after,
+  .btn-white,
+  .btn-white::after,
   .social-btn,
   .social-btn::after,
   .animated-button,
@@ -987,7 +1005,7 @@ body.is-scrolled .nav {
 }
 
 /* Socials — white filled discs with the exact circle-burst hover
-   animation as the contact button (see .nav-contact-btn). */
+   animation as the white button (see .btn-white). */
 .social-btn {
   position: relative;
   isolation: isolate;
@@ -2218,52 +2236,6 @@ body.is-scrolled .nav {
   padding: 6px 13px;
 }
 
-.project-link-primary {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  background: var(--c-white);
-  color: var(--c-black);
-  border-color: var(--c-white);
-  border-width: 2px;
-  transition: all 0.5s ease-in-out;
-}
-
-.project-link-primary::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 10px;
-  width: 10px;
-  background-color: #333;
-  border-radius: 999px;
-  visibility: hidden;
-  z-index: -1;
-  transition: all 0.5s ease-in-out;
-}
-
-.project-link-primary:hover {
-  color: #fff;
-  border-color: #fff;
-  border-width: 2px;
-  box-shadow: 1px 1px 60px rgb(37 37 37 / 0.65);
-}
-
-.project-link-primary:hover::after {
-  visibility: visible;
-  transform: scale(100) translateX(2px);
-}
-
-.project-link-primary:active {
-  filter: brightness(0.96);
-}
-
-.project-link-primary:focus-visible {
-  outline: 2px solid var(--c-cyan);
-  outline-offset: 3px;
-}
-
 .detail-back {
   display: flex;
   width: fit-content;
@@ -3171,6 +3143,20 @@ body.detail-page .footer.detail-footer .footer-copy { margin-top: 32px; }
   gap: 22px;
 }
 
+.contact-ctas-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .contact-ctas-row {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
 /* Same Build Now button, as a link — keeps every hover detail */
 a.animated-button {
   text-decoration: none;
@@ -3279,6 +3265,20 @@ a.animated-button {
   top: 0;
   font-weight: 700;
   color: var(--c-cyan);
+}
+
+.contact-alt {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.contact-alt-text {
+  font-size: 15px;
+  font-weight: 400;
+  color: rgb(255 255 255 / 0.7);
 }
 
 .form-card {
@@ -3499,7 +3499,7 @@ fieldset.field > legend.field-label {
   text-underline-offset: 3px;
 }
 
-/* Submit row — reuses .project-link-primary grey burst, works on <button> */
+/* Submit row — the button uses .btn-white, note text uses .form-note */
 .form-actions {
   display: grid;
   gap: 14px;
@@ -3508,10 +3508,6 @@ fieldset.field > legend.field-label {
 
 button.project-link {
   font: inherit;
-}
-
-.form-submit {
-  cursor: pointer;
 }
 
 .form-note {

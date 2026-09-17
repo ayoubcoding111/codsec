@@ -996,11 +996,17 @@ if (video && canvas) {
  * - project-type multi dropdown (checkbox panel, ≥1 required)
  * - required: full name, email, ≥1 project type, privacy consent
  * - optional: add-ons, details textarea with counter
- * - submit is demo-only: validates, then shows an inactive notice.
+ * - submit POSTs the data to a Discord webhook as a rich embed.
  * ------------------------------------------------------------------------ */
 (function initQuoteForm() {
   const form = document.getElementById("quote-form");
   if (!form) return;
+
+  // Discord incoming webhook — form submissions are POSTed here as an embed.
+  // NOTE: this URL is public in frontend code. If it gets spammed, regenerate
+  // it in Discord (Channel Settings → Integrations → Webhooks) and update it here.
+  const DISCORD_WEBHOOK_URL =
+    "https://discord.com/api/webhooks/1550155543056752832/iltcSm8SR5a_TP0Nyq-zR92TUvZNgF2JDEhxl3toFyWUf5xTiLzjCoS--WQ9_FP4eqOn";
 
   const nameInput = document.getElementById("full-name");
   const emailInput = document.getElementById("email");
@@ -1104,8 +1110,8 @@ if (video && canvas) {
     );
   }
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault(); // demo only — never sends anywhere for now.
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
     const nameOk =
       !!nameInput && nameInput.value.trim().length >= 2;
@@ -1130,9 +1136,69 @@ if (video && canvas) {
       return;
     }
 
-    setNote(
-      "Thanks — this form is a demo for now and was not sent. We will connect it soon.",
-      "is-ok"
+    const submitBtn = form.querySelector('[type="submit"]');
+    const originalBtnHTML = submitBtn ? submitBtn.innerHTML : "";
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.setAttribute("aria-busy", "true");
+    }
+    setNote("Sending…", "");
+
+    const fullName = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const projectTypes = typeBoxes.filter((b) => b.checked).map((b) => b.value);
+    const addons = Array.from(form.querySelectorAll('input[name="addons"]:checked')).map(
+      (b) => b.value
     );
+    const details = detailsInput ? detailsInput.value.trim() : "";
+
+    // Discord embed field values are capped at 1024 chars.
+    const safeDetails = details ? details.slice(0, 1000) : "—";
+    const payload = {
+      username: "codsec — Quote Form",
+      embeds: [
+        {
+          title: "📩 New quote request",
+          color: 0x7c5cff,
+          timestamp: new Date().toISOString(),
+          fields: [
+            { name: "Full name", value: fullName.slice(0, 256), inline: true },
+            { name: "Email", value: email.slice(0, 256), inline: true },
+            { name: "Project type(s)", value: projectTypes.join(", ").slice(0, 1024) || "—", inline: false },
+            { name: "Add-ons", value: addons.join(", ").slice(0, 1024) || "None", inline: false },
+            { name: "Project details", value: safeDetails || "—", inline: false },
+            { name: "Page", value: window.location.href.slice(0, 512), inline: false },
+          ],
+        },
+      ],
+    };
+
+    try {
+      const res = await fetch(DISCORD_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`Discord responded with HTTP ${res.status}`);
+
+      setNote(
+        "Thanks — your request was sent! We reply within 24 hours.",
+        "is-ok"
+      );
+      form.reset();
+      refreshDropLabel();
+      if (detailsInput && detailsNum) detailsNum.textContent = "0";
+    } catch (err) {
+      setNote(
+        "Something went wrong sending your request. Please try again or email us directly.",
+        "is-error"
+      );
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.removeAttribute("aria-busy");
+        if (originalBtnHTML) submitBtn.innerHTML = originalBtnHTML;
+      }
+    }
   });
 })();
