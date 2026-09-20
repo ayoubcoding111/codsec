@@ -10,6 +10,13 @@
       content="CodSec is a digital agency crafting clean interfaces, fast web apps and secure backends."
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://cdn.sceneai.art" crossorigin />
   </head>
   <body>
     <!-- Site-wide fixed video background — seamless boomerang (forward then
@@ -23,12 +30,13 @@
         autoplay
         muted
         playsinline
-        preload="auto"
+        loop
+        preload="metadata"
         disablepictureinpicture
       ></video>
       <!-- Canvas takes over after the first pass: replays captured frames
            forward/backward so turnarounds are instant (see script.js). -->
-      <canvas id="hero-canvas" class="bg-canvas"></canvas>
+      <canvas id="hero-canvas" class="bg-canvas" hidden></canvas>
       <div class="bg-overlay"></div>
       <!-- Bottom-only blur band: softens the video's lower edge so the
            scroll from hero into the marquee feels seamless. -->
@@ -48,24 +56,24 @@
         aria-label="CodSec — contact"
       >
         <span class="brand-mark" aria-hidden="true">
-          <img
-            src="assets/mylogo.png"
+          <img decoding="async"
+            src="assets/mylogo.webp"
             alt=""
             draggable="false"
             class="logo-img logo-base"
           />
           <span class="logo-pieces">
             <span class="logo-piece p1"
-              ><img src="assets/mylogo.png" alt="" draggable="false"
+              ><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false"
             /></span>
             <span class="logo-piece p2"
-              ><img src="assets/mylogo.png" alt="" draggable="false"
+              ><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false"
             /></span>
             <span class="logo-piece p3"
-              ><img src="assets/mylogo.png" alt="" draggable="false"
+              ><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false"
             /></span>
             <span class="logo-piece p4"
-              ><img src="assets/mylogo.png" alt="" draggable="false"
+              ><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false"
             /></span>
           </span>
         </span>
@@ -174,8 +182,8 @@
           aria-label="CodSec — contact"
         >
           <span class="brand-mark" aria-hidden="true">
-            <img
-              src="assets/mylogo.png"
+            <img decoding="async"
+              src="assets/mylogo.webp"
               alt=""
               draggable="false"
               class="logo-img"
@@ -389,7 +397,7 @@
         <div class="skills-marquee">
           <div class="marquee-track" id="skills-track">
             <span class="skill"
-              ><img
+              ><img decoding="async"
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
                 alt="git"
                 loading="lazy"
@@ -397,7 +405,7 @@
               />git</span
             >
             <span class="skill"
-              ><img
+              ><img decoding="async"
                 src="https://cdn.simpleicons.org/github/white"
                 alt="github"
                 loading="lazy"
@@ -405,7 +413,7 @@
               />github</span
             >
             <span class="skill"
-              ><img
+              ><img decoding="async"
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg"
                 alt="npm"
                 loading="lazy"
@@ -413,7 +421,7 @@
               />npm</span
             >
             <span class="skill"
-              ><img
+              ><img decoding="async"
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg"
                 alt="node"
                 loading="lazy"
@@ -421,7 +429,7 @@
               />node</span
             >
             <span class="skill"
-              ><img
+              ><img decoding="async"
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
                 alt="html"
                 loading="lazy"
@@ -429,7 +437,7 @@
               />html</span
             >
             <span class="skill"
-              ><img
+              ><img decoding="async"
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
                 alt="css"
                 loading="lazy"
@@ -437,7 +445,7 @@
               />css</span
             >
             <span class="skill"
-              ><img
+              ><img decoding="async"
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
                 alt="js"
                 loading="lazy"
@@ -445,7 +453,7 @@
               />js</span
             >
             <span class="skill"
-              ><img
+              ><img decoding="async"
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg"
                 alt="c"
                 loading="lazy"
@@ -453,7 +461,7 @@
               />c</span
             >
             <span class="skill"
-              ><img
+              ><img decoding="async"
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
                 alt="mysql"
                 loading="lazy"
@@ -461,7 +469,7 @@
               />mysql</span
             >
             <span class="skill"
-              ><img
+              ><img decoding="async"
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-plain.svg"
                 alt="sql"
                 loading="lazy"
@@ -469,7 +477,7 @@
               />sql</span
             >
             <span class="skill"
-              ><img
+              ><img decoding="async"
                 class="invert"
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg"
                 alt="express.js"
@@ -478,7 +486,7 @@
               />express.js</span
             >
             <span class="skill"
-              ><img
+              ><img decoding="async"
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
                 alt="react"
                 loading="lazy"
@@ -486,7 +494,7 @@
               />react</span
             >
             <span class="skill"
-              ><img
+              ><img decoding="async"
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg"
                 alt="linux"
                 loading="lazy"
@@ -504,7 +512,7 @@
               ><span class="skill-glyph" aria-hidden="true">✎</span>ui ux</span
             >
             <span class="skill"
-              ><img
+              ><img decoding="async"
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
                 alt="figma"
                 loading="lazy"
@@ -512,7 +520,7 @@
               />figma</span
             >
             <span class="skill"
-              ><img
+              ><img decoding="async"
                 src="https://cdn.simpleicons.org/anthropic/white"
                 alt="claude"
                 loading="lazy"
@@ -524,7 +532,7 @@
               >opencode</span
             >
             <span class="skill"
-              ><img
+              ><img decoding="async"
                 src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg"
                 alt="vscode"
                 loading="lazy"
@@ -924,26 +932,26 @@
                 data-details-href="./project-restaurant.html"
                 title="Open Restaurant Website details"
               >
-                <img
-                  src="assets/hero.png"
+                <img decoding="async"
+                  src="assets/hero.webp"
                   alt="Restaurant website hero section"
                   class="gallery-img is-active"
                   loading="lazy"
                 />
-                <img
-                  src="assets/menu.png"
+                <img decoding="async"
+                  src="assets/menu.webp"
                   alt="Restaurant website menu section"
                   class="gallery-img"
                   loading="lazy"
                 />
-                <img
-                  src="assets/cart.png"
+                <img decoding="async"
+                  src="assets/cart.webp"
                   alt="Restaurant website cart view"
                   class="gallery-img"
                   loading="lazy"
                 />
-                <img
-                  src="assets/analytics.png"
+                <img decoding="async"
+                  src="assets/analytics.webp"
                   alt="Restaurant website analytics view"
                   class="gallery-img"
                   loading="lazy"
@@ -1033,26 +1041,26 @@
                 data-details-href="./project-todo.html"
                 title="Open Todo Task Manager details"
               >
-                <img
-                  src="assets/login-dark.png"
+                <img decoding="async"
+                  src="assets/login-dark.webp"
                   alt="Todo app login in dark mode"
                   class="gallery-img is-active"
                   loading="lazy"
                 />
-                <img
-                  src="assets/login-light.png"
+                <img decoding="async"
+                  src="assets/login-light.webp"
                   alt="Todo app login in light mode"
                   class="gallery-img"
                   loading="lazy"
                 />
-                <img
-                  src="assets/user-dashboard.png"
+                <img decoding="async"
+                  src="assets/user-dashboard.webp"
                   alt="Todo app user dashboard"
                   class="gallery-img"
                   loading="lazy"
                 />
-                <img
-                  src="assets/admin-dashboard.png"
+                <img decoding="async"
+                  src="assets/admin-dashboard.webp"
                   alt="Todo app admin dashboard"
                   class="gallery-img"
                   loading="lazy"
@@ -1137,44 +1145,44 @@
                 data-details-href="./project-dentiste.html"
                 title="Open Dental Clinic Website details"
               >
-                <img
-                  src="assets/dentiste-1.png"
+                <img decoding="async"
+                  src="assets/dentiste-1.webp"
                   alt="Dental clinic website hero section"
                   class="gallery-img is-active"
                   loading="lazy"
                 />
-                <img
-                  src="assets/dentiste-2.png"
+                <img decoding="async"
+                  src="assets/dentiste-2.webp"
                   alt="Dental clinic treatments carousel"
                   class="gallery-img"
                   loading="lazy"
                 />
-                <img
-                  src="assets/dentiste-3.png"
+                <img decoding="async"
+                  src="assets/dentiste-3.webp"
                   alt="Dental clinic before and after slider"
                   class="gallery-img"
                   loading="lazy"
                 />
-                <img
-                  src="assets/dentiste-4.png"
+                <img decoding="async"
+                  src="assets/dentiste-4.webp"
                   alt="Dental clinic patient reviews"
                   class="gallery-img"
                   loading="lazy"
                 />
-                <img
-                  src="assets/dentiste-5.png"
+                <img decoding="async"
+                  src="assets/dentiste-5.webp"
                   alt="Dental clinic facilities gallery"
                   class="gallery-img"
                   loading="lazy"
                 />
-                <img
-                  src="assets/dentiste-6.png"
+                <img decoding="async"
+                  src="assets/dentiste-6.webp"
                   alt="Dental clinic booking form"
                   class="gallery-img"
                   loading="lazy"
                 />
-                <img
-                  src="assets/dentiste-7.png"
+                <img decoding="async"
+                  src="assets/dentiste-7.webp"
                   alt="Dental clinic location map"
                   class="gallery-img"
                   loading="lazy"
@@ -1560,12 +1568,12 @@
           <div class="site-footer-brand">
             <a href="#home" class="brand" aria-label="CodSec — back to top">
               <span class="brand-mark" aria-hidden="true">
-                <img src="assets/mylogo.png" alt="" draggable="false" class="logo-img logo-base" />
+                <img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" class="logo-img logo-base" />
                 <span class="logo-pieces">
-                  <span class="logo-piece p1"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
-                  <span class="logo-piece p2"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
-                  <span class="logo-piece p3"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
-                  <span class="logo-piece p4"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
+                  <span class="logo-piece p1"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" /></span>
+                  <span class="logo-piece p2"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" /></span>
+                  <span class="logo-piece p3"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" /></span>
+                  <span class="logo-piece p4"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" /></span>
                 </span>
               </span>
               <span class="brand-word" aria-hidden="true"><span class="bl">C</span><span class="bl">o</span><span class="bl">d</span><span class="bl accent">S</span><span class="bl accent">e</span><span class="bl accent">c</span></span>
@@ -1623,7 +1631,7 @@
       </div>
     </footer>
 
-    <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
-    <script src="script.js"></script>
+    <script defer src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+    <script defer src="script.js"></script>
   </body>
 </html>

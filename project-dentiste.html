@@ -7,6 +7,13 @@
     <title>Dental Clinic Website — Project Details · CodSec</title>
     <meta name="description" content="Pacific Dental Clinic Dr. Bedjaoui — bilingual FR/AR dental practice site with treatments carousel, before/after slider, reviews marquees and booking funnel. Details + live README." />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://cdn.sceneai.art" crossorigin />
   </head>
   <body class="detail-page is-blur-bg is-scrolled">
     <div class="bg-media">
@@ -17,10 +24,11 @@
         autoplay
         muted
         playsinline
-        preload="auto"
+        loop
+        preload="metadata"
         disablepictureinpicture
       ></video>
-      <canvas id="hero-canvas" class="bg-canvas"></canvas>
+      <canvas id="hero-canvas" class="bg-canvas" hidden></canvas>
       <div class="bg-overlay"></div>
       <div class="bg-blur-bottom" aria-hidden="true"></div>
     </div>
@@ -31,12 +39,12 @@
     <nav class="nav">
       <a href="index.html#home" class="nav-logo brand" aria-label="CodSec — home">
         <span class="brand-mark" aria-hidden="true">
-          <img src="assets/mylogo.png" alt="" draggable="false" class="logo-img logo-base" />
+          <img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" class="logo-img logo-base" />
           <span class="logo-pieces">
-            <span class="logo-piece p1"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
-            <span class="logo-piece p2"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
-            <span class="logo-piece p3"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
-            <span class="logo-piece p4"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
+            <span class="logo-piece p1"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" /></span>
+            <span class="logo-piece p2"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" /></span>
+            <span class="logo-piece p3"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" /></span>
+            <span class="logo-piece p4"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" /></span>
           </span>
         </span>
         <span class="brand-word" aria-hidden="true"><span class="bl">C</span><span class="bl">o</span><span class="bl">d</span><span class="bl accent">S</span><span class="bl accent">e</span><span class="bl accent">c</span></span>
@@ -62,7 +70,7 @@
     <div id="mobile-menu" class="mobile-menu">
       <div class="mobile-menu-top">
         <a href="index.html#home" class="brand brand-sm" data-close-menu aria-label="CodSec — home">
-          <span class="brand-mark" aria-hidden="true"><img src="assets/mylogo.png" alt="" draggable="false" class="logo-img" /></span>
+          <span class="brand-mark" aria-hidden="true"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" class="logo-img" /></span>
           <span class="brand-word" aria-hidden="true">Cod<span class="brand-word-accent">Sec</span></span>
         </a>
         <a href="#" class="menu-close" role="button" aria-label="Close menu" data-close-menu>
@@ -124,7 +132,7 @@
               </ul>
             </div>
             <div class="detail-media reveal-right">
-              <img src="assets/dentiste-1.png" alt="Dental clinic hero and trust marquee" loading="lazy" />
+              <img decoding="async" src="assets/dentiste-1.webp" alt="Dental clinic hero and trust marquee" loading="lazy" />
               <span class="detail-caption">Landing — hero, CTA, trust ticker</span>
             </div>
           </div>
@@ -142,7 +150,7 @@
               </ul>
             </div>
             <div class="detail-media reveal-left">
-              <img src="assets/dentiste-2.png" alt="Dental treatments carousel" loading="lazy" />
+              <img decoding="async" src="assets/dentiste-2.webp" alt="Dental treatments carousel" loading="lazy" />
               <span class="detail-caption">Treatments — carousel, direct consult CTA</span>
             </div>
           </div>
@@ -160,7 +168,7 @@
               </ul>
             </div>
             <div class="detail-media reveal-right">
-              <img src="assets/dentiste-3.png" alt="Dental before and after comparison slider" loading="lazy" />
+              <img decoding="async" src="assets/dentiste-3.webp" alt="Dental before and after comparison slider" loading="lazy" />
               <span class="detail-caption">Clinical results — before/after slider</span>
             </div>
           </div>
@@ -178,7 +186,7 @@
               </ul>
             </div>
             <div class="detail-media reveal-left">
-              <img src="assets/dentiste-4.png" alt="Dental patient reviews marquee" loading="lazy" />
+              <img decoding="async" src="assets/dentiste-4.webp" alt="Dental patient reviews marquee" loading="lazy" />
               <span class="detail-caption">Reviews — Google ratings marquee</span>
             </div>
           </div>
@@ -196,7 +204,7 @@
               </ul>
             </div>
             <div class="detail-media reveal-right">
-              <img src="assets/dentiste-5.png" alt="Dental clinic facilities gallery" loading="lazy" />
+              <img decoding="async" src="assets/dentiste-5.webp" alt="Dental clinic facilities gallery" loading="lazy" />
               <span class="detail-caption">Facilities — interactive gallery</span>
             </div>
           </div>
@@ -214,7 +222,7 @@
               </ul>
             </div>
             <div class="detail-media reveal-left">
-              <img src="assets/dentiste-6.png" alt="Dental appointment booking form" loading="lazy" />
+              <img decoding="async" src="assets/dentiste-6.webp" alt="Dental appointment booking form" loading="lazy" />
               <span class="detail-caption">Booking — validation, FR/AR feedback</span>
             </div>
           </div>
@@ -232,7 +240,7 @@
               </ul>
             </div>
             <div class="detail-media reveal-right">
-              <img src="assets/dentiste-7.png" alt="Dental clinic location map" loading="lazy" />
+              <img decoding="async" src="assets/dentiste-7.webp" alt="Dental clinic location map" loading="lazy" />
               <span class="detail-caption">Location — Google Maps embed</span>
             </div>
           </div>
@@ -286,12 +294,12 @@
           <div class="site-footer-brand">
             <a href="index.html#home" class="brand" aria-label="CodSec — home">
               <span class="brand-mark" aria-hidden="true">
-                <img src="assets/mylogo.png" alt="" draggable="false" class="logo-img logo-base" />
+                <img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" class="logo-img logo-base" />
                 <span class="logo-pieces">
-                  <span class="logo-piece p1"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
-                  <span class="logo-piece p2"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
-                  <span class="logo-piece p3"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
-                  <span class="logo-piece p4"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
+                  <span class="logo-piece p1"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" /></span>
+                  <span class="logo-piece p2"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" /></span>
+                  <span class="logo-piece p3"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" /></span>
+                  <span class="logo-piece p4"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" /></span>
                 </span>
               </span>
               <span class="brand-word" aria-hidden="true"><span class="bl">C</span><span class="bl">o</span><span class="bl">d</span><span class="bl accent">S</span><span class="bl accent">e</span><span class="bl accent">c</span></span>
@@ -349,9 +357,9 @@
       </div>
     </footer>
 
-    <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
-    <script src="script.js"></script>
+    <script defer src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+    <script defer src="script.js"></script>
   </body>
 </html>

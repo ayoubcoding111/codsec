@@ -1,7 +1,7 @@
 # Graph Report - codsec  (2026-09-20)
 
 ## Corpus Check
-- 3 files · ~841,314 words
+- 3 files · ~841,209 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary

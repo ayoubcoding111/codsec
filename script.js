@@ -11,6 +11,18 @@
  */
 
 /* --------------------------------------------------------------------------
+ * Refresh always lands on the hero (never a half-scrolled page).
+ * Browsers restore the old scroll position on reload, which leaves the
+ * hero stuck mid-exit — so opt out and park at the very top immediately.
+ * ------------------------------------------------------------------------ */
+try {
+  history.scrollRestoration = "manual";
+} catch {
+  // older browsers — the load backstop below still corrects the position
+}
+window.scrollTo(0, 0);
+
+/* --------------------------------------------------------------------------
  * Global animated words
  * ------------------------------------------------------------------------ */
 
@@ -98,6 +110,29 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => {
     e.preventDefault();
     smoothToEl(target, false);
   });
+});
+
+// Fresh reload → hero. Fresh navigation with a hash (e.g. arriving from
+// a detail page's "All projects" link) → jump to that section instead,
+// so those links keep working while refresh always shows a clean hero.
+window.addEventListener("load", () => {
+  const type = (performance.getEntriesByType("navigation")[0] || {}).type;
+  const hash = window.location.hash;
+  if (type === "reload") {
+    if (hash) {
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+    if (window.__lenis) window.__lenis.scrollTo(0, { immediate: true });
+    else window.scrollTo(0, 0);
+    return;
+  }
+  if (hash && hash.length > 1) {
+    const target = document.querySelector(hash);
+    if (target) {
+      if (window.__lenis) window.__lenis.scrollTo(target, { immediate: true });
+      else target.scrollIntoView();
+    }
+  }
 });
 
 if (reduceMotion) {
@@ -372,195 +407,20 @@ if (counters.length && !reduceMotion && "IntersectionObserver" in window) {
 }
 
 /* --------------------------------------------------------------------------
- * Boomerang video background
+ * Video background — native loop (perf: no frame capture, no canvas rAF)
  * ------------------------------------------------------------------------ */
-
-const video = document.getElementById("hero-video");
-const canvas = document.getElementById("hero-canvas");
-
-if (video && canvas) {
-  const frames = [];
-  const MAX_WIDTH = 960;
-  const MAX_FRAMES = 450; // ~15s at 30fps, caps memory on long clips
-
-  let capturing = true;
-  let lastTime = -1;
-  let loopStarted = false;
-  let rafId = 0;
-  let vfcId = 0;
-  let renderRaf = 0;
-
-  const captureFrame = () => {
-    if (!capturing || video.readyState < 2) return;
-    if (video.currentTime === lastTime) return;
-    lastTime = video.currentTime;
-    const vw = video.videoWidth;
-    const vh = video.videoHeight;
-    if (!vw || !vh || frames.length >= MAX_FRAMES) return;
-    const scale = Math.min(1, MAX_WIDTH / vw);
-    const w = Math.max(2, Math.round(vw * scale));
-    const h = Math.max(2, Math.round(vh * scale));
-    const c = document.createElement("canvas");
-    c.width = w;
-    c.height = h;
-    const ctx = c.getContext("2d");
-    if (!ctx) return;
-    try {
-      ctx.drawImage(video, 0, 0, w, h);
-    } catch {
-      return;
-    }
-    frames.push(c);
-  };
-
-  const hasVFC = typeof video.requestVideoFrameCallback === "function";
-
-  const rafLoop = () => {
-    captureFrame();
-    if (capturing) rafId = requestAnimationFrame(rafLoop);
-  };
-
-  const vfcLoop = () => {
-    captureFrame();
-    if (capturing && typeof video.requestVideoFrameCallback === "function") {
-      vfcId = video.requestVideoFrameCallback(vfcLoop);
-    }
-  };
-
-  const startCaptureLoop = () => {
-    if (loopStarted) return;
-    loopStarted = true;
-    if (hasVFC) {
-      try {
-        vfcId = video.requestVideoFrameCallback(vfcLoop);
-        return;
-      } catch {
-        // fall through to rAF
-      }
-    }
-    rafId = requestAnimationFrame(rafLoop);
-  };
-
-  const startBoomerangLoop = () => {
-    const ctx = canvas.getContext("2d");
-    if (!ctx || frames.length === 0) return;
-
-    if (frames.length === 1) {
-      canvas.width = frames[0].width;
-      canvas.height = frames[0].height;
-      try {
-        ctx.drawImage(frames[0], 0, 0);
-      } catch {
-        // ignore
-      }
-      canvas.classList.add("is-live");
-      return;
-    }
-
-    canvas.width = frames[0].width;
-    canvas.height = frames[0].height;
-    // Start on the LAST frame going backward: the video just ended there, so
-    // the first boomerang loop reverses instead of jumping to the start.
-    const lastIdx = frames.length - 1;
-    try {
-      ctx.drawImage(frames[lastIdx], 0, 0);
-    } catch {
-      // ignore
-    }
-    // Canvas already holds the handoff frame before the video hides —
-    // no blank frame, no blink.
-    canvas.classList.add("is-live");
-
-    let index = Math.max(0, lastIdx - 1);
-    let dir = -1;
-    let last = performance.now();
-    const interval = 1000 / 30;
-
-    const render = (now) => {
-      renderRaf = requestAnimationFrame(render);
-      if (now - last < interval) return;
-      last = now;
-      try {
-        ctx.drawImage(frames[index], 0, 0);
-      } catch {
-        return;
-      }
-      // Bounce without repeating end frames, so there's no 1-frame pause.
-      if (dir > 0) {
-        if (index >= frames.length - 1) {
-          dir = -1;
-          index = frames.length - 2;
-        } else {
-          index += 1;
-        }
-      } else {
-        if (index <= 0) {
-          dir = 1;
-          index = 1;
-        } else {
-          index -= 1;
-        }
-      }
-    };
-    renderRaf = requestAnimationFrame(render);
-  };
-
-  const onEnded = () => {
-    capturing = false;
-    if (frames.length > 0) {
-      video.style.display = "none";
-      startBoomerangLoop();
-    } else {
-      // Capture failed: fall back to a plain restart so we never freeze.
-      try {
-        video.currentTime = 0;
-        video.play().catch(() => {});
-      } catch {
-        // ignore
-      }
-      capturing = true;
-      lastTime = -1;
-      startCaptureLoop();
-    }
-  };
-
-  const onCanPlay = () => {
-    video.classList.add("is-visible");
-    if (loopStarted) return;
-    // Restart from 0 (only once — `canplay` fires repeatedly) so the capture
-    // covers the FULL clip.
-    try {
-      if (video.currentTime > 0.1) video.currentTime = 0;
-    } catch {
-      // ignore
-    }
-    lastTime = -1;
-    video.play().catch(() => {});
-    startCaptureLoop();
-  };
-
-  const onError = () => {
-    capturing = false;
-  };
-
-  video.addEventListener("canplay", onCanPlay);
-  video.addEventListener("ended", onEnded);
-  video.addEventListener("error", onError);
-  if (video.readyState >= 3) onCanPlay();
-
-  window.addEventListener("pagehide", () => {
-    capturing = false;
-    cancelAnimationFrame(rafId);
-    cancelAnimationFrame(renderRaf);
-    try {
-      if (hasVFC && typeof video.cancelVideoFrameCallback === "function" && vfcId) {
-        video.cancelVideoFrameCallback(vfcId);
-      }
-    } catch {
-      // ignore
-    }
+(function initHeroVideo() {
+  const video = document.getElementById("hero-video");
+  if (!video) return;
+  const show = () => video.classList.add("is-visible");
+  video.addEventListener("canplay", show, { once: true });
+  if (video.readyState >= 3) show();
+  // Save CPU/battery when the tab is hidden.
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) video.pause();
+    else video.play().catch(() => {});
   });
-}
+})();
 
 /* --------------------------------------------------------------------------
  * Project galleries: hero pic by default, hover cycles the rest one by one

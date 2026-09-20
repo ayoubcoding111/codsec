@@ -7,6 +7,13 @@
     <title>Restaurant Website — Project Details · CodSec</title>
     <meta name="description" content="Delicious Restaurant — full-stack food ordering platform with live tracking, kitchen dashboard, admin analytics, hardened auth and EN/FR/AR support. Details + live README." />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://cdn.sceneai.art" crossorigin />
   </head>
   <body class="detail-page is-blur-bg is-scrolled">
     <div class="bg-media">
@@ -17,10 +24,11 @@
         autoplay
         muted
         playsinline
-        preload="auto"
+        loop
+        preload="metadata"
         disablepictureinpicture
       ></video>
-      <canvas id="hero-canvas" class="bg-canvas"></canvas>
+      <canvas id="hero-canvas" class="bg-canvas" hidden></canvas>
       <div class="bg-overlay"></div>
       <div class="bg-blur-bottom" aria-hidden="true"></div>
     </div>
@@ -31,12 +39,12 @@
     <nav class="nav">
       <a href="index.html#home" class="nav-logo brand" aria-label="CodSec — home">
         <span class="brand-mark" aria-hidden="true">
-          <img src="assets/mylogo.png" alt="" draggable="false" class="logo-img logo-base" />
+          <img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" class="logo-img logo-base" />
           <span class="logo-pieces">
-            <span class="logo-piece p1"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
-            <span class="logo-piece p2"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
-            <span class="logo-piece p3"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
-            <span class="logo-piece p4"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
+            <span class="logo-piece p1"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" /></span>
+            <span class="logo-piece p2"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" /></span>
+            <span class="logo-piece p3"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" /></span>
+            <span class="logo-piece p4"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" /></span>
           </span>
         </span>
         <span class="brand-word" aria-hidden="true"><span class="bl">C</span><span class="bl">o</span><span class="bl">d</span><span class="bl accent">S</span><span class="bl accent">e</span><span class="bl accent">c</span></span>
@@ -62,7 +70,7 @@
     <div id="mobile-menu" class="mobile-menu">
       <div class="mobile-menu-top">
         <a href="index.html#home" class="brand brand-sm" data-close-menu aria-label="CodSec — home">
-          <span class="brand-mark" aria-hidden="true"><img src="assets/mylogo.png" alt="" draggable="false" class="logo-img" /></span>
+          <span class="brand-mark" aria-hidden="true"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" class="logo-img" /></span>
           <span class="brand-word" aria-hidden="true">Cod<span class="brand-word-accent">Sec</span></span>
         </a>
         <a href="#" class="menu-close" role="button" aria-label="Close menu" data-close-menu>
@@ -126,7 +134,7 @@
               </ul>
             </div>
             <div class="detail-media reveal-right">
-              <img src="assets/hero.png" alt="Restaurant landing hero" loading="lazy" />
+              <img decoding="async" src="assets/hero.webp" alt="Restaurant landing hero" loading="lazy" />
               <span class="detail-caption">Landing — hero, hours, contact</span>
             </div>
           </div>
@@ -144,7 +152,7 @@
               </ul>
             </div>
             <div class="detail-media reveal-left">
-              <img src="assets/cart.png" alt="Restaurant cart and checkout" loading="lazy" />
+              <img decoding="async" src="assets/cart.webp" alt="Restaurant cart and checkout" loading="lazy" />
               <span class="detail-caption">Cart — quantities, zones, checkout</span>
             </div>
           </div>
@@ -162,7 +170,7 @@
               </ul>
             </div>
             <div class="detail-media reveal-right">
-              <img src="assets/analytics.png" alt="Admin analytics dashboard" loading="lazy" />
+              <img decoding="async" src="assets/analytics.webp" alt="Admin analytics dashboard" loading="lazy" />
               <span class="detail-caption">Admin — analytics, charts, export</span>
             </div>
           </div>
@@ -180,7 +188,7 @@
               </ul>
             </div>
             <div class="detail-media reveal-left">
-              <img src="assets/menu.png" alt="Restaurant menu browsing" loading="lazy" />
+              <img decoding="async" src="assets/menu.webp" alt="Restaurant menu browsing" loading="lazy" />
               <span class="detail-caption">Menu — filters, search, customization</span>
             </div>
           </div>
@@ -236,12 +244,12 @@
           <div class="site-footer-brand">
             <a href="index.html#home" class="brand" aria-label="CodSec — home">
               <span class="brand-mark" aria-hidden="true">
-                <img src="assets/mylogo.png" alt="" draggable="false" class="logo-img logo-base" />
+                <img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" class="logo-img logo-base" />
                 <span class="logo-pieces">
-                  <span class="logo-piece p1"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
-                  <span class="logo-piece p2"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
-                  <span class="logo-piece p3"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
-                  <span class="logo-piece p4"><img src="assets/mylogo.png" alt="" draggable="false" /></span>
+                  <span class="logo-piece p1"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" /></span>
+                  <span class="logo-piece p2"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" /></span>
+                  <span class="logo-piece p3"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" /></span>
+                  <span class="logo-piece p4"><img decoding="async" src="assets/mylogo.webp" alt="" draggable="false" /></span>
                 </span>
               </span>
               <span class="brand-word" aria-hidden="true"><span class="bl">C</span><span class="bl">o</span><span class="bl">d</span><span class="bl accent">S</span><span class="bl accent">e</span><span class="bl accent">c</span></span>
@@ -299,9 +307,9 @@
       </div>
     </footer>
 
-    <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
-    <script src="script.js"></script>
+    <script defer src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+    <script defer src="script.js"></script>
   </body>
 </html>
