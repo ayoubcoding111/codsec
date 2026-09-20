@@ -6,8 +6,8 @@
     "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1789921947.8801837,
-    "seen": 1789921961.5583713,
+    "mtime": 1789943426.5404663,
+    "seen": 1789943663.4462986,
     "ast_hash": "8f1dd46070f9414cc7ab922a9cc43a6c",
     "semantic_hash": ""
   },
@@ -23,39 +23,15 @@
     "ast_hash": "d7b4cbdf4c1aa697338dddb43297bcfe",
     "semantic_hash": "d7b4cbdf4c1aa697338dddb43297bcfe"
   },
-  "assets/analytics.png": {
-    "mtime": 1789583805.5717206,
-    "seen": 1789588969.606056,
-    "ast_hash": "b53f708940b90f823492fc9f21c1ba80",
-    "semantic_hash": "b53f708940b90f823492fc9f21c1ba80"
-  },
-  "assets/cart.png": {
-    "mtime": 1789583732.8042557,
-    "seen": 1789588969.6060603,
-    "ast_hash": "a6127b17c5b068ef67280bb3a11700c1",
-    "semantic_hash": "a6127b17c5b068ef67280bb3a11700c1"
-  },
-  "assets/hero.png": {
-    "mtime": 1789583634.763611,
-    "seen": 1789588969.6060631,
-    "ast_hash": "065a90cc222ca3c9a0cfbc87e8caa7a3",
-    "semantic_hash": "065a90cc222ca3c9a0cfbc87e8caa7a3"
-  },
-  "assets/menu.png": {
-    "mtime": 1789583682.3657002,
-    "seen": 1789588969.6060684,
-    "ast_hash": "8985fc422125464667ce9324d99aa535",
-    "semantic_hash": "8985fc422125464667ce9324d99aa535"
-  },
   "project-restaurant.html": {
-    "mtime": 1789921947.884196,
-    "seen": 1789921961.5583768,
+    "mtime": 1789943426.54633,
+    "seen": 1789943663.4463203,
     "ast_hash": "4d219f6c4c43013dc0e1f000eb9712d8",
     "semantic_hash": ""
   },
   "project-todo.html": {
-    "mtime": 1789921947.8861947,
-    "seen": 1789921961.558378,
+    "mtime": 1789943426.54633,
+    "seen": 1789943663.4463296,
     "ast_hash": "ba9db5893bf353b17cf79d8b999ecf75",
     "semantic_hash": ""
   },
@@ -65,87 +41,21 @@
     "ast_hash": "8b09571760e4b00430de3735bddf4772",
     "semantic_hash": ""
   },
-  "assets/admin-dashboard.png": {
-    "mtime": 1788988189.7759748,
-    "seen": 1789594054.1625037,
-    "ast_hash": "b8a4405ffc7e5de75d946a8066b1947c",
-    "semantic_hash": ""
-  },
-  "assets/login-dark.png": {
-    "mtime": 1788965572.0165856,
-    "seen": 1789594054.162511,
-    "ast_hash": "dd50906fee1833d9bd7a7ee4b6ed2340",
-    "semantic_hash": ""
-  },
-  "assets/login-light.png": {
-    "mtime": 1788965613.927221,
-    "seen": 1789594054.1625125,
-    "ast_hash": "434cbd2590c0047f9a5885f9d1398760",
-    "semantic_hash": ""
-  },
-  "assets/user-dashboard.png": {
-    "mtime": 1788988137.0096483,
-    "seen": 1789594054.1625178,
-    "ast_hash": "22224662db38c28795c645fc25aea14f",
-    "semantic_hash": ""
-  },
   "contact.html": {
-    "mtime": 1789921947.8762264,
-    "seen": 1789921961.5583687,
+    "mtime": 1789943426.5311532,
+    "seen": 1789943663.4462886,
     "ast_hash": "e9da13853dbce9cb81a5a78d58c2d2eb",
     "semantic_hash": ""
   },
   "privacy.html": {
-    "mtime": 1789921947.8811927,
-    "seen": 1789921961.5583732,
+    "mtime": 1789943426.541505,
+    "seen": 1789943663.4463046,
     "ast_hash": "abb7534a6fea4d420316236c92987840",
     "semantic_hash": ""
   },
-  "assets/dentiste-1.png": {
-    "mtime": 1789921306.7595453,
-    "seen": 1789921356.0241039,
-    "ast_hash": "6ea0fbf28cdc84626fba2e48ba49941b",
-    "semantic_hash": ""
-  },
-  "assets/dentiste-2.png": {
-    "mtime": 1789921308.9384713,
-    "seen": 1789921356.024106,
-    "ast_hash": "948922d527150629f544f2d9d2aacf3f",
-    "semantic_hash": ""
-  },
-  "assets/dentiste-3.png": {
-    "mtime": 1789921312.4840186,
-    "seen": 1789921356.0241072,
-    "ast_hash": "9a2e19c17ce52baeff6e1f7d955b5ee4",
-    "semantic_hash": ""
-  },
-  "assets/dentiste-4.png": {
-    "mtime": 1789921313.085608,
-    "seen": 1789921356.0241098,
-    "ast_hash": "2df7835190700afa86bc2a27d13e5d1d",
-    "semantic_hash": ""
-  },
-  "assets/dentiste-5.png": {
-    "mtime": 1789921326.029612,
-    "seen": 1789921356.0241113,
-    "ast_hash": "42b9039727a2a3b7eb3474e2a73ac44a",
-    "semantic_hash": ""
-  },
-  "assets/dentiste-6.png": {
-    "mtime": 1789921326.5838945,
-    "seen": 1789921356.024114,
-    "ast_hash": "8335e9b4d6c3a498b4efa0b66c269cc6",
-    "semantic_hash": ""
-  },
-  "assets/dentiste-7.png": {
-    "mtime": 1789921327.694261,
-    "seen": 1789921356.024115,
-    "ast_hash": "6c6a381dc77143099aafaee858004d4d",
-    "semantic_hash": ""
-  },
   "project-dentiste.html": {
-    "mtime": 1789921947.8821979,
-    "seen": 1789921961.558375,
+    "mtime": 1789943426.542771,
+    "seen": 1789943663.446312,
     "ast_hash": "bbec26eb50329dde0af6f88130ae4286",
     "semantic_hash": ""
   },
@@ -243,6 +153,12 @@
     "mtime": 1789921772.6881137,
     "seen": 1789921804.1732092,
     "ast_hash": "bd4b5baa29deea59bbf1a61f02c88a5b",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1789943658.838083,
+    "seen": 1789943663.446278,
+    "ast_hash": "075144a68610fb4ff4a20c2ea9971147",
     "semantic_hash": ""
   }
 }

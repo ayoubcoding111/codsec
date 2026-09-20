@@ -1,16 +1,16 @@
 # Graph Report - codsec  (2026-09-20)
 
 ## Corpus Check
-- 3 files · ~841,314 words
+- 4 files · ~73,520 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 85 nodes · 88 edges · 20 communities (9 shown, 11 thin omitted)
-- Extraction: 62% EXTRACTED · 38% INFERRED · 0% AMBIGUOUS · INFERRED: 33 edges (avg confidence: 0.86)
+- 82 nodes · 77 edges · 18 communities (7 shown, 11 thin omitted)
+- Extraction: 78% EXTRACTED · 22% INFERRED · 0% AMBIGUOUS · INFERRED: 17 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `ee29bd1c`
+- Built from commit: `0b7a31fe`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -18,10 +18,8 @@
 - script.js
 - Projects List Section
 - requestActiveNav
-- Admin Analytics Dashboard Screenshot
-- Cart Checkout Screenshot
-- Menu Item Card Grid
-- Hero Screenshot Image
+- CodSec — Build Strong, Build Smart
+- ✨ Site features (everything on this site)
 - Codsec Brand Logo
 - Secure Backend and API Engineering Service
 - GitHub Repo ayoubcoding111 restaurent
@@ -37,16 +35,16 @@
 - Drag and Drop Kanban Board
 
 ## God Nodes (most connected - your core abstractions)
-1. `Admin Analytics Dashboard Screenshot` - 6 edges
-2. `Projects List Section` - 5 edges
-3. `Restaurant Ordering Platform Detail Page` - 5 edges
-4. `Todo Kanban Task Manager Detail Page` - 5 edges
-5. `Cart Checkout Screenshot` - 5 edges
-6. `Menu Item Card Grid` - 5 edges
+1. `✨ Site features (everything on this site)` - 12 edges
+2. `CodSec — Build Strong, Build Smart` - 10 edges
+3. `Projects List Section` - 5 edges
+4. `Restaurant Ordering Platform Detail Page` - 5 edges
+5. `Todo Kanban Task Manager Detail Page` - 5 edges
+6. `💼 Featured work — real builds, no mockups` - 4 edges
 7. `Services Section` - 4 edges
-8. `Restaurant Cart Checkout View` - 4 edges
-9. `Hero Screenshot Image` - 4 edges
-10. `Codsec Brand Logo` - 4 edges
+8. `Codsec Brand Logo` - 4 edges
+9. `Full-Stack Web Development Service` - 3 edges
+10. `Portfolio Homepage` - 3 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Hardened Auth and Trilingual RTL Polish` --semantically_similar_to--> `Secure Login and Dark Mode Experience`  [INFERRED] [semantically similar]
@@ -64,15 +62,11 @@
 - None detected.
 
 ## Hyperedges (group relationships)
-- **Menu Card Purchase Pattern** — assets_menu_menu_card_grid, assets_menu_purchase_actions, assets_menu_availability_system [EXTRACTED 1.00]
 - **Homepage to detail bidirectional navigation loop** — index_project_restaurant_card, project_restaurant_page, project_todo_page [EXTRACTED 1.00]
-- **Dashboard Sales Performance Insight Flow** — assets_analytics_revenue_per_day_chart, assets_analytics_orders_vs_delivered_chart, assets_analytics_top_selling_items_panel [INFERRED 0.85]
-- **Cart Checkout Flow** — assets_cart_cart_checkout_view, assets_cart_cart_line_item, assets_cart_order_summary_actions [INFERRED 0.85]
-- **Restaurant Landing Hero Composition** — assets_hero_navbar, assets_hero_hero_banner, assets_hero_cta_view_menu [INFERRED 0.85]
 - **Code Plus Security Brand Mark** — assets_mylogo_logo, assets_mylogo_shield_motif, assets_mylogo_code_motif [INFERRED 0.85]
 - **Shared live GitHub README fetch with cache and fallback** — project_restaurant_live_readme, project_todo_live_readme, project_restaurant_github_repo, project_todo_github_repo [INFERRED 0.85]
 
-## Communities (20 total, 11 thin omitted)
+## Communities (18 total, 11 thin omitted)
 
 ### Community 0 - "script.js"
 Cohesion: 0.10
@@ -82,21 +76,13 @@ Nodes (14): counters, heroContent, iconClose, iconOpen, menuToggle, mobileMenu, 
 Cohesion: 0.29
 Nodes (11): Hero Section - Build Strong Build Smart, Portfolio Homepage, Restaurant Website Project Card, Todo Task Manager Project Card, Projects List Section, Full-Stack Web Development Service, UI/UX Design Service, Services Section (+3 more)
 
-### Community 3 - "Admin Analytics Dashboard Screenshot"
-Cohesion: 0.36
-Nodes (8): Dark Theme Dashboard Layout, Delicious Staff Admin Dashboard, Orders By Status All Time Panel, Orders Vs Delivered Per Day Chart, Revenue Per Day Last 14 Days Chart, Admin Analytics Dashboard Screenshot, Sidebar Navigation Menu, Top Selling Items Panel
+### Community 3 - "CodSec — Build Strong, Build Smart"
+Cohesion: 0.15
+Nodes (12): 1. 🍕 Delicious Restaurant — full-stack ordering platform, 2. 📝 TodoList — enterprise Kanban task manager, 3. 🦷 Pacific Dental Clinic — bilingual FR/AR clinic site, CodSec — Build Strong, Build Smart, 💼 Featured work — real builds, no mockups, 📊 Performance & accessibility choices, 📁 Project structure, 🚀 Quick start (+4 more)
 
-### Community 4 - "Cart Checkout Screenshot"
-Cohesion: 0.48
-Nodes (7): Restaurant Cart Checkout View, Cart Line Item Row, Dark Theme Card Design, Navigation Header with Cart Badge, Order Summary and Actions, Quantity Stepper Control, Cart Checkout Screenshot
-
-### Community 5 - "Menu Item Card Grid"
-Cohesion: 0.38
-Nodes (7): Availability and Rating Badges, Dark Theme with Red Accent Design, Restaurant Menu Browsing Purpose, Menu Item Card Grid, Top Navigation Bar, Add to Cart and Order Now Actions, Delicious Menu Page Screenshot
-
-### Community 7 - "Hero Screenshot Image"
-Cohesion: 0.47
-Nodes (6): Delicious Brand Identity Header, View Menu Call To Action Button, Pizza Food Photography Background Design, Welcome to Delicious Restaurant Hero Banner, Hero Screenshot Image, Top Navigation Bar with Home Menu Track Contact Cart Language and Theme Toggle
+### Community 4 - "✨ Site features (everything on this site)"
+Cohesion: 0.17
+Nodes (12): 🙋 About — "Your unfair advantage online", 🎬 Cinematic hero, 📞 Contact + quote funnel, 🖱️ Custom cursor + buttery scroll, ❓ FAQ accordion, 🧭 Navigation (fixed, accessible), 📈 Process — "From idea to launch", 📄 Project detail pages (the deep dives) (+4 more)
 
 ### Community 8 - "Codsec Brand Logo"
 Cohesion: 0.50
@@ -111,22 +97,22 @@ Cohesion: 0.67
 Nodes (4): GitHub Repo ayoubcoding111 restaurent, Live GitHub README Section Restaurant, GitHub Repo ayoubcoding111 firstapp, Live GitHub README Section Todo
 
 ## Knowledge Gaps
-- **34 isolated node(s):** `menuToggle`, `mobileMenu`, `iconOpen`, `iconClose`, `panels` (+29 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 41 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **49 isolated node(s):** `menuToggle`, `mobileMenu`, `iconOpen`, `iconClose`, `panels` (+44 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 57 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Services Section` connect `Projects List Section` to `Secure Backend and API Engineering Service`?**
-  _High betweenness centrality (0.014) - this node is a cross-community bridge._
-- **Why does `Secure Backend and API Engineering Service` connect `Secure Backend and API Engineering Service` to `Projects List Section`?**
-  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+- **Why does `CodSec — Build Strong, Build Smart` connect `CodSec — Build Strong, Build Smart` to `✨ Site features (everything on this site)`?**
+  _High betweenness centrality (0.063) - this node is a cross-community bridge._
+- **Why does `✨ Site features (everything on this site)` connect `✨ Site features (everything on this site)` to `CodSec — Build Strong, Build Smart`?**
+  _High betweenness centrality (0.061) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `Restaurant Ordering Platform Detail Page` (e.g. with `Portfolio Homepage` and `Full-Stack Web Development Service`) actually correct?**
   _`Restaurant Ordering Platform Detail Page` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 2 inferred relationships involving `Todo Kanban Task Manager Detail Page` (e.g. with `Portfolio Homepage` and `Full-Stack Web Development Service`) actually correct?**
   _`Todo Kanban Task Manager Detail Page` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `menuToggle`, `mobileMenu`, `iconOpen` to the rest of the system?**
-  _34 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _49 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `script.js` be split into smaller, more focused modules?**
   _Cohesion score 0.1 - nodes in this community are weakly interconnected._
