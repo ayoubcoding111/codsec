@@ -6,9 +6,9 @@
     "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1789660466.883801,
-    "seen": 1789660469.820074,
-    "ast_hash": "642412c1d700a07721b4f7079fbc03fd",
+    "mtime": 1789921516.0397484,
+    "seen": 1789921519.1331427,
+    "ast_hash": "76ab7a85b14144e99249047a52f0de7b",
     "semantic_hash": ""
   },
   ".vscode/settings.json": {
@@ -54,9 +54,9 @@
     "semantic_hash": ""
   },
   "project-todo.html": {
-    "mtime": 1789660445.3895276,
-    "seen": 1789660448.34954,
-    "ast_hash": "d3588e04338b45de1744e872a0e6ee07",
+    "mtime": 1789921399.4546669,
+    "seen": 1789921403.9794767,
+    "ast_hash": "d9d4be9ddf8bcb44a855d6348fbbe227",
     "semantic_hash": ""
   },
   ".claude/settings.local.json": {
@@ -99,6 +99,54 @@
     "mtime": 1789660432.543355,
     "seen": 1789660435.6244113,
     "ast_hash": "0892f9caaaff6dbc97d8b2c829862f17",
+    "semantic_hash": ""
+  },
+  "assets/dentiste-1.png": {
+    "mtime": 1789921306.7595453,
+    "seen": 1789921356.0241039,
+    "ast_hash": "6ea0fbf28cdc84626fba2e48ba49941b",
+    "semantic_hash": ""
+  },
+  "assets/dentiste-2.png": {
+    "mtime": 1789921308.9384713,
+    "seen": 1789921356.024106,
+    "ast_hash": "948922d527150629f544f2d9d2aacf3f",
+    "semantic_hash": ""
+  },
+  "assets/dentiste-3.png": {
+    "mtime": 1789921312.4840186,
+    "seen": 1789921356.0241072,
+    "ast_hash": "9a2e19c17ce52baeff6e1f7d955b5ee4",
+    "semantic_hash": ""
+  },
+  "assets/dentiste-4.png": {
+    "mtime": 1789921313.085608,
+    "seen": 1789921356.0241098,
+    "ast_hash": "2df7835190700afa86bc2a27d13e5d1d",
+    "semantic_hash": ""
+  },
+  "assets/dentiste-5.png": {
+    "mtime": 1789921326.029612,
+    "seen": 1789921356.0241113,
+    "ast_hash": "42b9039727a2a3b7eb3474e2a73ac44a",
+    "semantic_hash": ""
+  },
+  "assets/dentiste-6.png": {
+    "mtime": 1789921326.5838945,
+    "seen": 1789921356.024114,
+    "ast_hash": "8335e9b4d6c3a498b4efa0b66c269cc6",
+    "semantic_hash": ""
+  },
+  "assets/dentiste-7.png": {
+    "mtime": 1789921327.694261,
+    "seen": 1789921356.024115,
+    "ast_hash": "6c6a381dc77143099aafaee858004d4d",
+    "semantic_hash": ""
+  },
+  "project-dentiste.html": {
+    "mtime": 1789921532.3475497,
+    "seen": 1789921535.9170177,
+    "ast_hash": "e2d7be30b3e081d25b4b6ea85bd4b1df",
     "semantic_hash": ""
   }
 }
