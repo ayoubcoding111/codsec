@@ -329,7 +329,7 @@
       "node_kind": "heading",
       "norm_label": "\ud83d\udcca performance & accessibility choices",
       "source_file": "README.md",
-      "source_location": "L219"
+      "source_location": "L224"
     },
     {
       "id": "readme_project_structure",
@@ -341,7 +341,7 @@
       "node_kind": "heading",
       "norm_label": "\ud83d\udcc1 project structure",
       "source_file": "README.md",
-      "source_location": "L196"
+      "source_location": "L201"
     },
     {
       "id": "readme_quick_start",
@@ -353,7 +353,7 @@
       "node_kind": "heading",
       "norm_label": "\ud83d\ude80 quick start",
       "source_file": "README.md",
-      "source_location": "L176"
+      "source_location": "L181"
     },
     {
       "id": "readme_roadmap",
@@ -365,7 +365,7 @@
       "node_kind": "heading",
       "norm_label": "\ud83d\uddfa\ufe0f roadmap",
       "source_file": "README.md",
-      "source_location": "L229"
+      "source_location": "L234"
     },
     {
       "id": "readme_tech_stack",
@@ -377,7 +377,7 @@
       "node_kind": "heading",
       "norm_label": "\ud83e\uddf0 tech stack",
       "source_file": "README.md",
-      "source_location": "L161"
+      "source_location": "L166"
     },
     {
       "id": "readme_why_recruiters_stop_here",
@@ -401,7 +401,7 @@
       "node_kind": "heading",
       "norm_label": "\ud83e\udd1d work with me",
       "source_file": "README.md",
-      "source_location": "L239"
+      "source_location": "L244"
     },
     {
       "id": "readme_about_your_unfair_advantage_online",
@@ -1164,7 +1164,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L161",
+      "source_location": "L166",
       "weight": 1.0
     },
     {
@@ -1175,7 +1175,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L176",
+      "source_location": "L181",
       "weight": 1.0
     },
     {
@@ -1186,7 +1186,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L196",
+      "source_location": "L201",
       "weight": 1.0
     },
     {
@@ -1197,7 +1197,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L219",
+      "source_location": "L224",
       "weight": 1.0
     },
     {
@@ -1208,18 +1208,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L229",
-      "weight": 1.0
-    },
-    {
-      "source": "readme_codsec_build_strong_build_smart",
-      "target": "readme_work_with_me",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": "L239",
+      "source_location": "L234",
       "weight": 1.0
     },
     {
@@ -1231,6 +1220,17 @@
       "confidence_score": 1.0,
       "source_file": "README.md",
       "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_codsec_build_strong_build_smart",
+      "target": "readme_work_with_me",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L244",
       "weight": 1.0
     },
     {

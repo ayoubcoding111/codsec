@@ -6,9 +6,9 @@
     "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1790896051.8787441,
-    "seen": 1790896055.45597,
-    "ast_hash": "b44bc14d8aca3a70feb4543f0085e276",
+    "mtime": 1790895359.383209,
+    "seen": 1790895362.3452427,
+    "ast_hash": "0090306eed459aa6a693eecd71d3ad3b",
     "semantic_hash": ""
   },
   ".vscode/settings.json": {
@@ -156,33 +156,51 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1790896109.8780866,
-    "seen": 1790896112.9026823,
-    "ast_hash": "18e483d2b4813abc2c909dbfa5406225",
+    "mtime": 1790895407.885767,
+    "seen": 1790895410.9086428,
+    "ast_hash": "f8ed5fb530ae081237eb1b8bb741409f",
     "semantic_hash": ""
   },
   "project-sky.html": {
-    "mtime": 1790896083.8098652,
-    "seen": 1790896086.7602444,
-    "ast_hash": "33fdb372ceeaf80f27a5b7c0edabfea9",
+    "mtime": 1790895324.46127,
+    "seen": 1790895327.729741,
+    "ast_hash": "cea44a74cc78186fa27411aac0d59301",
     "semantic_hash": ""
   },
-  "assets/screenshot-advantages.png": {
-    "mtime": 1790894185.730237,
-    "seen": 1790896055.4560108,
-    "ast_hash": "94732b176250995de16165f86eb5442b",
+  "assets/sky-1.webp": {
+    "mtime": 1790895263.28571,
+    "seen": 1790895327.729773,
+    "ast_hash": "971cb3cbed655d8a5a34bf651440099f",
     "semantic_hash": ""
   },
-  "assets/screenshot-booking.png": {
-    "mtime": 1790894220.9522703,
-    "seen": 1790896055.4560122,
-    "ast_hash": "ee34580c95b54d56a2de5ad272c72cd9",
+  "assets/sky-2.webp": {
+    "mtime": 1790895263.5930433,
+    "seen": 1790895327.7297745,
+    "ast_hash": "c8da3a49eacf0957e67b002894290642",
     "semantic_hash": ""
   },
-  "assets/screenshot-hero.png": {
-    "mtime": 1790894092.3447113,
-    "seen": 1790896055.456014,
-    "ast_hash": "207d69e7a18559fb9f6f2075f5f2ede5",
+  "assets/sky-3.webp": {
+    "mtime": 1790895264.069793,
+    "seen": 1790895327.729776,
+    "ast_hash": "923b7d26a3fd49d3796de411845185d7",
+    "semantic_hash": ""
+  },
+  "assets/sky-4.jpg": {
+    "mtime": 1790895264.3857992,
+    "seen": 1790895327.729777,
+    "ast_hash": "6e8fbd93f833b547f9bf5dbd0b9fd524",
+    "semantic_hash": ""
+  },
+  "assets/sky-5.jpg": {
+    "mtime": 1790895276.678205,
+    "seen": 1790895327.7297785,
+    "ast_hash": "1178142fa49516a9e5804128f7e6359b",
+    "semantic_hash": ""
+  },
+  "assets/sky-6.jpg": {
+    "mtime": 1790895277.0789118,
+    "seen": 1790895327.7297797,
+    "ast_hash": "09656982a057d51b913f24faeebea096",
     "semantic_hash": ""
   }
 }

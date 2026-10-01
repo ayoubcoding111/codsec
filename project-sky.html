@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="assets/mylogo.png" />
-    <title>Dental Clinic Website — Project Details · CodSec</title>
-    <meta name="description" content="Pacific Dental Clinic Dr. Bedjaoui — bilingual FR/AR dental practice site with treatments carousel, before/after slider, reviews marquees and booking funnel. Details + live README." />
+    <title>Above the Clouds — Jesko Jets Landing Page · CodSec</title>
+    <meta name="description" content="Above the Clouds — cinematic scroll-driven landing page for Jesko Jets private aviation. Pinned cabin-to-sky window zoom with GSAP ScrollTrigger, Lenis smooth scroll, fleet, advantages and booking. Details + live README." />
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -95,24 +95,24 @@
       <section class="panel section-pad detail-hero">
         <div class="section-inner">
           <a class="detail-back" href="index.html#projects" data-animate="fade-up">← All projects</a>
-          <p class="eyebrow" data-animate="fade-up">Project Details · Bilingual Clinic Website</p>
-          <h1 class="section-title animate-words" data-animate-words="Pacific Dental Clinic booking platform" data-base-delay="0.3" data-stagger="0.09"></h1>
+          <p class="eyebrow" data-animate="fade-up">Project Details · Cinematic Scroll Experience</p>
+          <h1 class="section-title animate-words" data-animate-words="Above the Clouds private jet landing page" data-base-delay="0.3" data-stagger="0.09"></h1>
           <p class="section-sub" data-animate="fade-up">
-            Bilingual French / Arabic site for Dr. Bedjaoui in Saïd Hamdine, Algiers — trust ticker, treatments carousel, interactive before/after slider, reviews marquees, gallery, booking funnel and maps. 100% vanilla, no build step.
+            Scroll-driven landing page for Jesko Jets private aviation — fly straight through an airplane window from cabin to open sky, then land on About, Fleet, Advantages and Booking. GSAP pin + scrub, Lenis smooth scroll, zero build step.
           </p>
           <div class="detail-meta" data-animate="fade-up">
-            <span class="project-tags"><span>HTML5</span><span>CSS3</span><span>Vanilla JS</span><span>i18n FR/AR</span><span>RTL</span></span>
+            <span class="project-tags"><span>HTML5</span><span>CSS3</span><span>Vanilla JS</span><span>GSAP ScrollTrigger</span><span>Lenis</span></span>
             <span class="project-links">
-              <a class="btn-white btn-white--sm" href="https://github.com/ayoubcoding111/Dentiste" target="_blank" rel="noopener">GitHub Repo
+              <a class="btn-white btn-white--sm" href="https://github.com/ayoubcoding111/sky" target="_blank" rel="noopener">GitHub Repo
                 <svg class="project-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20"><path d="M7 17 17 7M8 7h9v9" /></svg>
               </a>
               <a class="project-link" href="#readme-section">Live README ↓</a>
             </span>
           </div>
           <div class="detail-quick" data-animate="fade-up">
-            <div><span>Role</span><strong>Design + Frontend Build</strong></div>
-            <div><span>Languages</span><strong>FR + AR + full RTL</strong></div>
-            <div><span>Payload</span><strong>&lt;100KB · zero dependencies</strong></div>
+            <div><span>Role</span><strong>Creative Frontend Build</strong></div>
+            <div><span>Aircraft</span><strong>Gulfstream 650ER · 11,263 km</strong></div>
+            <div><span>Motion</span><strong>Pinned 5.5× window zoom</strong></div>
           </div>
         </div>
       </section>
@@ -122,126 +122,54 @@
           <!-- Row 1: info LEFT, pic RIGHT -->
           <div class="detail-row">
             <div class="detail-info reveal-left">
-              <span class="project-kicker">01 · Hero &amp; Trust</span>
-              <h3>Calm hero, infinite trust ticker</h3>
-              <p>High-contrast typography with real patient photography. The primary CTA smooth-scrolls and auto-focuses the booking form. An infinite marquee loops 5/5 Google rating, 10+ years experience, installment plans and local N°1 badge.</p>
+              <span class="project-kicker">01 · Cinematic Hero &amp; Window Zoom</span>
+              <h3>Pinned zoom straight through the window</h3>
+              <p>The hero pins on scroll and rushes the cabin layer 5.5× (4.2× on mobile) straight through the airplane window hole into open sky — headlines, brand label, clouds and vignette all choreographed to that one scrub. The window itself is a true radial-gradient CSS mask computed from the real image naturalWidth plus object-fit: cover math, so the hole stays pixel-locked through the whole zoom on any viewport.</p>
               <ul class="project-points">
-                <li>Zero-friction CTA → booking focus on mobile</li>
-                <li>GPU marquee, duplicated tracks, no stutter</li>
-                <li>Fluid type with clamp, glass nav, airy sections</li>
+                <li>GSAP ScrollTrigger pin + scrub, no autoplay jumps</li>
+                <li>fitMask() recomputed on resize + refresh — zero drift</li>
+                <li>Traveling brand label docks into the nav + sticky Book button</li>
               </ul>
             </div>
             <div class="detail-media reveal-right">
-              <img decoding="async" src="assets/dentiste-1.webp" alt="Dental clinic hero and trust marquee" loading="lazy" />
-              <span class="detail-caption">Landing — hero, CTA, trust ticker</span>
+              <img decoding="async" src="assets/screenshot-hero.png" alt="Above the Clouds hero — cabin window zoom into the sky" loading="lazy" />
+              <span class="detail-caption">Hero — cabin window, scroll to fly through</span>
             </div>
           </div>
 
           <!-- Row 2: pic LEFT, info RIGHT -->
           <div class="detail-row row-flip">
             <div class="detail-info reveal-right">
-              <span class="project-kicker">02 · Treatments</span>
-              <h3>Custom carousel, one-tap booking hooks</h3>
-              <p>Veneers, Invisalign, implant crowns and implants in a lightweight custom engine — 3 virtual sets with invisible rebasing, snap-safe arrows and swipe settling. Every card jumps straight into the booking flow.</p>
+              <span class="project-kicker">02 · About, Fleet &amp; Advantages</span>
+              <h3>Statement reveals, Gulfstream cards, glass rows</h3>
+              <p>About reveals its statement letter by letter tied to scroll, with alternating photo rows sliding in from their own side and a glass stats bar — 5K+ missions, 174 countries, Dubai base, 24/7 ops. Fleet spotlights the Gulfstream 650ER (11,263 km range, up to 12+1 cabin, 5.52 m³ baggage) in a responsive card grid, and Advantages pairs a sticky editorial intro with four glass rows over a single full-page sky photo.</p>
               <ul class="project-points">
-                <li>No library — custom infinite carousel engine</li>
-                <li>Hover elevation, pill badges, smooth steps</li>
-                <li>Touch, mouse and keyboard friendly</li>
+                <li>Scrubbed character reveal, reduced-motion safe</li>
+                <li>Gulfstream 650ER range, cabin, baggage, charter cards</li>
+                <li>Sticky intro + glassmorphism over one sky background</li>
               </ul>
             </div>
             <div class="detail-media reveal-left">
-              <img decoding="async" src="assets/dentiste-2.webp" alt="Dental treatments carousel" loading="lazy" />
-              <span class="detail-caption">Treatments — carousel, direct consult CTA</span>
+              <img decoding="async" src="assets/screenshot-advantages.png" alt="Above the Clouds advantages — glass cards over the sky" loading="lazy" />
+              <span class="detail-caption">Advantages — glass cards, sticky intro</span>
             </div>
           </div>
 
           <!-- Row 3: info LEFT, pic RIGHT -->
           <div class="detail-row">
             <div class="detail-info reveal-left">
-              <span class="project-kicker">03 · Clinical Proof</span>
-              <h3>Interactive before/after slider</h3>
-              <p>Drag the Avant / Après divider (mouse, touch, keyboard + pointer capture) rendered on a single CSS var at 60fps with zero layout shift.</p>
+              <span class="project-kicker">03 · Booking &amp; Contact</span>
+              <h3>Demo booking funnel, Dubai base</h3>
+              <p>Contact section combines a demo booking form (name, email, phone, route with confirmation note) with a Dubai contact card — phone, email, base, aircraft and hours — plus brand footer and back-to-top.</p>
               <ul class="project-points">
-                <li>Hardware-accelerated clip-path comparison</li>
-                <li>Pointer capture — drag stays smooth outside bounds</li>
-                <li>Real clinical outcomes, keyboard accessible</li>
+                <li>Labeled inputs, confirmation state, backend-ready hook</li>
+                <li>Dubai day/night photography, contact pills</li>
+                <li>Semantic landmarks, focus rings, alt text throughout</li>
               </ul>
             </div>
             <div class="detail-media reveal-right">
-              <img decoding="async" src="assets/dentiste-3.webp" alt="Dental before and after comparison slider" loading="lazy" />
-              <span class="detail-caption">Clinical results — before/after slider</span>
-            </div>
-          </div>
-
-          <!-- Row 4: pic LEFT, info RIGHT -->
-          <div class="detail-row row-flip">
-            <div class="detail-info reveal-right">
-              <span class="project-kicker">04 · Social Proof</span>
-              <h3>Dual review marquees that never stop</h3>
-              <p>Real Google patient stories loop on two staggered infinite tracks, dynamically duplicated in JS to cover any viewport without stutter or CPU spikes.</p>
-              <ul class="project-points">
-                <li>Authentic reviews — gentle care, fair pricing</li>
-                <li>Dual-track marquee, 4x cloned seamless loop</li>
-                <li>GPU translateX animation, zero dropped frames</li>
-              </ul>
-            </div>
-            <div class="detail-media reveal-left">
-              <img decoding="async" src="assets/dentiste-4.webp" alt="Dental patient reviews marquee" loading="lazy" />
-              <span class="detail-caption">Reviews — Google ratings marquee</span>
-            </div>
-          </div>
-
-          <!-- Row 5: info LEFT, pic RIGHT -->
-          <div class="detail-row">
-            <div class="detail-info reveal-left">
-              <span class="project-kicker">05 · Clinic Tour</span>
-              <h3>High-tech facilities gallery</h3>
-              <p>Virtual tour of consultation suites, waiting lounges and sterilization units. Hover auto-cycles every 1200ms, click locks the view, captions sync to FR/AR.</p>
-              <ul class="project-points">
-                <li>Smart hover preview + active-state locking</li>
-                <li>Bilingual gradient-masked captions</li>
-                <li>European-standard sterilization showcase</li>
-              </ul>
-            </div>
-            <div class="detail-media reveal-right">
-              <img decoding="async" src="assets/dentiste-5.webp" alt="Dental clinic facilities gallery" loading="lazy" />
-              <span class="detail-caption">Facilities — interactive gallery</span>
-            </div>
-          </div>
-
-          <!-- Row 6: pic LEFT, info RIGHT -->
-          <div class="detail-row row-flip">
-            <div class="detail-info reveal-right">
-              <span class="project-kicker">06 · Booking</span>
-              <h3>High-converting appointment funnel</h3>
-              <p>Phone prefix selector (DZ +213), numeric sanitizing, native date picker that opens on tap, and instant localized confirmation notices.</p>
-              <ul class="project-points">
-                <li>Client-side validation + instant feedback</li>
-                <li>Direct call link, hours Sat–Thu 9:00–17:00</li>
-                <li>Zero-friction mobile CTA focus flow</li>
-              </ul>
-            </div>
-            <div class="detail-media reveal-left">
-              <img decoding="async" src="assets/dentiste-6.webp" alt="Dental appointment booking form" loading="lazy" />
-              <span class="detail-caption">Booking — validation, FR/AR feedback</span>
-            </div>
-          </div>
-
-          <!-- Row 7: info LEFT, pic RIGHT -->
-          <div class="detail-row">
-            <div class="detail-info reveal-left">
-              <span class="project-kicker">07 · Bilingual &amp; Location</span>
-              <h3>True FR/AR RTL + interactive map</h3>
-              <p>Instant language toggle with zero reload — flips dir/lang, reflows nav, forms and gallery, syncs placeholders, aria-labels and SEO title. Embedded Google Maps centers on Cité Saïd Hamdine for instant directions.</p>
-              <ul class="project-points">
-                <li><code>data-fr / data-ar</code> engine, full RTL reflow</li>
-                <li>Responsive map embed, landmark references</li>
-                <li>SEO semantic tags, &lt;100KB zero dependencies</li>
-              </ul>
-            </div>
-            <div class="detail-media reveal-right">
-              <img decoding="async" src="assets/dentiste-7.webp" alt="Dental clinic location map" loading="lazy" />
-              <span class="detail-caption">Location — Google Maps embed</span>
+              <img decoding="async" src="assets/screenshot-booking.png" alt="Above the Clouds booking — Gulfstream 650ER contact form" loading="lazy" />
+              <span class="detail-caption">Booking — demo funnel, Dubai base</span>
             </div>
           </div>
         </div>
@@ -251,27 +179,27 @@
         <div class="section-inner">
           <p class="eyebrow" data-animate="fade-up">Live from GitHub</p>
           <h2 class="section-title" data-animate="fade-up">Full README, always current</h2>
-          <p class="section-sub" data-animate="fade-up">Fetched live from <code>ayoubcoding111/Dentiste</code>. Cached 24h — offline fallback below.</p>
+          <p class="section-sub" data-animate="fade-up">Fetched live from <code>ayoubcoding111/sky</code>. Cached 24h — offline fallback below.</p>
           <div class="readme-actions" data-animate="fade-up">
             <button type="button" class="project-link" id="readme-refresh">↻ Refresh README</button>
             <button type="button" class="project-link" id="readme-toggle" hidden>Show more ↓</button>
-            <a class="project-link" href="https://github.com/ayoubcoding111/Dentiste" target="_blank" rel="noopener">Open on GitHub</a>
+            <a class="project-link" href="https://github.com/ayoubcoding111/sky" target="_blank" rel="noopener">Open on GitHub</a>
             <span class="readme-status" id="readme-status" role="status">Loading…</span>
           </div>
           <div class="readme-wrap collapsed" id="readme-wrap">
-            <div id="readme" class="readme-body" data-readme-repo="ayoubcoding111/Dentiste" data-readme-branch="main" data-animate="fade-up">
+            <div id="readme" class="readme-body" data-readme-repo="ayoubcoding111/sky" data-readme-branch="main" data-animate="fade-up">
               <p class="readme-loading">Fetching README…</p>
             </div>
           </div>
           <div id="readme-fallback" class="readme-body readme-fallback" hidden>
-            <h3>🦷 Pacific Dental Clinic — snapshot (offline fallback)</h3>
-            <p>Bilingual FR/AR clinic site for Dr. Bedjaoui (Saïd Hamdine, Algiers). Trust ticker, treatments carousel, before/after slider, reviews marquees, facilities gallery, booking funnel with DZ phone validation, Google Maps embed. Pure vanilla HTML/CSS/JS, &lt;100KB, no build step.</p>
+            <h3>☁️ Above the Clouds — snapshot (offline fallback)</h3>
+            <p>Cinematic scroll-driven landing page for Jesko Jets private aviation. Pinned cabin-to-sky window zoom (5.5×) with GSAP ScrollTrigger scrub, true CSS-mask window hole, Lenis smooth scroll, About / Fleet (Gulfstream 650ER) / Advantages / Booking sections. Vanilla HTML/CSS/JS, no build step.</p>
             <ul>
-              <li><strong>Stack:</strong> Semantic HTML5, CSS3 tokens + RTL, vanilla JS (carousel, slider, i18n, gallery, validation).</li>
-              <li><strong>Run:</strong> <code>git clone https://github.com/ayoubcoding111/Dentiste.git</code> → open <code>index.html</code> or <code>python -m http.server 8000</code>.</li>
-              <li><strong>Highlights:</strong> custom infinite carousel, pointer-capture BA slider, dual review marquees, instant FR/AR toggle with full RTL reflow.</li>
+              <li><strong>Stack:</strong> Semantic HTML5, hand-written CSS with glassmorphism, GSAP 3.12.5 + ScrollTrigger + Lenis via CDN, Archivo + Inter Tight.</li>
+              <li><strong>Run:</strong> <code>git clone https://github.com/ayoubcoding111/sky.git</code> → open <code>index.html</code> or <code>python -m http.server 5500</code>.</li>
+              <li><strong>Highlights:</strong> pinned scrub timeline, object-fit mask math immune to zoom drift, traveling brand label, reduced-motion support.</li>
             </ul>
-            <p><a href="https://github.com/ayoubcoding111/Dentiste" target="_blank" rel="noopener">Read the full README on GitHub →</a></p>
+            <p><a href="https://github.com/ayoubcoding111/sky" target="_blank" rel="noopener">Read the full README on GitHub →</a></p>
           </div>
         </div>
       </section>
@@ -282,7 +210,7 @@
           <h2 class="section-title" data-animate="fade-up">Back to all work</h2>
           <div class="footer-nav" data-animate="fade-up">
             <a href="index.html#projects" class="btn-white btn-white--sm">← All projects</a>
-            <a href="./project-sky.html" class="project-link">Next: Above the Clouds →</a>
+            <a href="./project-restaurant.html" class="project-link">Next: Restaurant Website →</a>
           </div>
         </div>
       </footer>

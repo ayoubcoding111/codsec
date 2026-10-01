@@ -33,7 +33,7 @@ This repo is the agency site itself — **100% hand-written, zero frontend frame
 | ⚡ **Performance obsession** | WebP-only images, lazy loading, native loop video (no canvas rAF), Lenis smooth scroll with reduced-motion fallback |
 | 🔒 **Secure by default** | DOMPurify-sanitized README rendering, validated quote form, privacy page, generic-error auth patterns showcased in projects |
 | 🌍 **Real i18n / RTL** | EN/FR/AR support in showcased projects, full RTL reflow, bilingual dental clinic build |
-| 📦 **Full-stack range** | 3 shipped builds linked with live GitHub READMEs: restaurant platform, Kanban manager, clinic site |
+| 📦 **Full-stack range** | 4 shipped builds linked with live GitHub READMEs: restaurant platform, Kanban manager, clinic site, cinematic jet landing page |
 
 ---
 
@@ -148,6 +148,14 @@ Alternating info/media rows with `reveal-left` / `reveal-right` scroll animation
 | <img src="assets/dentiste-5.webp" alt="Dental clinic facilities gallery" width="100%" /> | <img src="assets/dentiste-6.webp" alt="Dental appointment booking form" width="100%" /> | <img src="assets/dentiste-7.webp" alt="Dental clinic location map" width="100%" /> |
 | Suites, lounges, sterilization units — hover auto-cycles (1200ms), click locks view, FR/AR-synced captions | DZ +213 prefix selector, numeric sanitizing, native date picker on tap, instant localized confirmations, direct-call link, Sat–Thu 9:00–17:00 | Instant `data-fr / data-ar` toggle, zero reload — flips `dir`/`lang`, reflows nav/forms/gallery, syncs placeholders + aria-labels + SEO title, embedded Google Maps on Cité Saïd Hamdine |
 
+### 4. ☁️ Above the Clouds — cinematic private-jet landing page
+**[`project-sky.html`](./project-sky.html) · [Repo](https://github.com/ayoubcoding111/sky) · `HTML5 · CSS3 · Vanilla JS · GSAP ScrollTrigger · Lenis` — no build, no framework**
+
+| Hero — Cabin Window | Advantages — Glass Cards | Booking — Gulfstream 650ER |
+|---|---|---|
+| <img src="assets/screenshot-hero.png" alt="Above the Clouds hero — cabin window zoom" width="100%" /> | <img src="assets/screenshot-advantages.png" alt="Above the Clouds advantages — glass cards" width="100%" /> | <img src="assets/screenshot-booking.png" alt="Above the Clouds booking form" width="100%" /> |
+| Pinned ScrollTrigger scrub rushes the cabin 5.5× (4.2× mobile) straight through the window hole — true `radial-gradient` mask from real `naturalWidth` + `object-fit: cover` math, brand label docks into the nav | Letter-by-letter About reveal, Gulfstream 650ER cards (11,263 km · 12+1 · 5.52 m³), sticky intro + four glass rows over one full-page sky photo | Demo booking form (name / email / phone / route) + Dubai contact card (base, aircraft, 24/7 ops), semantic + labeled + backend-ready |
+
 ---
 
 ## 🧰 Tech stack
@@ -157,7 +165,7 @@ Alternating info/media rows with `reveal-left` / `reveal-right` scroll animation
 | Markup / Style / Logic | Semantic **HTML5** · hand-written **CSS3** (tokens, custom properties, no framework) · **Vanilla JS** (`script.js`, ~1080 lines) |
 | Motion | **Lenis** smooth scroll (CDN, graceful fallback) · IntersectionObserver reveals · CSS keyframe entrances · canvas-free video loop |
 | Markdown | **marked** + **DOMPurify** for live GitHub README rendering |
-| Media | **WebP-only** screenshots (`assets/*.webp`) + MP4 hero via `cdn.sceneai.art` · lazy loading + async decoding |
+| Media | **WebP / JPG / PNG** screenshots (`assets/*`) + MP4 hero via `cdn.sceneai.art` · lazy loading + async decoding |
 | Forms / Comms | **Calendly** booking · `mailto:` CTA · **Discord webhook** quote pipeline |
 | Fonts / Icons | **Inter** (Google Fonts) · inline SVG icon system · Devicon / SimpleIcons CDN marquee |
 | i18n | EN/FR/AR content + full **RTL** reflow (showcased builds) |
@@ -179,7 +187,7 @@ python -m http.server 8000      # → http://localhost:8000
 # or VS Code → Go Live (port 5501, see .vscode/settings.json)
 ```
 
-Pages: `index.html` (home) · `project-restaurant.html` · `project-todo.html` · `project-dentiste.html` · `contact.html` (quote form) · `privacy.html`
+Pages: `index.html` (home) · `project-restaurant.html` · `project-todo.html` · `project-dentiste.html` · `project-sky.html` · `contact.html` (quote form) · `privacy.html`
 
 > The Discord webhook URL in `script.js` (`initQuoteForm`) is public frontend code by design. If it gets spammed, regenerate it in Discord → Channel Settings → Integrations → Webhooks and replace `DISCORD_WEBHOOK_URL`.
 
@@ -193,6 +201,7 @@ codsec/
 ├── project-restaurant.html  # Detail: ordering platform (ordering, tracking, kitchen/admin, security)
 ├── project-todo.html        # Detail: Kanban manager (board, auth, admin, craft notes)
 ├── project-dentiste.html    # Detail: bilingual clinic (hero, treatments, slider, reviews, gallery, booking, map)
+├── project-sky.html         # Detail: cinematic jet landing (window zoom, mask math, fleet, advantages, booking)
 ├── contact.html             # Quote funnel: multi-dropdown form → Discord webhook embed
 ├── privacy.html             # Privacy policy
 ├── styles.css               # Full design system (~3224 lines: tokens, panels, galleries, timelines, forms, RTL)
@@ -201,6 +210,7 @@ codsec/
     ├── hero.webp / menu.webp / cart.webp / analytics.webp
     ├── login-dark.webp / login-light.webp / user-dashboard.webp / admin-dashboard.webp
     ├── dentiste-1.webp … dentiste-7.webp
+    ├── screenshot-hero.png / screenshot-advantages.png / screenshot-booking.png
     └── mylogo.webp / mylogo.png
 ```
 
