@@ -285,7 +285,7 @@
       "source_location": "L375"
     },
     {
-      "id": "script_rationale_903",
+      "id": "script_rationale_866",
       "label": "NOTE: this URL is public in frontend code. If it gets spammed, regenerate",
       "_origin": "ast",
       "community": 0,
@@ -293,7 +293,7 @@
       "file_type": "rationale",
       "norm_label": "note: this url is public in frontend code. if it gets spammed, regenerate",
       "source_file": "script.js",
-      "source_location": "L903"
+      "source_location": "L866"
     },
     {
       "id": "readme",
@@ -1597,14 +1597,14 @@
       "weight": 1.0
     },
     {
-      "source": "script_rationale_903",
+      "source": "script_rationale_866",
       "target": "script",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "script.js",
-      "source_location": "L903",
+      "source_location": "L866",
       "weight": 1.0
     },
     {
@@ -2039,5 +2039,5 @@
       "source_file": "project-restaurant.html"
     }
   ],
-  "built_at_commit": "fdadd9c77189ad6db991d0f865fc17adabd8390b"
+  "built_at_commit": "8a40e64d2d51d19f9b1b44b5c7aa19f45df79c6e"
 }

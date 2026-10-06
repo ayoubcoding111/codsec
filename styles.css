@@ -164,6 +164,12 @@ button {
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
+  /* Fallback if the video file is missing/blocked/slow (e.g. bad deploy,
+     adblocker, autoplay rejected): poster image + dark base instead of black. */
+  background:
+    linear-gradient(rgb(10 10 15 / 0.55), rgb(10 10 15 / 0.55)),
+    url("assets/hero.webp") center / cover no-repeat,
+    #0a0a0f;
   transition:
     filter 0.8s ease,
     transform 0.8s ease;

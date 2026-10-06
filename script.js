@@ -413,12 +413,49 @@ if (counters.length && !reduceMotion && "IntersectionObserver" in window) {
   const video = document.getElementById("hero-video");
   if (!video) return;
   const show = () => video.classList.add("is-visible");
-  video.addEventListener("canplay", show, { once: true });
-  if (video.readyState >= 3) show();
+  // Autoplay policies (esp. on deployed HTTPS + mobile) require the muted
+  // property, not just the attribute — set it explicitly before playing.
+  try {
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+  } catch {
+    // ignore — attributes already cover older browsers
+  }
+  const tryPlay = () => video.play && video.play().catch(() => {});
+  // Show the poster/first frame as soon as we can, even if autoplay is
+  // blocked — never leave the background invisible (opacity: 0).
+  video.addEventListener("canplay", () => {
+    show();
+    tryPlay();
+  });
+  video.addEventListener("playing", show);
+  video.addEventListener("loadeddata", show);
+  video.addEventListener(
+    "error",
+    () => {
+      // Video file missing/unplayable (e.g. bad deploy): still reveal the
+      // element so the poster + CSS fallback background shows instead of black.
+      show();
+    },
+    { once: true }
+  );
+  if (video.readyState >= 2) show();
+  else tryPlay();
+  // Backstop: if events never fire (slow CDN, blocked range request),
+  // force-reveal after 4s so the poster is never stuck at opacity 0.
+  window.setTimeout(() => {
+    if (video.readyState >= 2 || video.poster) show();
+  }, 4000);
+  // First user gesture unlocks autoplay where the browser blocked it.
+  const unlock = () => tryPlay();
+  window.addEventListener("pointerdown", unlock, { once: true, passive: true });
+  window.addEventListener("touchend", unlock, { once: true, passive: true });
+  window.addEventListener("keydown", unlock, { once: true });
   // Save CPU/battery when the tab is hidden.
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) video.pause();
-    else video.play().catch(() => {});
+    else tryPlay();
   });
 })();
 
