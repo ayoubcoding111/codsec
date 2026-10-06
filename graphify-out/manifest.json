@@ -6,9 +6,9 @@
     "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1791294079.0976815,
-    "seen": 1791294082.1145747,
-    "ast_hash": "01e2da03be92ffc9643f4caa5ac47aec",
+    "mtime": 1791294448.9339986,
+    "seen": 1791294452.0112846,
+    "ast_hash": "81ff41e4bc342760f84988b6330745ef",
     "semantic_hash": ""
   },
   ".vscode/settings.json": {
@@ -24,15 +24,15 @@
     "semantic_hash": "d7b4cbdf4c1aa697338dddb43297bcfe"
   },
   "project-restaurant.html": {
-    "mtime": 1791294079.1199098,
-    "seen": 1791294082.11458,
-    "ast_hash": "9fa177c61f1be33e637feb32c39b77c9",
+    "mtime": 1791294448.949164,
+    "seen": 1791294452.01129,
+    "ast_hash": "06c79a7bc19b25fad57062dbbbc2a4fb",
     "semantic_hash": ""
   },
   "project-todo.html": {
-    "mtime": 1791294079.1118217,
-    "seen": 1791294082.1145828,
-    "ast_hash": "c80c685705a20ad74a0bc1c7e3f08466",
+    "mtime": 1791294448.9401128,
+    "seen": 1791294452.011293,
+    "ast_hash": "38dac85f0b253a85b2375c0180c7f2a1",
     "semantic_hash": ""
   },
   ".claude/settings.local.json": {
@@ -42,21 +42,21 @@
     "semantic_hash": ""
   },
   "contact.html": {
-    "mtime": 1791294079.093622,
-    "seen": 1791294082.114572,
-    "ast_hash": "2dbf4ad28adfa1b8144bc843dd6b2163",
+    "mtime": 1791294448.930978,
+    "seen": 1791294452.011282,
+    "ast_hash": "88a875aaaf537763d4dd8373dfa6f45e",
     "semantic_hash": ""
   },
   "privacy.html": {
-    "mtime": 1791294079.100685,
-    "seen": 1791294082.1145763,
-    "ast_hash": "62799874580a33a052f47f5f52e28f49",
+    "mtime": 1791294448.9511576,
+    "seen": 1791294452.0112865,
+    "ast_hash": "4f68879cd560dc3dbbcab150d269ac12",
     "semantic_hash": ""
   },
   "project-dentiste.html": {
-    "mtime": 1791294079.115342,
-    "seen": 1791294082.1145782,
-    "ast_hash": "009cf7eb416fb6780db85f2430c4d3c4",
+    "mtime": 1791294448.9451149,
+    "seen": 1791294452.0112882,
+    "ast_hash": "25a4575502971875ed3deeb73d77960d",
     "semantic_hash": ""
   },
   "assets/admin-dashboard.webp": {
@@ -162,9 +162,9 @@
     "semantic_hash": ""
   },
   "project-sky.html": {
-    "mtime": 1791294079.107822,
-    "seen": 1791294082.1145816,
-    "ast_hash": "ecce4b9da6a85c4e5cece09b7e6c736e",
+    "mtime": 1791294448.936071,
+    "seen": 1791294452.0112915,
+    "ast_hash": "d31958eaba50f7b670295569b01d96b4",
     "semantic_hash": ""
   },
   "assets/screenshot-advantages.png": {
@@ -189,6 +189,12 @@
     "mtime": 1791293961.5118656,
     "seen": 1791294062.0123405,
     "ast_hash": "e7b14f6718144faefb7608bfb5ed728e",
+    "semantic_hash": ""
+  },
+  "assets/hero-poster.jpg": {
+    "mtime": 1791294412.8084857,
+    "seen": 1791294435.830797,
+    "ast_hash": "4b5b0cb20212c3c4b2d2e9d8e90fc024",
     "semantic_hash": ""
   }
 }
